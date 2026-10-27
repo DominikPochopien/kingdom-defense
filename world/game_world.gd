@@ -46,6 +46,8 @@ var texts: Array[FloatingText] = []
 
 var selected_spot: BuildSpot = null
 var selected_enemy: Enemy = null
+## wieża, dla której gracz wskazuje nowy punkt zbiórki (null = brak trybu)
+var rally_tower: SoldierTower = null
 
 var _hp_mult := 1.0
 ## czy w poprzedniej klatce trwała fala (do automatycznego zapisu po jej końcu)
@@ -95,7 +97,9 @@ func restore(index: int, data: Dictionary) -> void:
 		if i >= 0 and i < spots.size():
 			if not spots[i].is_empty():
 				spots[i].tower.remove()   # darmowa wieża postawiona przez start()
-			_place_tower(spots[i], td.type, int(td.level), td.branch, int(td.spent))
+			var tower := _place_tower(spots[i], td.type, int(td.level), td.branch, int(td.spent))
+			if tower is SoldierTower and td.has("rally_x"):
+				(tower as SoldierTower).set_rally(Vector2(float(td.rally_x), float(td.rally_y)))
 	bridges.active = int(data.get("bridge", 0))
 	bridges.timer = float(data.get("bridge_timer", bridges.period))
 	bridges.snap()
@@ -116,6 +120,7 @@ func _clear_units() -> void:
 		list.clear()
 	selected_spot = null
 	selected_enemy = null
+	rally_tower = null
 	active = false
 
 
@@ -342,6 +347,42 @@ func _cast_reinforcements(p: Vector2) -> void:
 	Audio.play("build")
 
 
+# ================= PUNKT ZBIÓRKI =================
+## Włącza wskazywanie punktu zbiórki dla wieży z żołnierzami (przycisk w menu wieży).
+func start_rally(tower: SoldierTower) -> void:
+	abilities.cancel_targeting()
+	rally_tower = tower
+	selected_spot = null
+
+
+func is_placing_rally() -> bool:
+	if rally_tower != null and not is_instance_valid(rally_tower):
+		rally_tower = null
+	return rally_tower != null
+
+
+func cancel_rally() -> void:
+	rally_tower = null
+
+
+## Punkt zbiórki zawsze leży na drodze - najbliżej miejsca kliknięcia.
+func rally_point_for(p: Vector2) -> Vector2:
+	return paths.nearest_point(p)
+
+
+## Ustawia punkt zbiórki w miejscu kliknięcia; za daleko od wieży - tryb trwa dalej.
+func place_rally_at(p: Vector2) -> void:
+	var point := rally_point_for(p)
+	if not rally_tower.can_rally_to(point):
+		add_float(p + Vector2(-40, -20), "Za daleko!", Color(1, 0.4, 0.3))
+		return
+	rally_tower.set_rally(point)
+	rally_tower = null
+	add_effect(point, "ring", 20.0)
+	Audio.play("build")
+	save_run()
+
+
 # ================= WYBÓR I OBIEKTY POD KURSOREM =================
 ## Kliknięcie na mapie: wybór miejsca budowy albo wroga.
 func select_at(p: Vector2) -> void:
@@ -358,6 +399,7 @@ func select_at(p: Vector2) -> void:
 func clear_selection() -> void:
 	selected_spot = null
 	selected_enemy = null
+	rally_tower = null
 
 
 func enemy_at(p: Vector2) -> Enemy:

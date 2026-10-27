@@ -21,6 +21,28 @@ func _on_stats_changed() -> void:
 		s.apply_stats(stats)
 
 
+## Nowy punkt zbiórki wybrany przez gracza; żołnierze od razu tam idą.
+func set_rally(point: Vector2) -> void:
+	rally = point
+	_layout_formation()
+
+
+## Jak daleko od wieży można postawić punkt zbiórki.
+func rally_range() -> float:
+	return stats.attack_range()
+
+
+func can_rally_to(point: Vector2) -> bool:
+	return position.distance_to(point) <= rally_range()
+
+
+func to_save_data(spot_index: int) -> Dictionary:
+	var data := super.to_save_data(spot_index)
+	data["rally_x"] = rally.x
+	data["rally_y"] = rally.y
+	return data
+
+
 func remove() -> void:
 	for s in soldiers:
 		s.despawn()

@@ -148,6 +148,7 @@ func _input(event: InputEvent) -> void:
 				_toggle_fullscreen()
 			KEY_ESCAPE:
 				world.abilities.cancel_targeting()
+				world.cancel_rally()
 				world.selected_spot = null
 
 
@@ -163,14 +164,19 @@ func _handle_click(p: Vector2) -> void:
 			_handle_game_click(p)
 
 
-## Kolejność ma znaczenie: pasek interfejsu > celowanie umiejętnością > menu budowy > mapa.
+## Kolejność ma znaczenie: pasek interfejsu > celowanie umiejętnością > punkt zbiórki
+## > menu budowy > mapa.
 func _handle_game_click(p: Vector2) -> void:
 	if hud.handle_click(p):
 		return
 	if p.y < GameConfig.TOP or world.paused:
 		return
 	if world.abilities.is_targeting():
+		world.cancel_rally()
 		world.cast_ability_at(p)
+		return
+	if world.is_placing_rally():
+		world.place_rally_at(p)
 		return
 	if world.build_menu.handle_click(p):
 		return

@@ -111,9 +111,16 @@ func _wait_for_respawn(dt: float) -> void:
 func _update_target() -> void:
 	if not Enemy.is_alive(target) or target.is_blocked_by_other(self) \
 			or target.position.distance_to(rally) > radius * LEASH:
-		target = null
+		_release_target()
 	if target == null:
 		target = _find_target()
+
+
+## Porzuca cel; wróg zablokowany przez tego żołnierza może iść dalej.
+func _release_target() -> void:
+	if is_instance_valid(target) and target.blocked_by == self:
+		target.blocked_by = null
+	target = null
 
 
 func _find_target() -> Enemy:

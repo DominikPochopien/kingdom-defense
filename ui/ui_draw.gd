@@ -40,6 +40,13 @@ static func button(canvas: CanvasItem, r: Rect2, label: String, color: Color, en
 		text_in_rect(canvas, Rect2(r.position + Vector2(0, 12), r.size), sub, 14, Color(1, 0.9, 0.5))
 
 
+## Chorągiewka punktu zbiórki; foot = dolny koniec drzewca.
+static func rally_flag(canvas: CanvasItem, foot: Vector2, scale := 1.0, color := Color(0.9, 0.2, 0.2)) -> void:
+	var top := foot + Vector2(0, -18) * scale
+	canvas.draw_line(foot, top, Color(0.35, 0.25, 0.15), 2.0 * scale)
+	canvas.draw_colored_polygon(PackedVector2Array([top, top + Vector2(11, 4) * scale, top + Vector2(0, 8) * scale]), color)
+
+
 static func health_bar(canvas: CanvasItem, p: Vector2, frac: float, width: float, color: Color) -> void:
 	canvas.draw_rect(Rect2(p + Vector2(-width / 2.0, 0), Vector2(width, 4)), Color(0, 0, 0, 0.7))
 	canvas.draw_rect(Rect2(p + Vector2(-width / 2.0, 0), Vector2(width * clampf(frac, 0.0, 1.0), 4)), color)

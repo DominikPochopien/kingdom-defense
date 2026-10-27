@@ -71,6 +71,11 @@ func _draw_button_preview(spot: BuildSpot, b: UiButton) -> void:
 			var lines := [[b.description, Color(0.8, 0.95, 1.0)], ["", Color.WHITE]]
 			lines.append_array(tower_lines(stats, null))
 			UiDraw.panel(self, pos, b.label, lines, COLOR_BRANCH)
+		"rally":
+			UiDraw.panel(self, pos, b.label, [
+				["Kliknij drogę w zasięgu wieży, aby wskazać żołnierzom, gdzie mają stanąć.", Color(0.8, 0.95, 1.0)],
+				["Prawy przycisk / Esc - anuluj", Color(0.7, 0.7, 0.75)],
+			], COLOR_TOWER)
 
 
 ## Linie [tekst, kolor] opisujące wieżę. tower = null oznacza podgląd (wieża jeszcze nie istnieje).
