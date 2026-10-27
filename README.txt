@@ -21,5 +21,18 @@ Zapis: odblokowane poziomy i checkpoint rozgrywki zapisują się automatycznie
 stan mostów). Na ekranie wyboru poziomu pojawi się przycisk "Kontynuuj".
 Plik zapisu: user://save.cfg
 
-Balans i mapy: słowniki TOWERS, BRANCHES, ENEMIES i LEVELS na górze main.gd.
-Czas zmiany mostów: klucz "bridge_period" w poziomie 3.
+STRUKTURA KODU
+- data/            - balans i treść gry:
+	balance.gd       ekonomia, umiejętności, skalowanie ulepszeń
+	enemy_data.gd    statystyki wrogów
+	tower_data.gd    statystyki wież i ulepszeń 4. poziomu
+	wave_data.gd     skład fal
+	level_data.gd    lista poziomów (+ opis wszystkich kluczy poziomu)
+	levels/          jeden plik na poziom
+- entities/        - wrogowie (enemies/), wieże (towers/), żołnierz, pociski, efekty
+- world/           - rozgrywka na poziomie (game_world.gd) i rysowanie mapy
+- systems/         - zapis gry, dźwięk, trasy, mosty, fale, umiejętności
+- ui/              - pasek interfejsu, menu budowy, panele, ekrany
+- main.gd          - przełączanie ekranów i obsługa klawiatury/myszy
+
+Czas zmiany mostów: klucz "bridge_period" w data/levels/level_03_rzeka_mostow.gd.
