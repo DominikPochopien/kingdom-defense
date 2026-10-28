@@ -1,0 +1,384 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/level_scene.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/terrain/build_spot.png" id="2_spot"]
+[ext_resource type="Texture2D" path="res://assets/terrain/build_spot_desert.png" id="3_spot_desert"]
+[ext_resource type="Texture2D" path="res://assets/nature/cactus_round.png" id="4_cactus_round"]
+[ext_resource type="Texture2D" path="res://assets/nature/cactus_tall.png" id="5_cactus_tall"]
+[ext_resource type="Texture2D" path="res://assets/nature/dead_tree_a.png" id="6_dead_tree_a"]
+[ext_resource type="Texture2D" path="res://assets/nature/dead_tree_b.png" id="7_dead_tree_b"]
+[ext_resource type="Texture2D" path="res://assets/nature/desert_rock_medium.png" id="8_desert_rock_medium"]
+[ext_resource type="Texture2D" path="res://assets/nature/desert_rock_small.png" id="9_desert_rock_small"]
+[ext_resource type="Texture2D" path="res://assets/nature/desert_rock_tiny.png" id="10_desert_rock_tiny"]
+[ext_resource type="Texture2D" path="res://assets/nature/dry_bush.png" id="11_dry_bush"]
+[ext_resource type="Texture2D" path="res://assets/nature/ribs.png" id="12_ribs"]
+[ext_resource type="Texture2D" path="res://assets/nature/skull.png" id="13_skull"]
+[ext_resource type="Texture2D" path="res://assets/nature/shell_clam.png" id="deco_shell_clam"]
+[ext_resource type="Texture2D" path="res://assets/nature/shell_scallop.png" id="deco_shell_scallop"]
+[ext_resource type="Texture2D" path="res://assets/nature/shell_spiral.png" id="deco_shell_spiral"]
+
+[sub_resource type="Curve2D" id="Curve2D_trasa1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -40, 336, 0, 0, 0, 0, 112, 336, 0, 0, 0, 0, 112, 624, 0, 0, 0, 0, 304, 624, 0, 0, 0, 0, 304, 304, 0, 0, 0, 0, 560, 304, 0, 0, 0, 0, 560, 624, 0, 0, 0, 0, 1320, 624)
+}
+point_count = 8
+
+[sub_resource type="Curve2D" id="Curve2D_trasa2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 720, -40, 0, 0, 0, 0, 720, 144, 0, 0, 0, 0, 560, 304, 0, 0, 0, 0, 560, 624, 0, 0, 0, 0, 1320, 624)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_trasa3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 432, 770, 0, 0, 0, 0, 432, 304, 0, 0, 0, 0, 560, 304, 0, 0, 0, 0, 560, 624, 0, 0, 0, 0, 1320, 624)
+}
+point_count = 5
+
+[node name="Level07" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_script")
+
+[node name="Trawa" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Piasek" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Woda" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Piana" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Droga" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+
+[node name="DrogaSkos" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Gory" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+
+[node name="MiejscaNaWieze" type="Node2D" parent="."]
+
+[node name="Miejsce1" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(523, 80)
+scale = Vector2(2, 2)
+texture = ExtResource("3_spot_desert")
+
+[node name="Miejsce2" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(185, 265)
+scale = Vector2(2, 2)
+texture = ExtResource("3_spot_desert")
+
+[node name="Miejsce3" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(411, 248)
+scale = Vector2(2, 2)
+texture = ExtResource("3_spot_desert")
+
+[node name="Miejsce4" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(760, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("3_spot_desert")
+
+[node name="Miejsce5" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(246, 561)
+scale = Vector2(2, 2)
+texture = ExtResource("3_spot_desert")
+
+[node name="Miejsce6" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(55, 560)
+scale = Vector2(2, 2)
+texture = ExtResource("3_spot_desert")
+
+[node name="Miejsce7" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(503, 640)
+scale = Vector2(2, 2)
+texture = ExtResource("3_spot_desert")
+
+[node name="Miejsce8" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(671, 550)
+scale = Vector2(2, 2)
+texture = ExtResource("3_spot_desert")
+
+[node name="Miejsce9" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(1090, 488)
+scale = Vector2(2, 2)
+texture = ExtResource("3_spot_desert")
+
+[node name="Ozdoby" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="skull_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(578, 76)
+scale = Vector2(2, 2)
+texture = ExtResource("13_skull")
+offset = Vector2(0, -5)
+
+[node name="dead_tree_a_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(806, 84)
+scale = Vector2(2, 2)
+texture = ExtResource("6_dead_tree_a")
+offset = Vector2(0, -16)
+
+[node name="cactus_tall_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(170, 94)
+scale = Vector2(2, 2)
+texture = ExtResource("5_cactus_tall")
+offset = Vector2(0, -12)
+
+[node name="dry_bush_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(308, 98)
+scale = Vector2(2, 2)
+texture = ExtResource("11_dry_bush")
+offset = Vector2(0, -5)
+
+[node name="cactus_tall_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(424, 110)
+scale = Vector2(2, 2)
+texture = ExtResource("5_cactus_tall")
+offset = Vector2(0, -12)
+
+[node name="ribs_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(238, 134)
+scale = Vector2(2, 2)
+texture = ExtResource("12_ribs")
+offset = Vector2(0, -6)
+
+[node name="dead_tree_b_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(410, 146)
+scale = Vector2(2, 2)
+texture = ExtResource("7_dead_tree_b")
+offset = Vector2(0, -16)
+
+[node name="ribs_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(454, 148)
+scale = Vector2(2, 2)
+texture = ExtResource("12_ribs")
+offset = Vector2(0, -6)
+
+[node name="dead_tree_a_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(8, 154)
+scale = Vector2(2, 2)
+texture = ExtResource("6_dead_tree_a")
+offset = Vector2(0, -16)
+
+[node name="desert_rock_medium_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(94, 194)
+scale = Vector2(2, 2)
+texture = ExtResource("8_desert_rock_medium")
+offset = Vector2(0, -5)
+
+[node name="dry_bush_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(346, 194)
+scale = Vector2(2, 2)
+texture = ExtResource("11_dry_bush")
+offset = Vector2(0, -5)
+
+[node name="desert_rock_medium_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(348, 252)
+scale = Vector2(2, 2)
+texture = ExtResource("8_desert_rock_medium")
+offset = Vector2(0, -5)
+
+[node name="ribs_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(52, 286)
+scale = Vector2(2, 2)
+texture = ExtResource("12_ribs")
+offset = Vector2(0, -6)
+
+[node name="dry_bush_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(684, 288)
+scale = Vector2(2, 2)
+texture = ExtResource("11_dry_bush")
+offset = Vector2(0, -5)
+
+[node name="cactus_round_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(760, 322)
+scale = Vector2(2, 2)
+texture = ExtResource("4_cactus_round")
+offset = Vector2(0, -6)
+
+[node name="cactus_round_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(210, 330)
+scale = Vector2(2, 2)
+texture = ExtResource("4_cactus_round")
+offset = Vector2(0, -6)
+
+[node name="dead_tree_b_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(634, 332)
+scale = Vector2(2, 2)
+texture = ExtResource("7_dead_tree_b")
+offset = Vector2(0, -16)
+
+[node name="ribs_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(768, 364)
+scale = Vector2(2, 2)
+texture = ExtResource("12_ribs")
+offset = Vector2(0, -6)
+
+[node name="dead_tree_a_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(218, 366)
+scale = Vector2(2, 2)
+texture = ExtResource("6_dead_tree_a")
+offset = Vector2(0, -16)
+
+[node name="cactus_tall_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(642, 380)
+scale = Vector2(2, 2)
+texture = ExtResource("5_cactus_tall")
+offset = Vector2(0, -12)
+
+[node name="dry_bush_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(848, 410)
+scale = Vector2(2, 2)
+texture = ExtResource("11_dry_bush")
+offset = Vector2(0, -5)
+
+[node name="dead_tree_b_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(36, 414)
+scale = Vector2(2, 2)
+texture = ExtResource("7_dead_tree_b")
+offset = Vector2(0, -16)
+
+[node name="dry_bush_5" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(358, 442)
+scale = Vector2(2, 2)
+texture = ExtResource("11_dry_bush")
+offset = Vector2(0, -5)
+
+[node name="cactus_tall_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(820, 446)
+scale = Vector2(2, 2)
+texture = ExtResource("5_cactus_tall")
+offset = Vector2(0, -12)
+
+[node name="dead_tree_b_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(50, 448)
+scale = Vector2(2, 2)
+texture = ExtResource("7_dead_tree_b")
+offset = Vector2(0, -16)
+
+[node name="desert_rock_medium_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(18, 482)
+scale = Vector2(2, 2)
+texture = ExtResource("8_desert_rock_medium")
+offset = Vector2(0, -5)
+
+[node name="dead_tree_a_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(224, 502)
+scale = Vector2(2, 2)
+texture = ExtResource("6_dead_tree_a")
+offset = Vector2(0, -16)
+
+[node name="dead_tree_b_5" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(730, 502)
+scale = Vector2(2, 2)
+texture = ExtResource("7_dead_tree_b")
+offset = Vector2(0, -16)
+
+[node name="desert_rock_tiny_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(184, 502)
+scale = Vector2(2, 2)
+texture = ExtResource("10_desert_rock_tiny")
+offset = Vector2(0, -3)
+
+[node name="dead_tree_a_5" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(168, 570)
+scale = Vector2(2, 2)
+texture = ExtResource("6_dead_tree_a")
+offset = Vector2(0, -16)
+
+[node name="dry_bush_6" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(8, 574)
+scale = Vector2(2, 2)
+texture = ExtResource("11_dry_bush")
+offset = Vector2(0, -5)
+
+[node name="ribs_5" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(574, 684)
+scale = Vector2(2, 2)
+texture = ExtResource("12_ribs")
+offset = Vector2(0, -6)
+
+[node name="shell_scallop_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(648, 498)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_shell_scallop")
+offset = Vector2(0, -3)
+
+[node name="shell_spiral_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(622, 116)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_shell_spiral")
+offset = Vector2(0, -3)
+
+[node name="shell_spiral_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(470, 178)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_shell_spiral")
+offset = Vector2(0, -3)
+
+[node name="shell_spiral_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(730, 362)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_shell_spiral")
+offset = Vector2(0, -3)
+
+[node name="shell_scallop_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(504, 186)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_shell_scallop")
+offset = Vector2(0, -3)
+
+[node name="shell_clam_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(656, 406)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_shell_clam")
+offset = Vector2(0, -3)
+
+[node name="shell_spiral_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(360, 488)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_shell_spiral")
+offset = Vector2(0, -3)
+
+[node name="shell_clam_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(136, 268)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_shell_clam")
+offset = Vector2(0, -3)
+
+[node name="shell_spiral_5" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(696, 382)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_shell_spiral")
+offset = Vector2(0, -3)
+
+[node name="shell_clam_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(828, 512)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_shell_clam")
+offset = Vector2(0, -3)
+
+[node name="shell_spiral_6" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(446, 196)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_shell_spiral")
+offset = Vector2(0, -3)
+
+[node name="shell_scallop_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(606, 158)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_shell_scallop")
+offset = Vector2(0, -3)
+
+[node name="Trasa1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_trasa1")
+
+[node name="Trasa2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_trasa2")
+
+[node name="Trasa3" type="Path2D" parent="."]
+curve = SubResource("Curve2D_trasa3")

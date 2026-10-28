@@ -1,0 +1,600 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/level_scene.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/terrain/build_spot.png" id="2_spot"]
+[ext_resource type="Texture2D" path="res://assets/terrain/build_spot_desert.png" id="3_spot_desert"]
+[ext_resource type="Texture2D" path="res://assets/nature/bush_berry.png" id="4_bush_berry"]
+[ext_resource type="Texture2D" path="res://assets/nature/bush_round.png" id="5_bush_round"]
+[ext_resource type="Texture2D" path="res://assets/nature/flowers_pink.png" id="6_flowers_pink"]
+[ext_resource type="Texture2D" path="res://assets/nature/flowers_white.png" id="7_flowers_white"]
+[ext_resource type="Texture2D" path="res://assets/nature/flowers_yellow.png" id="8_flowers_yellow"]
+[ext_resource type="Texture2D" path="res://assets/nature/grass_tuft_a.png" id="9_grass_tuft_a"]
+[ext_resource type="Texture2D" path="res://assets/nature/grass_tuft_b.png" id="10_grass_tuft_b"]
+[ext_resource type="Texture2D" path="res://assets/nature/grass_tuft_c.png" id="11_grass_tuft_c"]
+[ext_resource type="Texture2D" path="res://assets/nature/pine_slim.png" id="12_pine_slim"]
+[ext_resource type="Texture2D" path="res://assets/nature/pine_tall.png" id="13_pine_tall"]
+[ext_resource type="Texture2D" path="res://assets/nature/rock_medium.png" id="14_rock_medium"]
+[ext_resource type="Texture2D" path="res://assets/nature/rock_tiny.png" id="15_rock_tiny"]
+[ext_resource type="Texture2D" path="res://assets/nature/tree_oval.png" id="16_tree_oval"]
+[ext_resource type="Texture2D" path="res://assets/nature/tree_round.png" id="17_tree_round"]
+[ext_resource type="Texture2D" path="res://assets/nature/tree_wide.png" id="18_tree_wide"]
+[ext_resource type="Texture2D" path="res://assets/nature/lily_pad.png" id="deco_lily_pad"]
+[ext_resource type="Texture2D" path="res://assets/nature/lily_pad_flower.png" id="deco_lily_pad_flower"]
+
+[sub_resource type="Curve2D" id="Curve2D_trasa1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -40, 112, 0, 0, 0, 0, 1040, 112, 0, 0, 0, 0, 1040, 304, 0, 0, 0, 0, 240, 304, 0, 0, 0, 0, 240, 464, 0, 0, 0, 0, 1040, 464, 0, 0, 0, 0, 1040, 592, 0, 0, 0, 0, 1320, 592)
+}
+point_count = 8
+
+[node name="Level02" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_script")
+
+[node name="Trawa" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Piasek" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Woda" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Piana" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Droga" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+
+[node name="DrogaSkos" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Gory" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+
+[node name="MiejscaNaWieze" type="Node2D" parent="."]
+
+[node name="Miejsce1" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(140, 200)
+scale = Vector2(2, 2)
+texture = ExtResource("2_spot")
+
+[node name="Miejsce2" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(400, 200)
+scale = Vector2(2, 2)
+texture = ExtResource("2_spot")
+
+[node name="Miejsce3" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(600, 180)
+scale = Vector2(2, 2)
+texture = ExtResource("2_spot")
+
+[node name="Miejsce4" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(800, 200)
+scale = Vector2(2, 2)
+texture = ExtResource("2_spot")
+
+[node name="Miejsce5" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(1150, 200)
+scale = Vector2(2, 2)
+texture = ExtResource("2_spot")
+
+[node name="Miejsce6" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(140, 380)
+scale = Vector2(2, 2)
+texture = ExtResource("2_spot")
+
+[node name="Miejsce7" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(450, 380)
+scale = Vector2(2, 2)
+texture = ExtResource("2_spot")
+
+[node name="Miejsce8" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(650, 400)
+scale = Vector2(2, 2)
+texture = ExtResource("2_spot")
+
+[node name="Miejsce9" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(850, 380)
+scale = Vector2(2, 2)
+texture = ExtResource("2_spot")
+
+[node name="Miejsce10" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(1150, 380)
+scale = Vector2(2, 2)
+texture = ExtResource("2_spot")
+
+[node name="Miejsce11" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(450, 560)
+scale = Vector2(2, 2)
+texture = ExtResource("2_spot")
+
+[node name="Miejsce12" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(700, 560)
+scale = Vector2(2, 2)
+texture = ExtResource("2_spot")
+
+[node name="Miejsce13" type="Sprite2D" parent="MiejscaNaWieze"]
+position = Vector2(900, 560)
+scale = Vector2(2, 2)
+texture = ExtResource("2_spot")
+
+[node name="Ozdoby" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="bush_berry_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1272, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("4_bush_berry")
+offset = Vector2(0, -6)
+
+[node name="tree_oval_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1110, 100)
+scale = Vector2(2, 2)
+texture = ExtResource("16_tree_oval")
+offset = Vector2(0, -16)
+
+[node name="grass_tuft_a_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(700, 156)
+scale = Vector2(2, 2)
+texture = ExtResource("9_grass_tuft_a")
+offset = Vector2(0, -4)
+
+[node name="grass_tuft_b_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(668, 166)
+scale = Vector2(2, 2)
+texture = ExtResource("10_grass_tuft_b")
+offset = Vector2(0, -4)
+
+[node name="tree_oval_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(884, 168)
+scale = Vector2(2, 2)
+texture = ExtResource("16_tree_oval")
+offset = Vector2(0, -16)
+
+[node name="tree_wide_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(312, 184)
+scale = Vector2(2, 2)
+texture = ExtResource("18_tree_wide")
+offset = Vector2(0, -16)
+
+[node name="pine_tall_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(28, 184)
+scale = Vector2(2, 2)
+texture = ExtResource("13_pine_tall")
+offset = Vector2(0, -16)
+
+[node name="flowers_yellow_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(346, 184)
+scale = Vector2(2, 2)
+texture = ExtResource("8_flowers_yellow")
+offset = Vector2(0, -4)
+
+[node name="bush_berry_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(76, 190)
+scale = Vector2(2, 2)
+texture = ExtResource("4_bush_berry")
+offset = Vector2(0, -6)
+
+[node name="tree_oval_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(732, 196)
+scale = Vector2(2, 2)
+texture = ExtResource("16_tree_oval")
+offset = Vector2(0, -16)
+
+[node name="grass_tuft_c_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(964, 196)
+scale = Vector2(2, 2)
+texture = ExtResource("11_grass_tuft_c")
+offset = Vector2(0, -4)
+
+[node name="flowers_yellow_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(844, 196)
+scale = Vector2(2, 2)
+texture = ExtResource("8_flowers_yellow")
+offset = Vector2(0, -4)
+
+[node name="grass_tuft_a_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(534, 198)
+scale = Vector2(2, 2)
+texture = ExtResource("9_grass_tuft_a")
+offset = Vector2(0, -4)
+
+[node name="tree_oval_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1208, 216)
+scale = Vector2(2, 2)
+texture = ExtResource("16_tree_oval")
+offset = Vector2(0, -16)
+
+[node name="grass_tuft_a_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(264, 218)
+scale = Vector2(2, 2)
+texture = ExtResource("9_grass_tuft_a")
+offset = Vector2(0, -4)
+
+[node name="tree_round_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(858, 222)
+scale = Vector2(2, 2)
+texture = ExtResource("17_tree_round")
+offset = Vector2(0, -16)
+
+[node name="tree_round_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(208, 228)
+scale = Vector2(2, 2)
+texture = ExtResource("17_tree_round")
+offset = Vector2(0, -16)
+
+[node name="bush_berry_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(352, 232)
+scale = Vector2(2, 2)
+texture = ExtResource("4_bush_berry")
+offset = Vector2(0, -6)
+
+[node name="tree_oval_5" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(10, 242)
+scale = Vector2(2, 2)
+texture = ExtResource("16_tree_oval")
+offset = Vector2(0, -16)
+
+[node name="bush_round_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(234, 242)
+scale = Vector2(2, 2)
+texture = ExtResource("5_bush_round")
+offset = Vector2(0, -6)
+
+[node name="grass_tuft_c_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1096, 246)
+scale = Vector2(2, 2)
+texture = ExtResource("11_grass_tuft_c")
+offset = Vector2(0, -4)
+
+[node name="grass_tuft_b_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1156, 250)
+scale = Vector2(2, 2)
+texture = ExtResource("10_grass_tuft_b")
+offset = Vector2(0, -4)
+
+[node name="rock_medium_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(944, 254)
+scale = Vector2(2, 2)
+texture = ExtResource("14_rock_medium")
+offset = Vector2(0, -5)
+
+[node name="bush_round_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1222, 258)
+scale = Vector2(2, 2)
+texture = ExtResource("5_bush_round")
+offset = Vector2(0, -6)
+
+[node name="grass_tuft_b_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(132, 278)
+scale = Vector2(2, 2)
+texture = ExtResource("10_grass_tuft_b")
+offset = Vector2(0, -4)
+
+[node name="bush_berry_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(172, 284)
+scale = Vector2(2, 2)
+texture = ExtResource("4_bush_berry")
+offset = Vector2(0, -6)
+
+[node name="tree_oval_6" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1222, 286)
+scale = Vector2(2, 2)
+texture = ExtResource("16_tree_oval")
+offset = Vector2(0, -16)
+
+[node name="flowers_yellow_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1244, 326)
+scale = Vector2(2, 2)
+texture = ExtResource("8_flowers_yellow")
+offset = Vector2(0, -4)
+
+[node name="grass_tuft_a_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1192, 334)
+scale = Vector2(2, 2)
+texture = ExtResource("9_grass_tuft_a")
+offset = Vector2(0, -4)
+
+[node name="rock_tiny_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1230, 340)
+scale = Vector2(2, 2)
+texture = ExtResource("15_rock_tiny")
+offset = Vector2(0, -3)
+
+[node name="pine_slim_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1212, 356)
+scale = Vector2(2, 2)
+texture = ExtResource("12_pine_slim")
+offset = Vector2(0, -16)
+
+[node name="flowers_yellow_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(384, 368)
+scale = Vector2(2, 2)
+texture = ExtResource("8_flowers_yellow")
+offset = Vector2(0, -4)
+
+[node name="bush_berry_5" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(72, 372)
+scale = Vector2(2, 2)
+texture = ExtResource("4_bush_berry")
+offset = Vector2(0, -6)
+
+[node name="grass_tuft_b_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(996, 376)
+scale = Vector2(2, 2)
+texture = ExtResource("10_grass_tuft_b")
+offset = Vector2(0, -4)
+
+[node name="bush_round_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(308, 380)
+scale = Vector2(2, 2)
+texture = ExtResource("5_bush_round")
+offset = Vector2(0, -6)
+
+[node name="rock_tiny_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1096, 386)
+scale = Vector2(2, 2)
+texture = ExtResource("15_rock_tiny")
+offset = Vector2(0, -3)
+
+[node name="flowers_pink_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1082, 396)
+scale = Vector2(2, 2)
+texture = ExtResource("6_flowers_pink")
+offset = Vector2(0, -4)
+
+[node name="grass_tuft_a_5" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1206, 438)
+scale = Vector2(2, 2)
+texture = ExtResource("9_grass_tuft_a")
+offset = Vector2(0, -4)
+
+[node name="pine_slim_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(176, 456)
+scale = Vector2(2, 2)
+texture = ExtResource("12_pine_slim")
+offset = Vector2(0, -16)
+
+[node name="pine_slim_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1172, 472)
+scale = Vector2(2, 2)
+texture = ExtResource("12_pine_slim")
+offset = Vector2(0, -16)
+
+[node name="pine_tall_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1228, 482)
+scale = Vector2(2, 2)
+texture = ExtResource("13_pine_tall")
+offset = Vector2(0, -16)
+
+[node name="rock_medium_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(280, 508)
+scale = Vector2(2, 2)
+texture = ExtResource("14_rock_medium")
+offset = Vector2(0, -5)
+
+[node name="flowers_pink_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(956, 508)
+scale = Vector2(2, 2)
+texture = ExtResource("6_flowers_pink")
+offset = Vector2(0, -4)
+
+[node name="tree_oval_7" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1184, 510)
+scale = Vector2(2, 2)
+texture = ExtResource("16_tree_oval")
+offset = Vector2(0, -16)
+
+[node name="grass_tuft_a_6" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(258, 524)
+scale = Vector2(2, 2)
+texture = ExtResource("9_grass_tuft_a")
+offset = Vector2(0, -4)
+
+[node name="pine_tall_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(174, 528)
+scale = Vector2(2, 2)
+texture = ExtResource("13_pine_tall")
+offset = Vector2(0, -16)
+
+[node name="pine_slim_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(218, 530)
+scale = Vector2(2, 2)
+texture = ExtResource("12_pine_slim")
+offset = Vector2(0, -16)
+
+[node name="flowers_white_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(814, 538)
+scale = Vector2(2, 2)
+texture = ExtResource("7_flowers_white")
+offset = Vector2(0, -4)
+
+[node name="rock_tiny_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(102, 540)
+scale = Vector2(2, 2)
+texture = ExtResource("15_rock_tiny")
+offset = Vector2(0, -3)
+
+[node name="flowers_yellow_5" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1132, 550)
+scale = Vector2(2, 2)
+texture = ExtResource("8_flowers_yellow")
+offset = Vector2(0, -4)
+
+[node name="bush_berry_6" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(764, 568)
+scale = Vector2(2, 2)
+texture = ExtResource("4_bush_berry")
+offset = Vector2(0, -6)
+
+[node name="rock_tiny_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(538, 576)
+scale = Vector2(2, 2)
+texture = ExtResource("15_rock_tiny")
+offset = Vector2(0, -3)
+
+[node name="tree_oval_8" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(600, 580)
+scale = Vector2(2, 2)
+texture = ExtResource("16_tree_oval")
+offset = Vector2(0, -16)
+
+[node name="grass_tuft_c_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(678, 600)
+scale = Vector2(2, 2)
+texture = ExtResource("11_grass_tuft_c")
+offset = Vector2(0, -4)
+
+[node name="tree_oval_9" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(772, 614)
+scale = Vector2(2, 2)
+texture = ExtResource("16_tree_oval")
+offset = Vector2(0, -16)
+
+[node name="flowers_white_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(426, 620)
+scale = Vector2(2, 2)
+texture = ExtResource("7_flowers_white")
+offset = Vector2(0, -4)
+
+[node name="flowers_white_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(756, 620)
+scale = Vector2(2, 2)
+texture = ExtResource("7_flowers_white")
+offset = Vector2(0, -4)
+
+[node name="pine_tall_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(92, 626)
+scale = Vector2(2, 2)
+texture = ExtResource("13_pine_tall")
+offset = Vector2(0, -16)
+
+[node name="rock_tiny_5" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(470, 626)
+scale = Vector2(2, 2)
+texture = ExtResource("15_rock_tiny")
+offset = Vector2(0, -3)
+
+[node name="pine_tall_5" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(898, 632)
+scale = Vector2(2, 2)
+texture = ExtResource("13_pine_tall")
+offset = Vector2(0, -16)
+
+[node name="flowers_white_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1264, 632)
+scale = Vector2(2, 2)
+texture = ExtResource("7_flowers_white")
+offset = Vector2(0, -4)
+
+[node name="tree_wide_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(606, 638)
+scale = Vector2(2, 2)
+texture = ExtResource("18_tree_wide")
+offset = Vector2(0, -16)
+
+[node name="grass_tuft_b_5" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(418, 640)
+scale = Vector2(2, 2)
+texture = ExtResource("10_grass_tuft_b")
+offset = Vector2(0, -4)
+
+[node name="tree_oval_10" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(956, 644)
+scale = Vector2(2, 2)
+texture = ExtResource("16_tree_oval")
+offset = Vector2(0, -16)
+
+[node name="tree_wide_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(856, 646)
+scale = Vector2(2, 2)
+texture = ExtResource("18_tree_wide")
+offset = Vector2(0, -16)
+
+[node name="rock_tiny_6" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(562, 668)
+scale = Vector2(2, 2)
+texture = ExtResource("15_rock_tiny")
+offset = Vector2(0, -3)
+
+[node name="flowers_pink_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1030, 668)
+scale = Vector2(2, 2)
+texture = ExtResource("6_flowers_pink")
+offset = Vector2(0, -4)
+
+[node name="bush_round_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(946, 674)
+scale = Vector2(2, 2)
+texture = ExtResource("5_bush_round")
+offset = Vector2(0, -6)
+
+[node name="grass_tuft_a_7" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(960, 680)
+scale = Vector2(2, 2)
+texture = ExtResource("9_grass_tuft_a")
+offset = Vector2(0, -4)
+
+[node name="pine_tall_6" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(332, 682)
+scale = Vector2(2, 2)
+texture = ExtResource("13_pine_tall")
+offset = Vector2(0, -16)
+
+[node name="flowers_white_5" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(1004, 682)
+scale = Vector2(2, 2)
+texture = ExtResource("7_flowers_white")
+offset = Vector2(0, -4)
+
+[node name="pine_slim_5" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(898, 694)
+scale = Vector2(2, 2)
+texture = ExtResource("12_pine_slim")
+offset = Vector2(0, -16)
+
+[node name="flowers_yellow_6" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(976, 710)
+scale = Vector2(2, 2)
+texture = ExtResource("8_flowers_yellow")
+offset = Vector2(0, -4)
+
+[node name="flowers_white_6" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(534, 710)
+scale = Vector2(2, 2)
+texture = ExtResource("7_flowers_white")
+offset = Vector2(0, -4)
+
+[node name="lily_pad_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(548, 246)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_lily_pad")
+offset = Vector2(0, -4)
+
+[node name="lily_pad_2" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(584, 242)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_lily_pad")
+offset = Vector2(0, -4)
+
+[node name="lily_pad_3" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(682, 242)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_lily_pad")
+offset = Vector2(0, -4)
+
+[node name="lily_pad_4" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(744, 242)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_lily_pad")
+offset = Vector2(0, -4)
+
+[node name="lily_pad_flower_1" type="Sprite2D" parent="Ozdoby"]
+position = Vector2(614, 236)
+scale = Vector2(2, 2)
+texture = ExtResource("deco_lily_pad_flower")
+offset = Vector2(0, -4)
+
+[node name="Trasa1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_trasa1")

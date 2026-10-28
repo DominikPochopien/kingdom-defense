@@ -25,19 +25,43 @@ static func text_in_rect(canvas: CanvasItem, r: Rect2, s: String, size: int, col
 
 
 ## Przycisk z napisem i opcjonalnym podpisem (np. ceną); podświetla się pod kursorem.
+## Z ikoną (pixel art, kwadrat 24 px) - ikona po lewej w skali 2x, napisy obok niej.
 static func button(canvas: CanvasItem, r: Rect2, label: String, color: Color, enabled := true, sub := "",
-		hover := true) -> void:
+		hover := true, icon: Texture2D = null) -> void:
 	var c := color if enabled else Color(0.3, 0.3, 0.3)
 	if enabled and hover and r.has_point(canvas.get_global_mouse_position()):
 		c = c.lightened(0.2)
 	canvas.draw_rect(r, Color(0, 0, 0, 0.5), true)
 	canvas.draw_rect(r.grow(-2), c, true)
 	canvas.draw_rect(r, Color(1, 1, 1, 0.8), false, 2.0)
+	var text_r := r
+	if icon != null:
+		var side := icon.get_width() * 2.0
+		canvas.draw_texture_rect(icon, Rect2(r.position + Vector2(4, (r.size.y - side) / 2.0), Vector2(side, side)), false,
+			Color.WHITE if enabled else Color(0.5, 0.5, 0.5))
+		text_r = Rect2(r.position.x + side + 4, r.position.y, r.size.x - side - 6, r.size.y)
 	if sub == "":
-		text_in_rect(canvas, r, label, 18, Color.WHITE)
+		text_in_rect(canvas, text_r, label, 18, Color.WHITE)
 	else:
-		text_in_rect(canvas, Rect2(r.position + Vector2(0, -9), r.size), label, 16 if label.length() < 12 else 13, Color.WHITE)
-		text_in_rect(canvas, Rect2(r.position + Vector2(0, 12), r.size), sub, 14, Color(1, 0.9, 0.5))
+		text_in_rect(canvas, Rect2(text_r.position + Vector2(0, -9), text_r.size), label, 16 if label.length() < 12 else 13, Color.WHITE)
+		text_in_rect(canvas, Rect2(text_r.position + Vector2(0, 12), text_r.size), sub, 14, Color(1, 0.9, 0.5))
+
+
+## Kwadratowy przycisk z ikoną (TowerIcons) i podpisem pod nią; wyszarzony, gdy nieaktywny.
+static func icon_button(canvas: CanvasItem, r: Rect2, icon: String, color: Color, enabled := true, sub := "") -> void:
+	var c := color
+	if enabled and r.has_point(canvas.get_global_mouse_position()):
+		c = c.lightened(0.2)
+	canvas.draw_rect(r, Color(0, 0, 0, 0.5), true)
+	canvas.draw_rect(r.grow(-2), c, true)
+	var icon_h := r.size.y - (22.0 if sub != "" else 8.0)
+	var center := Vector2(r.get_center().x, r.position.y + 4.0 + icon_h / 2.0)
+	TowerIcons.draw(canvas, icon, center, icon_h / 32.0)
+	if sub != "":
+		text_in_rect(canvas, Rect2(r.position.x, r.end.y - 20.0, r.size.x, 18.0), sub, 13, Color(1, 0.9, 0.5))
+	if not enabled:
+		canvas.draw_rect(r.grow(-2), Color(0.12, 0.12, 0.12, 0.6), true)
+	canvas.draw_rect(r, Color(1, 1, 1, 0.8), false, 2.0)
 
 
 ## Chorągiewka punktu zbiórki; foot = dolny koniec drzewca.

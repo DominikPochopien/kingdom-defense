@@ -27,13 +27,3 @@ func _update_ability(dt: float) -> void:
 			other.heal(other.max_hp * heal_pct)
 	world.add_effect(position, "heal", heal_radius)
 	world.add_float(position + Vector2(0, -44), "Rytuał!", Color(0.5, 1, 0.5))
-
-
-func _draw_body(tint: Color) -> void:
-	draw_circle(Vector2.ZERO, radius, Color(0.45, 0.2, 0.55) * tint)
-	# kaptur
-	draw_colored_polygon(PackedVector2Array([Vector2(-13, -8), Vector2(13, -8), Vector2(0, -34)]), Color(0.3, 0.1, 0.4) * tint)
-	# laska ze świecącym kryształem
-	draw_line(Vector2(15, 8), Vector2(20, -22), Color(0.5, 0.35, 0.2), 3.0)
-	var glow := 0.6 + 0.4 * sin(anim * 5.0)
-	draw_circle(Vector2(20, -24), 6.0, Color(0.3, 1.0, 0.5, glow))

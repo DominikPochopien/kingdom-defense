@@ -12,6 +12,11 @@ const REACH := 20.0
 const KNIGHT_REACH := 40.0
 ## cel oddalony od punktu zbiórki o więcej niż radius * LEASH jest porzucany
 const LEASH := 1.5
+const HIT_FLASH_TIME := 0.1
+## stopy postaci względem pozycji żołnierza
+const FOOT := Vector2(0, 8)
+## posiłki z umiejętności są lekko niebieskie
+const REINFORCEMENT_TINT := Color(0.75, 0.95, 1.0)
 
 var world: GameWorld
 
@@ -33,6 +38,15 @@ var respawn := 0.0
 var lifetime := -1.0
 
 var _attack_cd := 0.0
+var _anim := 0.0
+var _flash := 0.0
+var _attacking := false
+var _moving := false
+var _facing_left := false
+
+
+func _ready() -> void:
+	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 
 
 func setup_for_tower(owner_tower: SoldierTower) -> void:
@@ -75,6 +89,7 @@ func despawn() -> void:
 
 func take_hit(amount: float) -> void:
 	hp -= amount
+	_flash = HIT_FLASH_TIME
 	if hp > 0:
 		return
 	alive = false
@@ -88,6 +103,8 @@ func take_hit(amount: float) -> void:
 func tick(dt: float) -> void:
 	if gone:
 		return
+	_anim += dt
+	_flash = maxf(_flash - dt, 0.0)
 	if not alive:
 		_wait_for_respawn(dt)
 		return
@@ -96,6 +113,10 @@ func tick(dt: float) -> void:
 		if lifetime <= 0:
 			gone = true
 			return
+	# żołnierze wyłączonej wieży stoją i puszczają wrogów
+	if is_instance_valid(tower) and tower.is_disabled():
+		_release_target()
+		return
 	_update_target()
 	_act(dt)
 
@@ -109,7 +130,7 @@ func _wait_for_respawn(dt: float) -> void:
 
 
 func _update_target() -> void:
-	if not Enemy.is_alive(target) or target.is_blocked_by_other(self) \
+	if not Enemy.is_targetable(target) or target.is_blocked_by_other(self) \
 			or target.position.distance_to(rally) > radius * LEASH:
 		_release_target()
 	if target == null:
@@ -127,7 +148,7 @@ func _find_target() -> Enemy:
 	var best: Enemy = null
 	var best_dist := 1e9
 	for e in world.enemies:
-		if e.dead or (e.flying and not is_knight):
+		if not Enemy.is_targetable(e) or (e.flying and not is_knight):
 			continue
 		if e.is_blocked_by_other(self):
 			continue
@@ -143,14 +164,18 @@ func _act(dt: float) -> void:
 	var to := dest - position
 	var dist := to.length()
 	var reach := KNIGHT_REACH if is_knight else REACH
-	if target != null and dist <= reach:
+	_attacking = target != null and dist <= reach
+	_moving = not _attacking and dist > 3.0
+	if absf(to.x) > 1.0:
+		_facing_left = to.x < 0
+	if _attacking:
 		if not target.flying:
 			target.blocked_by = self
 		_attack_cd -= dt
 		if _attack_cd <= 0:
 			_attack_cd = ATTACK_INTERVAL
 			target.take_damage(damage, false)
-	elif dist > 3.0:
+	elif _moving:
 		position += to.normalized() * minf(MOVE_SPEED * dt, dist)
 
 
@@ -170,14 +195,29 @@ func _process(_delta: float) -> void:
 func _draw() -> void:
 	if not is_active():
 		return
-	draw_circle(Vector2(0, 8), 7.0, Color(0, 0, 0, 0.25))
-	var col := Color(0.3, 0.85, 0.9) if is_reinforcement else Color(0.3, 0.5, 0.9)
-	if is_knight:
-		col = Color(0.9, 0.55, 0.1)
-	draw_circle(Vector2.ZERO, 8.0, col)
-	draw_circle(Vector2(0, -9), 5.0, Color(0.95, 0.8, 0.65))
-	if is_knight:
-		draw_line(Vector2(-5, -2), Vector2(16, -16), Color(0.8, 0.8, 0.8), 2.0)   # włócznia
-	else:
-		draw_line(Vector2(8, 0), Vector2(14, -10), Color(0.85, 0.85, 0.9), 2.5)   # miecz
-	UiDraw.health_bar(self, Vector2(0, -20), hp / max_hp, 20.0, Color(0.3, 0.8, 1))
+	var top := _draw_unit()
+	UiDraw.health_bar(self, Vector2(0, top - 6.0), hp / max_hp, 20.0, Color(0.3, 0.8, 1))
+
+
+## Cień i animowana postać (assets/allies/); zwraca wysokość czubka głowy (y).
+func _draw_unit() -> float:
+	draw_circle(FOOT, 7.0, Color(0, 0, 0, 0.25))
+	var tint := REINFORCEMENT_TINT if is_reinforcement else Color.WHITE
+	UnitSprites.draw(self, "allies/" + _sheet_name(), _unit(), FOOT, _anim_time(), -1.0 if _facing_left else 1.0, tint)
+	return FOOT.y - UnitSprites.size_of(_unit()).y
+
+
+## Czas animacji; stojący żołnierz zatrzymuje się na pierwszej klatce chodu.
+func _anim_time() -> float:
+	return _anim if _moving or _attacking else 0.0
+
+
+## Postać z assets/allies/ (wielkość klatki w UnitSprites).
+func _unit() -> String:
+	return "spear_knight" if is_knight else "soldier"
+
+
+func _sheet_name() -> String:
+	if _flash > 0:
+		return _unit() + "_hit"
+	return _unit() + ("_attack" if _attacking else "_walk")

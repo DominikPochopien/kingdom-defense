@@ -9,12 +9,20 @@ const COLOR_UPGRADE := Color(0.2, 0.5, 0.25)
 const COLOR_BRANCH := Color(0.5, 0.28, 0.65)
 const COLOR_SELL := Color(0.6, 0.25, 0.2)
 const COLOR_RALLY := Color(0.75, 0.6, 0.2)
-const BUILD_DISTANCE := 80.0
+## odległość od środka miejsca do najbliższej krawędzi przycisku budowy
+const BUILD_GAP := 36.0
 const BUTTON_SIZE := Vector2(104, 52)
+## kwadratowe przyciski z ikoną (budowa wieży i wybór gałęzi)
+const ICON_BUTTON_SIZE := Vector2(60, 60)
 ## promień okrągłego przycisku punktu zbiórki (leży na prawej krawędzi zasięgu wieży)
 const RALLY_RADIUS := 17.0
 
 @onready var _world: GameWorld = get_parent()
+
+
+func _ready() -> void:
+	# ikony wież to pixel art - ostre piksele
+	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 
 
 ## Przyciski dla aktualnie wybranego miejsca (pusta lista, gdy nic nie wybrano).
@@ -35,15 +43,18 @@ func hovered_button() -> UiButton:
 
 
 func _add_build_buttons(res: Array[UiButton], spot: BuildSpot) -> void:
-	var types := TowerData.BUILD_MENU
+	var types: Array = TowerData.BUILD_MENU if spot.only_type == "" else [spot.only_type]
 	for i in types.size():
 		var type: String = types[i]
 		var cost: int = TowerData.TOWERS[type].cost
 		var dir := Vector2.from_angle(-PI / 2.0 + i * TAU / types.size())
-		var center := spot.position + dir * BUILD_DISTANCE
-		var b := _button(Rect2(center - BUTTON_SIZE / 2.0, BUTTON_SIZE), "build", TowerData.TOWERS[type].name,
+		# odsuwamy o połowę wymiaru przycisku w danym kierunku, żeby krawędzie były równo od miejsca
+		var half_extent := absf(dir.x) * ICON_BUTTON_SIZE.x / 2.0 + absf(dir.y) * ICON_BUTTON_SIZE.y / 2.0
+		var center := spot.position + dir * (BUILD_GAP + half_extent)
+		var b := _button(Rect2(center - ICON_BUTTON_SIZE / 2.0, ICON_BUTTON_SIZE), "build", TowerData.TOWERS[type].name,
 			COLOR_BUILD, "%d zł" % cost, _world.gold >= cost)
 		b.tower_type = type
+		b.icon = type
 		res.append(b)
 
 
@@ -57,9 +68,10 @@ func _add_tower_buttons(res: Array[UiButton], spot: BuildSpot) -> void:
 		var cost := stats.branch_cost()
 		var options := stats.branch_options()
 		for i in options.size():
-			var b := _button(Rect2(spot.position + Vector2(-135 + i * 140, -100), Vector2(130, 52)), "branch",
+			var b := _button(Rect2(spot.position + Vector2(-68 + i * 76, -104), ICON_BUTTON_SIZE), "branch",
 				options[i].name, COLOR_BRANCH, "%d zł" % cost, _world.gold >= cost)
 			b.branch_id = options[i].id
+			b.icon = options[i].id
 			b.description = options[i].desc
 			res.append(b)
 	if spot.tower is SoldierTower:

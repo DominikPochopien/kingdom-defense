@@ -16,8 +16,20 @@ const R_SPEED := Rect2(1190, 6, 80, 32)
 const R_FIRE := Rect2(10, H - 66, 130, 56)
 const R_REINF := Rect2(150, H - 66, 130, 56)
 const R_NEXT := Rect2(W - 210, H - 62, 200, 52)
+const ICON_GOLD := preload("res://assets/ui/icon_gold.png")
+const ICON_LIFE := preload("res://assets/ui/icon_life.png")
+const ICON_WAVE := preload("res://assets/ui/icon_wave.png")
+const ICON_FIRE := preload("res://assets/ui/icon_skill_fire_rain.png")
+const ICON_REINF := preload("res://assets/ui/icon_skill_reinforcements.png")
+## ikony paska 12 px rysowane w skali 2x
+const BAR_ICON := 24.0
 
 var world: GameWorld
+
+
+func _ready() -> void:
+	# ikony to pixel art - ostre piksele
+	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 
 
 ## Obsługa kliknięcia; zwraca true, jeśli kliknięto w element interfejsu.
@@ -68,9 +80,9 @@ func _draw() -> void:
 
 func _draw_top_bar() -> void:
 	draw_rect(Rect2(0, 0, W, GameConfig.TOP), Color(0.1, 0.08, 0.06, 0.92))
-	UiDraw.text(self, Vector2(14, 29), "Życia: %d" % world.lives, 20, Color(1, 0.45, 0.45))
-	UiDraw.text(self, Vector2(150, 29), "Złoto: %d" % world.gold, 20, Color(1, 0.88, 0.3))
-	UiDraw.text(self, Vector2(300, 29), "Fala: %d / %d" % [world.spawner.wave, world.spawner.total_waves], 20, Color(0.9, 0.95, 1))
+	_draw_counter(14, ICON_LIFE, str(world.lives), Color(1, 0.45, 0.45))
+	_draw_counter(150, ICON_GOLD, str(world.gold), Color(1, 0.88, 0.3))
+	_draw_counter(300, ICON_WAVE, "%d / %d" % [world.spawner.wave, world.spawner.total_waves], Color(0.9, 0.95, 1))
 	UiDraw.text(self, Vector2(440, 29), world.level.name, 16, Color(0.8, 0.9, 0.8))
 	UiDraw.button(self, R_FULL, "Ekran F11", UiDraw.BUTTON_GRAY)
 	UiDraw.button(self, R_MENU, "Poziomy", UiDraw.BUTTON_GRAY)
@@ -79,16 +91,22 @@ func _draw_top_bar() -> void:
 	UiDraw.button(self, R_SPEED, "Tempo x%d" % int(world.game_speed), UiDraw.BUTTON_GRAY)
 
 
+## Ikona w górnym pasku i liczba obok niej.
+func _draw_counter(x: float, icon: Texture2D, value: String, color: Color) -> void:
+	draw_texture_rect(icon, Rect2(x, (GameConfig.TOP - BAR_ICON) / 2.0, BAR_ICON, BAR_ICON), false)
+	UiDraw.text(self, Vector2(x + BAR_ICON + 6, 29), value, 20, color)
+
+
 func _draw_abilities() -> void:
-	_draw_ability(R_FIRE, Abilities.Kind.FIRE, "Deszcz ognia", Color(0.75, 0.3, 0.1), Color(0.95, 0.5, 0.1))
-	_draw_ability(R_REINF, Abilities.Kind.REINFORCEMENTS, "Posiłki", Color(0.15, 0.5, 0.7), Color(0.2, 0.7, 0.9))
+	_draw_ability(R_FIRE, Abilities.Kind.FIRE, "Deszcz ognia", ICON_FIRE, Color(0.75, 0.3, 0.1), Color(0.95, 0.5, 0.1))
+	_draw_ability(R_REINF, Abilities.Kind.REINFORCEMENTS, "Posiłki", ICON_REINF, Color(0.15, 0.5, 0.7), Color(0.2, 0.7, 0.9))
 
 
-func _draw_ability(r: Rect2, kind: Abilities.Kind, label: String, color: Color, active_color: Color) -> void:
+func _draw_ability(r: Rect2, kind: Abilities.Kind, label: String, icon: Texture2D, color: Color, active_color: Color) -> void:
 	var abilities := world.abilities
 	var is_ready := abilities.is_ready(kind)
 	var sub := "gotowe" if is_ready else "%ds" % int(ceil(abilities.cooldown_of(kind)))
-	UiDraw.button(self, r, label, active_color if abilities.targeting == kind else color, is_ready, sub)
+	UiDraw.button(self, r, label, active_color if abilities.targeting == kind else color, is_ready, sub, true, icon)
 
 
 func _draw_wave_info() -> void:

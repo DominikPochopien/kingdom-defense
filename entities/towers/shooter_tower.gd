@@ -1,7 +1,7 @@
 class_name ShooterTower
 extends Tower
 ## Wieża strzelająca pociskami (łucznicy, magowie, artyleria).
-## Celuje we wroga najdalej na trasie w swoim zasięgu.
+## Celuje we wroga najdalej na trasie w swoim zasięgu (okrąg wokół aim_center).
 
 ## pociski wylatują z czubka wieży
 const MUZZLE := Vector2(-4, -20)
@@ -43,11 +43,11 @@ func _pick_target(exclude: Array[Enemy]) -> Enemy:
 	var best: Enemy = null
 	var best_progress := -1.0
 	for e in world.enemies:
-		if e.dead or exclude.has(e):
+		if not Enemy.is_targetable(e) or exclude.has(e):
 			continue
 		if stats.is_ground_only() and e.flying:
 			continue
-		if e.position.distance_to(position) > reach:
+		if e.position.distance_to(aim_center) > reach:
 			continue
 		if e.distance > best_progress:
 			best_progress = e.distance

@@ -11,7 +11,8 @@ const SHAMAN_GAP := 1.6
 
 
 ## Skład fali nr n: lista par [typ, liczba].
-static func composition(n: int, total_waves: int, with_shamans: bool) -> Array:
+static func composition(n: int, total_waves: int, with_shamans: bool, with_magic_knights := false,
+		with_dragons := false, with_hedgehogs := false) -> Array:
 	var groups := []
 	groups.append(["goblin", 3 + n * 2])
 	if n >= 2:
@@ -22,6 +23,15 @@ static func composition(n: int, total_waves: int, with_shamans: bool) -> Array:
 		groups.append(["bat", int(n * 0.7)])
 	if with_shamans and n >= 4:
 		groups.append(["shaman", floori(n / 4.0)])
+	# od 6. fali: 1 rycerz, co 4 fale o jednego więcej
+	if with_magic_knights and n >= 6:
+		groups.append(["magic_knight", 1 + floori((n - 6) / 4.0)])
+	# od 5. fali: 1 smok, co 4 fale o jednego więcej
+	if with_dragons and n >= 5:
+		groups.append(["dragon", 1 + floori((n - 5) / 4.0)])
+	# od 3. fali: 1 jeżowiec, co 3 fale o jednego więcej
+	if with_hedgehogs and n >= 3:
+		groups.append(["hedgehog", 1 + floori((n - 3) / 3.0)])
 	if n % 5 == 0:
 		groups.append(["boss", floori(n / 5.0)])
 	elif n == total_waves:

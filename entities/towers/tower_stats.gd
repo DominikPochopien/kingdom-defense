@@ -86,8 +86,30 @@ func projectile_speed() -> float:
 	return info.get("projectile_speed", 400.0)
 
 
+## Pociski naraz; Statek ma tyle armat, ile wynosi jego poziom.
 func shots() -> int:
-	return _branch_value("shots", 1)
+	var base: int = info.cannons_per_level * tier() if info.has("cannons_per_level") else 1
+	return _branch_value("shots", base)
+
+
+func has_cannons() -> bool:
+	return info.has("cannons_per_level")
+
+
+func burn_damage() -> float:
+	return _branch_value("burn_dmg", 0.0)
+
+
+func burn_time() -> float:
+	return _branch_value("burn_time", 0.0)
+
+
+func volley_shots() -> int:
+	return _branch_value("volley_shots", 0)
+
+
+func volley_period() -> float:
+	return _branch_value("volley_period", 0.0)
 
 
 func slow_time() -> float:

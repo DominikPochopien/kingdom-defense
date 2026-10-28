@@ -7,6 +7,8 @@ var rect: Rect2
 var action := ""
 var label := ""
 var sub := ""
+## klucz ikony (TowerIcons); gdy ustawiony, zamiast napisu rysujemy ikonę
+var icon := ""
 var enabled := true
 var color := UiDraw.BUTTON_GREEN
 ## dodatkowe dane akcji (np. typ wieży, id gałęzi, numer poziomu)
@@ -31,7 +33,10 @@ func contains(p: Vector2) -> bool:
 
 
 func draw(canvas: CanvasItem) -> void:
-	UiDraw.button(canvas, rect, label, color, enabled, sub)
+	if icon != "":
+		UiDraw.icon_button(canvas, rect, icon, color, enabled, sub)
+	else:
+		UiDraw.button(canvas, rect, label, color, enabled, sub)
 
 
 ## Pierwszy przycisk z listy pod punktem p albo null.

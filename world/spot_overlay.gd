@@ -25,12 +25,12 @@ func _range_preview() -> Dictionary:
 	var spot := _world.selected_spot
 	if spot != null:
 		if not spot.is_empty():
-			return {"pos": spot.position, "r": spot.tower.stats.attack_range()}
+			return {"pos": spot.aim_center, "r": spot.tower.stats.attack_range()}
 		var hovered := _world.build_menu.hovered_button()
 		if hovered != null and hovered.tower_type != "":
-			return {"pos": spot.position, "r": TowerStats.new(hovered.tower_type).attack_range()}
+			return {"pos": spot.aim_center, "r": TowerStats.new(hovered.tower_type).attack_range()}
 		return {}
 	for s in _world.spots:
 		if not s.is_empty() and s.contains(mouse, BuildSpot.HOVER_RADIUS):
-			return {"pos": s.position, "r": s.tower.stats.attack_range()}
+			return {"pos": s.aim_center, "r": s.tower.stats.attack_range()}
 	return {}

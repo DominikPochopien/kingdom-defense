@@ -8,6 +8,7 @@ const SCRIPTS := {
 	"barracks": preload("res://entities/towers/barracks_tower.gd"),
 	"artillery": preload("res://entities/towers/artillery_tower.gd"),
 	"knight_tower": preload("res://entities/towers/knight_tower.gd"),
+	"ship": preload("res://entities/towers/ship_tower.gd"),
 }
 
 

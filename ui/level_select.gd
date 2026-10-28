@@ -14,6 +14,12 @@ const R_BACK := Rect2(20, H - 70, 160, 50)
 const R_PREV := Rect2(W / 2.0 - 150, H - 70, 120, 50)
 const R_NEXT := Rect2(W / 2.0 + 30, H - 70, 120, 50)
 const CARD_LOCKED_HINT := "Ukończ poprzedni poziom, aby odblokować"
+## kolory miniatury mapy
+const MINI_GRASS := Color(0.36, 0.62, 0.3)
+const MINI_SAND := Color(0.93, 0.8, 0.45)
+const MINI_WATER := Color(0.0, 0.62, 0.9)
+const MINI_SEA := Color(0.05, 0.55, 0.85)
+const MINI_ROAD := Color(0.76, 0.62, 0.4)
 
 var save: SaveManager
 var page := 0
@@ -139,22 +145,31 @@ func _draw_card(i: int, r: Rect2) -> void:
 		b.draw(self)
 
 
-## Miniatura mapy (16:9): rzeka, drogi i miejsca budowy.
+## Miniatura mapy (16:9): plaża, morze, wysepki, rzeka, kałuże, drogi i miejsca budowy.
 func _draw_minimap(level: Dictionary, pr: Rect2) -> void:
 	var sc := pr.size.x / W
-	draw_rect(pr, LevelMap.GRASS)
+	draw_rect(pr, MINI_GRASS)
+	if level.has("beach"):
+		draw_colored_polygon(_mini_poly(level.beach, pr, sc), MINI_SAND)
+	if level.has("sea"):
+		draw_colored_polygon(_mini_poly(level.sea, pr, sc), MINI_SEA)
+	for poly in level.get("islands", []):
+		draw_colored_polygon(_mini_poly(poly, pr, sc), MINI_SAND)
 	if level.has("river"):
-		var river := PackedVector2Array()
-		for q in level.river:
-			river.append(pr.position + _clamp_to_map(q) * sc)
-		draw_colored_polygon(river, LevelMap.RIVER_COLOR)
-	for route in LevelData.routes_of(level):
-		var pts := PackedVector2Array()
-		for p in route:
-			pts.append(pr.position + _clamp_to_map(p) * sc)
-		draw_polyline(pts, LevelMap.ROAD, 6.0)
+		draw_colored_polygon(_mini_poly(level.river, pr, sc), MINI_WATER)
+	for poly in level.get("ponds", []):
+		draw_colored_polygon(_mini_poly(poly, pr, sc), MINI_WATER)
+	for route in level.routes:
+		draw_polyline(_mini_poly(route, pr, sc), MINI_ROAD, 6.0)
 	for sp in level.spots:
 		draw_circle(pr.position + sp * sc, 2.5, Color(0.6, 0.6, 0.65))
+
+
+func _mini_poly(poly: Array, pr: Rect2, sc: float) -> PackedVector2Array:
+	var res := PackedVector2Array()
+	for q in poly:
+		res.append(pr.position + _clamp_to_map(q) * sc)
+	return res
 
 
 static func _clamp_to_map(p: Vector2) -> Vector2:

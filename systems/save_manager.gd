@@ -50,8 +50,12 @@ func save_progress() -> void:
 	cf.save(SAVE_PATH)
 
 
+## TESTY: true = wszystkie poziomy odblokowane (przed wydaniem ustaw z powrotem false).
+const UNLOCK_ALL := true
+
+
 func is_unlocked(level: int) -> bool:
-	return level < unlocked
+	return UNLOCK_ALL or level < unlocked
 
 
 func is_completed(level: int) -> bool:

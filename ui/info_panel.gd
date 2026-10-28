@@ -46,6 +46,10 @@ func _draw() -> void:
 	var tower := world.tower_at(mouse)
 	if tower != null and not (spot != null and spot.tower == tower):
 		UiDraw.panel(self, tower.position + Vector2(40, -50), tower.stats.title(), tower_lines(tower.stats, tower), COLOR_TOWER)
+		return
+	var palm := world.palm_at(mouse)
+	if palm != null:
+		UiDraw.panel(self, palm.position + Vector2(40, -80), "Palma", palm_lines(palm), COLOR_SOLDIER)
 
 
 ## Panel obok miejsca budowy (z prawej, a przy prawej krawędzi ekranu - z lewej).
@@ -96,8 +100,16 @@ func tower_lines(stats: TowerStats, tower: Tower) -> Array:
 		var dmg_type := "magiczne" if stats.is_magic() else "fizyczne"
 		lines.append(["Obrażenia: %d (%s)" % [int(stats.damage()), dmg_type], DMG_COLOR])
 		lines.append(["Szybkość: %.1f strzału / s" % (1.0 / stats.reload_time()), LIGHT])
-		lines.append(["DPS (bez pancerza): %d" % int(stats.damage() / stats.reload_time()), Color(1, 0.7, 0.4)])
+		lines.append(["DPS (bez pancerza): %d" % int(stats.damage() * stats.shots() / stats.reload_time()), Color(1, 0.7, 0.4)])
 		lines.append(["Zasięg: %d" % int(stats.attack_range()), LIGHT])
+		if stats.has_cannons():
+			lines.append(["Armaty: %d" % stats.shots(), LIGHT])
+		if stats.burn_damage() > 0:
+			lines.append(["Podpalenie: %d obrażeń przez %d s" % [int(stats.burn_damage()), int(stats.burn_time())],
+				Color(1, 0.6, 0.3)])
+		if stats.volley_shots() > 0:
+			lines.append(["Salwa: %d pocisków co %d s w losowe cele" % [stats.volley_shots(), int(stats.volley_period())],
+				Color(1, 0.85, 0.4)])
 		if stats.splash_radius() > 0:
 			lines.append(["Promień wybuchu: %d" % int(stats.splash_radius()), LIGHT])
 		lines.append(["Cele: " + stats.targets_description(), LIGHT])
@@ -116,9 +128,11 @@ func enemy_lines(e: Enemy) -> Array:
 	lines.append(["Pancerz (fizyczny): " + UiDraw.percent(e.armor), LIGHT])
 	lines.append(["Odporność na magię: " + UiDraw.percent(e.magic_resist), LIGHT])
 	var speed_line := "Prędkość: %d" % int(e.speed)
+	if e.haste_time > 0:
+		speed_line += " (przyspieszony x%d)" % int(e.haste_mult)
 	if e.slow_time > 0:
 		speed_line += " (spowolniony)"
-	lines.append([speed_line, Color(0.6, 0.85, 1.0) if e.slow_time > 0 else LIGHT])
+	lines.append([speed_line, Color(0.6, 0.85, 1.0) if e.slow_time > 0 or e.haste_time > 0 else LIGHT])
 	lines.append(["Typ: " + ("latający (omija blokadę)" if e.flying else "naziemny"), LIGHT])
 	if e.damage > 0:
 		lines.append(["Obrażenia vs żołnierz: %d / s" % int(e.damage), LIGHT])
@@ -128,9 +142,35 @@ func enemy_lines(e: Enemy) -> Array:
 	if info.get("ability", "") == "heal":
 		lines.append(["Umiejętność - Rytuał: co %d s leczy wrogów w promieniu %d o %s ich max HP"
 			% [int(info.heal_interval), int(info.heal_radius), UiDraw.percent(info.heal_pct)], Color(0.5, 1.0, 0.6)])
+	elif info.get("ability", "") == "breath":
+		lines.append(["Zionięcie ogniem: co %d s pali %d najbliższych żołnierzy (%d obrażeń, zasięg %d)"
+			% [int(info.breath_interval), int(info.breath_targets), int(info.breath_damage), int(info.breath_range)],
+			Color(1, 0.6, 0.3)])
+	elif info.get("ability", "") == "magic_knight":
+		lines.append(["Pieczęć: co %d s wyłącza wieże w promieniu %d na %d s"
+			% [int(info.seal_interval), int(info.seal_radius), int(info.seal_time)], Color(0.85, 0.6, 1.0)])
+		lines.append(["Pośpiech: co %d s przez %d s wrogowie w promieniu %d są %d razy szybsi"
+			% [int(info.haste_interval), int(info.haste_time), int(info.haste_radius), int(info.haste_mult)], Color(0.5, 0.75, 1.0)])
+	elif info.get("ability", "") == "hedgehog":
+		lines.append(["Kolce: co %d s rzuca w żołnierza (%d obrażeń, zasięg %d)"
+			% [int(info.spike_interval), int(info.spike_damage), int(info.spike_range)], Color(0.85, 0.7, 0.5)])
+		lines.append(["Turlanie: co %d s turla się coraz szybciej, nie da się go zatrzymać i taranuje żołnierzy (%d obrażeń)"
+			% [int(info.roll_interval), int(info.roll_damage)], Color(1, 0.7, 0.4)])
+	if e.burn_time > 0:
+		lines.append(["Podpalony!", Color(1, 0.55, 0.2)])
+	if e.stun_time > 0:
+		lines.append(["Ogłuszony: %d s" % int(ceil(e.stun_time)), Color(1, 0.9, 0.3)])
 	if is_instance_valid(e.blocked_by):
 		lines.append(["Zablokowany przez żołnierza", Color(0.5, 0.9, 1.0)])
 	return lines
+
+
+func palm_lines(palm: StunPalm) -> Array:
+	return [
+		["Co %d-%d s zrzuca kokosy na wszystkich wrogów w zielonym okręgu" % [int(Balance.PALM_MIN_TIME), int(Balance.PALM_MAX_TIME)], LIGHT],
+		["Obrażenia: %d, ogłuszenie: %d s" % [int(Balance.PALM_DAMAGE), int(Balance.PALM_STUN)], DMG_COLOR],
+		["Gotowa - czeka na wrogów!" if palm.is_ready() else "Kokosy za: %d s" % int(ceil(palm.cooldown())), Color(0.6, 1.0, 0.4)],
+	]
 
 
 func soldier_lines(s: Soldier) -> Array:
@@ -141,4 +181,11 @@ func soldier_lines(s: Soldier) -> Array:
 	]
 	if s.lifetime > 0:
 		lines.append(["Znika za: %d s" % int(ceil(s.lifetime)), Color(0.7, 0.9, 1.0)])
+	if s is HeroKnight:
+		var hero := s as HeroKnight
+		lines.append(["Obrót: przez %d s rani wrogów wokół (%d co %s s)"
+			% [int(Balance.HERO_SPIN_TIME), int(Balance.HERO_SPIN_DAMAGE), str(Balance.HERO_SPIN_TICK)], Color(1, 0.85, 0.3)])
+		lines.append(["Obrót TRWA!" if hero.is_spinning() else "Obrót gotowy za: %d s" % int(ceil(hero.spin_cooldown())),
+			Color(1, 0.85, 0.3)])
+		lines.append(["Tylko wręcz - nie bije latających", LIGHT])
 	return lines

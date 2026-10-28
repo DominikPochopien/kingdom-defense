@@ -1,9 +1,9 @@
 class_name BridgeSystem
 extends RefCounted
-## Zwodzone mosty (poziom "Rzeka Mostów"). Zawsze otwarty jest dokładnie jeden most;
-## co `period` sekund czasu gry otwiera się drugi - ale nie wtedy, gdy wrogowie są
-## w strefie któregoś mostu (od rozwidlenia tras do końca przeprawy).
-## Na poziomach bez mostów wszystkie metody nic nie robią.
+## Zwodzone mosty (poziom "Rzeka Mostów"). Nowi wrogowie idą przez aktywny most, a co `period`
+## sekund czasu gry aktywny staje się drugi most i od razu się opuszcza. Poprzedni zostaje
+## opuszczony, dopóki w jego strefie (od rozwidlenia tras do końca przeprawy) są wrogowie,
+## i dopiero potem się podnosi. Na poziomach bez mostów wszystkie metody nic nie robią.
 ## Rysowanie mostów: world/level_map.gd.
 
 signal switched(bridge_name: String)
@@ -11,11 +11,13 @@ signal switched(bridge_name: String)
 const ANIM_SPEED := 1.5
 
 var defs: Array = []
-## indeks otwartego mostu
+## indeks aktywnego mostu (tędy idą nowi wrogowie)
 var active := 0
-## czas do następnej zmiany (s); 0 = czeka, aż strefa mostów się opróżni
+## czas do następnej zmiany aktywnego mostu (s)
 var timer := 0.0
 var period := 20.0
+## czy most jest (lub ma zostać) opuszczony: aktywny zawsze, poprzedni - póki są na nim wrogowie
+var lowered: Array[bool] = [true, false]
 ## stan animacji opuszczenia każdego mostu (0 = podniesiony, 1 = opuszczony)
 var anim: Array[float] = [1.0, 0.0]
 
@@ -36,11 +38,7 @@ func is_enabled() -> bool:
 func reset() -> void:
 	active = 0
 	timer = period
-	anim = [1.0, 0.0]
-
-
-func is_waiting() -> bool:
-	return timer <= 0.0
+	snap()
 
 
 ## Dystans na trasie, w którym trasy się rozwidlają (wspólny początek obu tras).
@@ -53,15 +51,13 @@ func fork_distance() -> float:
 func update(dt: float, enemies: Array) -> void:
 	if not is_enabled():
 		return
-	if timer > 0.0:
-		timer = maxf(0.0, timer - dt)
-		if timer > 0.0:
-			return
-	if _is_zone_busy(0, enemies) or _is_zone_busy(1, enemies):
-		return
-	active = 1 - active
-	timer = period
-	switched.emit(defs[active].name)
+	timer -= dt
+	if timer <= 0.0:
+		active = 1 - active
+		timer = period
+		switched.emit(defs[active].name)
+	for i in 2:
+		lowered[i] = i == active or _is_zone_busy(i, enemies)
 
 
 ## Animacja opuszczania/podnoszenia - liczona w czasie rzeczywistym.
@@ -69,15 +65,14 @@ func animate(dt: float) -> void:
 	if not is_enabled():
 		return
 	for i in 2:
-		anim[i] = move_toward(anim[i], 1.0 if active == i else 0.0, dt * ANIM_SPEED)
+		anim[i] = move_toward(anim[i], 1.0 if lowered[i] else 0.0, dt * ANIM_SPEED)
 
 
-## Natychmiast ustawia animację w stan końcowy (po wczytaniu zapisu).
+## Natychmiast ustawia mosty w stan końcowy: opuszczony tylko aktywny (po wczytaniu zapisu).
 func snap() -> void:
-	if not is_enabled():
-		return
 	for i in 2:
-		anim[i] = 1.0 if active == i else 0.0
+		lowered[i] = i == active
+		anim[i] = 1.0 if lowered[i] else 0.0
 
 
 func _is_zone_busy(i: int, enemies: Array) -> bool:

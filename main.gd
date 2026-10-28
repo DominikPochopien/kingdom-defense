@@ -124,6 +124,9 @@ func _on_level_lost() -> void:
 
 
 func _toggle_fullscreen() -> void:
+	# gra osadzona w zakładce Game edytora może działać tylko w oknie
+	if Engine.is_embedded_in_editor():
+		return
 	var win := get_window()
 	win.mode = Window.MODE_WINDOWED if win.mode == Window.MODE_FULLSCREEN else Window.MODE_FULLSCREEN
 

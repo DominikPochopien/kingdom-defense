@@ -26,6 +26,7 @@ var level_index := 0
 var level: Dictionary = {}
 var paths: PathNetwork
 var bridges: BridgeSystem
+var archer_camp: ForestArcherCamp
 var spawner := WaveSpawner.new()
 var abilities := Abilities.new()
 
@@ -39,6 +40,9 @@ var game_speed := 1.0
 var spots: Array[BuildSpot] = []
 var enemies: Array[Enemy] = []
 var soldiers: Array[Soldier] = []
+var forest_archers: Array[ForestArcher] = []
+var palms: Array[StunPalm] = []
+var birds: Array[SeaBird] = []
 var projectiles: Array[Projectile] = []
 var strikes: Array[FireStrike] = []
 var effects: Array[VisualEffect] = []
@@ -52,6 +56,8 @@ var rally_tower: SoldierTower = null
 var _hp_mult := 1.0
 ## czy w poprzedniej klatce trwała fala (do automatycznego zapisu po jej końcu)
 var _was_busy := false
+## czas do przylotu kolejnego ptaka (poziomy z kluczem "birds")
+var _bird_timer := 0.0
 
 
 # ================= START POZIOMU =================
@@ -60,16 +66,37 @@ func show_level(index: int) -> void:
 	_clear_units()
 	level_index = index
 	level = LevelData.get_level(index)
-	paths = PathNetwork.new(LevelData.routes_of(level))
+	paths = PathNetwork.new(level.routes, level.get("tunnels", []))
 	bridges = BridgeSystem.new(level, paths)
+	archer_camp = ForestArcherCamp.new(level)
 	bridges.switched.connect(_on_bridge_switched)
 	spots.clear()
 	var positions: Array = level.spots
 	for i in positions.size():
 		spots.append(BuildSpot.new(i, positions[i]))
+	_add_ship_spot()
 	_hp_mult = level.hp
-	spawner.reset(level.waves, level.get("shamans", false))
-	map.setup(level, index, paths, bridges, spots)
+	spawner.reset(level.waves, level.get("shamans", false), level.get("magic_knights", false), level.get("dragons", false),
+		level.get("hedgehogs", false))
+	map.setup(level, paths, bridges, spots)
+	_place_palms()
+
+
+## Miejsce na Statek (klucz "ship") - zawsze ostatnie na liście, więc zapis gry działa po indeksie.
+func _add_ship_spot() -> void:
+	if not level.has("ship"):
+		return
+	var spot := BuildSpot.new(spots.size(), level.ship.pos)
+	spot.only_type = "ship"
+	spot.aim_center = level.ship.aim
+	spots.append(spot)
+
+
+func _place_palms() -> void:
+	for def in level.get("palms", []):
+		var palm := StunPalm.new()
+		palm.setup(def)
+		_add_unit(palm, _towers_layer, palms)
 
 
 func start(index: int) -> void:
@@ -80,7 +107,9 @@ func start(index: int) -> void:
 	game_speed = 1.0
 	abilities.reset()
 	_was_busy = false
+	_bird_timer = randf_range(Balance.BIRD_MIN_TIME, Balance.BIRD_MAX_TIME)
 	_place_special_tower()
+	_place_hero()
 	active = true
 
 
@@ -111,12 +140,20 @@ func _place_special_tower() -> void:
 		_place_tower(spots[level.special_tower], "knight_tower", 1, "", 0)
 
 
+## Bohater poziomu (np. Rycerz na "Słonecznej Zatoce") na swoim posterunku.
+func _place_hero() -> void:
+	if level.has("hero"):
+		var hero := HeroKnight.new()
+		hero.setup_hero(level.hero)
+		add_soldier(hero)
+
+
 func _clear_units() -> void:
 	for layer in [_towers_layer, _soldiers_layer, _enemies_layer, _projectiles_layer,
 			_strikes_layer, _effects_layer, _texts_layer]:
 		for child in layer.get_children():
 			child.queue_free()
-	for list in [enemies, soldiers, projectiles, strikes, effects, texts]:
+	for list in [enemies, soldiers, forest_archers, palms, birds, projectiles, strikes, effects, texts]:
 		list.clear()
 	selected_spot = null
 	selected_enemy = null
@@ -138,12 +175,22 @@ func _tick(dt: float) -> void:
 	var spawn_type := spawner.update(dt)
 	if spawn_type != "":
 		_spawn_enemy(spawn_type)
+	var archer_post := archer_camp.update(dt, forest_archers)
+	if archer_post >= 0:
+		_spawn_forest_archer(archer_post)
 	for e in enemies:
 		e.tick(dt)
 	for s in soldiers:
 		s.tick(dt)
+	for a in forest_archers:
+		a.tick(dt)
+	for palm in palms:
+		palm.tick(dt)
+	_update_birds(dt)
+	for b in birds:
+		b.tick(dt)
 	for spot in spots:
-		if not spot.is_empty():
+		if not spot.is_empty() and not spot.tower.update_disabled(dt):
 			spot.tower.tick(dt)
 	for p in projectiles:
 		p.tick(dt)
@@ -153,9 +200,9 @@ func _tick(dt: float) -> void:
 		f.tick(dt)
 	for t in texts:
 		t.tick(dt)
-	for list in [enemies, soldiers, projectiles, strikes, effects, texts]:
+	for list in [enemies, soldiers, forest_archers, palms, birds, projectiles, strikes, effects, texts]:
 		_remove_finished(list)
-	if not Enemy.is_alive(selected_enemy):
+	if not Enemy.is_targetable(selected_enemy):
 		selected_enemy = null
 	_autosave_after_wave()
 	_check_game_over()
@@ -186,8 +233,7 @@ func _check_game_over() -> void:
 		won.emit()
 
 
-func _on_bridge_switched(bridge_name: String) -> void:
-	add_float(Vector2(GameConfig.W / 2.0 - 60.0, 90.0), bridge_name + " otwarty!", Color(0.5, 1.0, 0.5))
+func _on_bridge_switched(_bridge_name: String) -> void:
 	Audio.play("wave")
 
 
@@ -210,11 +256,48 @@ func _spawn_enemy(type: String) -> void:
 	var route := 0
 	if bridges.is_enabled():
 		route = bridges.active
+	elif level.has("spawn_routes"):
+		route = _pick_spawn_route(type)
 	elif level.has("random_routes_from") and spawner.wave >= level.random_routes_from:
 		route = randi() % paths.route_count()
 	var enemy := EnemyFactory.create(type, _hp_mult, route)
 	enemy.position = paths.position_at(0.0, route)
 	_add_unit(enemy, _enemies_layer, enemies)
+
+
+## Losuje trasę z wagami "spawn_routes" spośród tras, na które wpuszczany jest ten typ wroga.
+func _pick_spawn_route(type: String) -> int:
+	var defs: Array = level.spawn_routes
+	var total := 0.0
+	for d in defs:
+		if d.types.has(type):
+			total += d.weight
+	var roll := randf() * total
+	for i in defs.size():
+		if defs[i].types.has(type):
+			roll -= defs[i].weight
+			if roll <= 0.0:
+				return i
+	return 0
+
+
+func _update_birds(dt: float) -> void:
+	if not level.get("birds", false):
+		return
+	_bird_timer -= dt
+	if _bird_timer > 0:
+		return
+	_bird_timer = randf_range(Balance.BIRD_MIN_TIME, Balance.BIRD_MAX_TIME)
+	var bird := SeaBird.new()
+	bird.setup_random()
+	_add_unit(bird, _effects_layer, birds)
+
+
+func _spawn_forest_archer(post: int) -> void:
+	var archer := ForestArcher.new()
+	archer.setup(post, archer_camp.posts[post], randf_range(Balance.FOREST_ARCHER_MIN_TIME, Balance.FOREST_ARCHER_MAX_TIME))
+	_add_unit(archer, _towers_layer, forest_archers)
+	add_float(archer.position + Vector2(-55, -44), "Leśny Łucznik!", Color(0.6, 1.0, 0.5))
 
 
 # ================= DODAWANIE JEDNOSTEK I EFEKTÓW =================
@@ -248,7 +331,7 @@ func add_float(pos: Vector2, text: String, color: Color) -> void:
 # ================= WALKA I EKONOMIA =================
 func explode(pos: Vector2, radius: float, damage: float, magic: bool, ground_only: bool) -> void:
 	for e in enemies:
-		if e.dead or (ground_only and e.flying):
+		if not Enemy.is_targetable(e) or (ground_only and e.flying):
 			continue
 		if e.position.distance_to(pos) <= radius:
 			e.take_damage(damage, magic)
@@ -270,6 +353,7 @@ func lose_lives(amount: int) -> void:
 func _place_tower(spot: BuildSpot, type: String, tower_level: int, branch: String, spent: int) -> Tower:
 	var tower := TowerFactory.create(type)
 	tower.position = spot.position
+	tower.aim_center = spot.aim_center
 	tower.setup(self, type, tower_level, branch, spent)
 	_towers_layer.add_child(tower)
 	spot.tower = tower
@@ -406,7 +490,7 @@ func enemy_at(p: Vector2) -> Enemy:
 	var best: Enemy = null
 	var best_dist := 1e9
 	for e in enemies:
-		if e.dead:
+		if not Enemy.is_targetable(e):
 			continue
 		var d := e.body_position().distance_to(p)
 		if d <= e.radius + 10.0 and d < best_dist:
@@ -419,6 +503,13 @@ func soldier_at(p: Vector2) -> Soldier:
 	for s in soldiers:
 		if s.is_active() and s.position.distance_to(p) < 14.0:
 			return s
+	return null
+
+
+func palm_at(p: Vector2) -> StunPalm:
+	for palm in palms:
+		if palm.contains(p):
+			return palm
 	return null
 
 
