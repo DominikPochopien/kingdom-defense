@@ -3,6 +3,10 @@
 Gra typu tower defense w pixel arcie, napisana w Godocie 4 (GDScript). Stawiasz wieże na kamiennych
 miejscach budowy, ulepszasz je i bronisz królestwa przed falami wrogów idących po drogach.
 
+9 poziomów od zielonych wzgórz po pustynną piramidę: mosty zwodzone, tunele, statek na morzu,
+Bohater-Rycerz, Wieża Wojny przyspieszająca wrogów, portale i boss Mumia, która otwiera drogę umarłych.
+Każda z wież ma 3 poziomy i dwa ulepszenia do wyboru na 4. poziomie.
+
 ## Zrzuty ekranu
 
 | | |
