@@ -12,6 +12,11 @@ class_name EnemyData
 ##   taranując żołnierzy (roll_damage); nie da się go wtedy zablokować
 ## Magiczny Rycerz: seal_* = fioletowa aura wyłączająca wieże w promieniu na seal_time s,
 ##   haste_* = niebieska aura (przez haste_time s), w której wrogowie są haste_mult razy szybsi
+## Szkielet łucznik: arrow_* = co arrow_interval s strzela w najbliższego żołnierza w zasięgu
+## Mumia: summon_* = co summon_interval s staje na summon_time s i przywołuje wokół siebie
+##   summon_skeletons Szkieletów, summon_archers łuczników i summon_armored pancernych (idą prosto
+##   do wyjścia, bez portalu); na środku mapy otwiera ukrytą drogę (klucz poziomu "hidden_route")
+## boss_bar = true: póki żyje, na górze ekranu widać duży pasek jego HP (ui/hud.gd)
 
 const ENEMIES := {
 	"goblin": {"title": "Goblin", "name": "goblinów", "hp": 40.0, "speed": 60.0, "armor": 0.0, "mr": 0.0,
@@ -27,10 +32,10 @@ const ENEMIES := {
 		"ability": "heal", "heal_first": 3.0, "heal_interval": 6.0, "heal_radius": 140.0, "heal_pct": 0.12},
 	"boss": {"title": "BOSS: Wódz", "name": "BOSS", "hp": 800.0, "speed": 32.0, "armor": 0.3, "mr": 0.3,
 		"reward": 150, "lives": 5, "flying": false, "dmg": 20.0, "r": 24.0},
-	"magic_knight": {"title": "Magiczny Rycerz", "name": "magicznych rycerzy", "hp": 900.0, "fixed_hp": true, "speed": 26.0, "armor": 0.9, "mr": 0.0,
+	"magic_knight": {"title": "Magiczny Rycerz", "name": "magicznych rycerzy", "hp": 900.0, "fixed_hp": true, "speed": 13.0, "armor": 0.9, "mr": 0.0,
 		"reward": 120, "lives": 4, "flying": false, "dmg": 15.0, "r": 20.0, "ability": "magic_knight",
-		"seal_first": 4.0, "seal_interval": 12.0, "seal_radius": 184.0, "seal_time": 4.0,
-		"haste_first": 8.0, "haste_interval": 12.0, "haste_time": 5.0, "haste_radius": 130.0, "haste_mult": 2.0},
+		"seal_first": 4.0, "seal_interval": 12.0, "seal_radius": 138.0, "seal_time": 4.0,
+		"haste_first": 8.0, "haste_interval": 12.0, "haste_time": 5.0, "haste_radius": 65.0, "haste_mult": 2.0},
 	"dragon": {"title": "Smok", "name": "smoków", "hp": 900.0, "fixed_hp": true, "speed": 48.0, "armor": 0.2, "mr": 0.2,
 		"reward": 90, "lives": 3, "flying": true, "dmg": 0.0, "r": 18.0, "ability": "breath",
 		"breath_first": 2.0, "breath_interval": 3.0, "breath_range": 140.0, "breath_damage": 30.0, "breath_targets": 2},
@@ -38,6 +43,17 @@ const ENEMIES := {
 		"reward": 28, "lives": 2, "flying": false, "dmg": 7.0, "r": 15.0, "ability": "hedgehog",
 		"spike_first": 2.0, "spike_interval": 4.0, "spike_range": 150.0, "spike_damage": 12.0,
 		"roll_first": 4.0, "roll_interval": 10.0, "roll_time": 3.5, "roll_max_mult": 3.0, "roll_damage": 25.0},
+	# nieumarli z piramidy (poziom 9); nagrody o 30% niższe niż wynikałoby z siły
+	"skeleton": {"title": "Szkielet", "name": "szkieletów", "hp": 150.0, "fixed_hp": true, "speed": 36.0, "armor": 0.1, "mr": 0.0,
+		"reward": 7, "lives": 1, "flying": false, "dmg": 10.0, "r": 11.0},
+	"skeleton_archer": {"title": "Szkielet łucznik", "name": "szkieletów łuczników", "hp": 300.0, "fixed_hp": true, "speed": 52.0,
+		"armor": 0.1, "mr": 0.1, "reward": 15, "lives": 2, "flying": false, "dmg": 5.0, "r": 11.0, "ability": "archer",
+		"arrow_first": 1.0, "arrow_interval": 1.6, "arrow_range": 190.0, "arrow_damage": 14.0},
+	"skeleton_armored": {"title": "Szkielet pancerny", "name": "szkieletów pancernych", "hp": 450.0, "fixed_hp": true,
+		"speed": 32.0, "armor": 0.6, "mr": 0.5, "reward": 28, "lives": 2, "flying": false, "dmg": 18.0, "r": 13.0},
+	"mummy": {"title": "BOSS: Mumia", "name": "Mumia (BOSS)", "hp": 12000.0, "fixed_hp": true, "speed": 9.0, "boss_bar": true, "armor": 0.35, "mr": 0.35,
+		"reward": 400, "lives": 15, "flying": false, "dmg": 45.0, "r": 24.0, "ability": "mummy",
+		"summon_first": 6.0, "summon_interval": 22.0, "summon_skeletons": 10, "summon_archers": 1, "summon_armored": 1, "summon_time": 1.2},
 }
 
 

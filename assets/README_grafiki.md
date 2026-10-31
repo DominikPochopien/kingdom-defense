@@ -52,6 +52,8 @@ Pojedyncze grafiki:
 - `nature/lily_pad`, `lily_pad_flower` – 8×8; `shell_scallop`, `shell_spiral`, `shell_clam` – 6×6.
 - `objects/archer_nest.png` 24×24, `objects/drawbridge_winch.png` 8×8.
 - `objects/palm_sway.png` – 2 klatki 24×40; `objects/palm_coconut_fall.png` – 4 klatki 24×40.
+- `objects/war_tower.png` – Wieża wroga, 3 klatki 24×44 (0 – spokojna, 1–2 – płonie); generator `tools/gen_war_tower.py`.
+- Poziom 9 (generator `tools/gen_undead.py`): `enemies/skeleton_*` i `enemies/skeleton_archer_*` (klatki 16×20), `enemies/skeleton_armored_*` (18×22), `enemies/mummy_*` (28×32, także `mummy_cast` – przywołanie), `objects/pyramid.png` (80×64, drzwi w pikselu 31,62), `objects/portal.png` – 4 klatki 28×18 wiru (środek = punkt trasy).
 
 ## Etap 2 i 3 – wrogowie, wieże, statek
 
@@ -110,3 +112,64 @@ Interfejs (`assets/ui/`):
 - `icon_tower_archer`, `_mage`, `_artillery`, `_barracks`, `_knight`, `_forest` – 24×24, kamienna ramka.
 - `icon_skill_fire_rain`, `_reinforcements`, `_hero_spin` – 24×24, złota ramka.
 - `icon_gold`, `icon_life`, `icon_wave` – 12×12.
+
+## Droga malowana wzdłuż trasy
+
+Generuje ją `tools/gen_road_paint.py` (uruchamiany na końcu `gen_art.py`).
+Podglądy: `preview_road_paint.png` (łuki, rozwidlenie, odcinek na plaży) i `preview_road_fill_tiling.png` (test szwów 3×3).
+
+| plik | rozmiar | opis |
+|---|---|---|
+| `road_fill.png` | 32×32 | ubita ziemia, kamyki; powtarza się bez szwów w obu osiach, bez kierunku |
+| `road_edge.png` | 8×1 | piksel 0 = skraj (ciemna trawa), 1–3 = ciemniejsza ziemia, 4–7 = kolor wnętrza |
+| `road_edge_lit.png` | 8×1 | opcjonalnie: brzeg po stronie światła (jasna trawa na skraju) |
+| `road_bits.png` | 64×16 | 16 drobiazgów 8×8: rząd 0 kamyki, koleiny, kałuża, patyk; rząd 1 kępki trawy, kwiatki, źdźbła |
+| `sand_road_fill.png` | 32×32 | ciemna ubita ziemia z płaskimi kamieniami, jak `sand_road.png` |
+| `sand_road_edge.png` / `_lit.png` | 8×1 | brzeg na plaży |
+| `sand_road_bits.png` | 64×16 | jak wyżej, ale suche źdźbła, muszelki i jasny piasek |
+
+Jak podgląd składa drogę (tak samo może to robić gra):
+1. `d` = odległość piksela od najbliższej linii trasy, `i = floor(16 - d)` (połowa szerokości = 16 px).
+2. Do `i` dodawane jest drganie ±1 px okresowe co 16 px (`edge_noise` w `gen_art.py`), żeby brzeg nie był idealnie gładki.
+3. `i < 0` → trawa. `i` 0–7 → kolor z `road_edge`; po stronie, gdzie normalna wskazuje prawy-dół, z `road_edge_lit`.
+4. Gdy kolor z paska jest równy kolorowi wnętrza (piksel 7) albo `i ≥ 8` → piksel z `road_fill` w (x mod 32, y mod 32).
+5. Drobiazgi z `road_bits` rozrzucone w pasie od 7 px w głąb drogi do 1 px na zewnątrz.
+
+W podglądzie droga łąkowa i plażowa po prostu nachodzą na siebie; w grze wystarczy przełączać komplet tekstur według podłoża.
+
+## Mosty stałe i most zwodzony
+
+Generuje je `tools/gen_bridges.py` (uruchamiany na końcu `gen_art.py`). Wymiary są dokładne co do piksela.
+Podglądy: `preview_bridges.png` (most 96 poziomo i 80 pionowo na rzece z drogą o połowie szerokości 20 px),
+`preview_drawbridge.png` (6 klatek nad rzeką), `preview_drawbridge.gif` (podnoszenie i opuszczanie).
+
+Wspólne dla wszystkich mostów: szerokość 46 px = 3 px poręcz + 40 px pokładu + 3 px poręcz,
+słupki poręczy co 8 px, światło z lewej-góry, deski w poprzek drogi.
+
+| plik | rozmiar | opis |
+|---|---|---|
+| `bridge_h_48/64/80/96/112.png` | L×50 | droga poziomo; wiersze 0–45 to most, 46–49 półprzezroczysty cień na wodzie |
+| `bridge_v_48/64/80/96/112.png` | 50×L | droga pionowo; kolumny 0–45 to most, 46–49 cień na wodzie |
+| `bridges.png` | 496×210 | arkusz: rząd 1 poziome, rząd 2 pionowe, 16 px odstępu |
+| `drawbridge.png` | 576×64 | most zwodzony, 6 klatek 96×64 w poziomym pasku |
+
+Przyczółki: po 6 px na każdym końcu (wliczone w długość L). Pierwsze 3 px to ubita ziemia w kolorze
+`road_fill`, potem kamienny próg; w narożnikach kamienne bloki kończące poręcze. Cień jest tylko pod
+częścią nad wodą.
+
+Wersje pionowe są narysowane osobno, nie obrócone: przy świetle z lewej-góry i widoku prosto z góry
+poprawne cieniowanie wychodzi z odbicia względem przekątnej (cień poręczy pada na pokład, cień mostu
+na prawo), a szum desek i słojów jest losowany od nowa.
+
+Most zwodzony (`drawbridge.png`), w każdej klatce w tym samym miejscu:
+- x 0–13: kamienny przyczółek z brukiem; filary nad i pod pokładem (y 2–11 i 52–61) z kołowrotami;
+- x 14–79: ruchomy pokład 66 px, zawias przy x = 14; pokład zajmuje y 9–54 (46 px);
+- x 80–95: miejsce na wydłużający się cień.
+
+Klatki: kąt podniesienia 0°, 22°, 42°, 60°, 76°, 90°. Pokład skraca się do 66·cos(kąt), od ~40°
+jaśnieje (zwraca się do światła), a z prawej rośnie ciemne czoło (grubość 4 px). Łańcuchy idą od
+kołowrotów do okuć na końcu pokładu: w klatce 1 luźne, w 2 lekko ugięte, dalej napięte. Klatka 6:
+widać tylko przyczółek i górę pionowego pokładu, rzeka jest odkryta. Opuszczanie = klatki od tyłu.
+
+W grze rysuje je `world/bridge_art.gd`: most o długości 48/64/80/96/112 px to gotowa grafika, inny jest składany z końców
+najdłuższej i powtarzanych kawałków po 16 px. Most zwodzony pokazuje klatkę według stanu animacji z `systems/bridge_system.gd`.

@@ -150,19 +150,44 @@ func _draw_minimap(level: Dictionary, pr: Rect2) -> void:
 	var sc := pr.size.x / W
 	draw_rect(pr, MINI_GRASS)
 	if level.has("beach"):
-		draw_colored_polygon(_mini_poly(level.beach, pr, sc), MINI_SAND)
+		_draw_mini_area(level.beach, pr, sc, MINI_SAND)
 	if level.has("sea"):
-		draw_colored_polygon(_mini_poly(level.sea, pr, sc), MINI_SEA)
+		_draw_mini_area(level.sea, pr, sc, MINI_SEA)
 	for poly in level.get("islands", []):
-		draw_colored_polygon(_mini_poly(poly, pr, sc), MINI_SAND)
+		_draw_mini_area(poly, pr, sc, MINI_SAND)
 	if level.has("river"):
-		draw_colored_polygon(_mini_poly(level.river, pr, sc), MINI_WATER)
+		_draw_mini_area(level.river, pr, sc, MINI_WATER)
 	for poly in level.get("ponds", []):
-		draw_colored_polygon(_mini_poly(poly, pr, sc), MINI_WATER)
-	for route in level.routes:
-		draw_polyline(_mini_poly(route, pr, sc), MINI_ROAD, 6.0)
+		_draw_mini_area(poly, pr, sc, MINI_WATER)
+	# bez tras niemalowanych i ukrytych; portal przerywa linię trasy
+	var skipped: Array = level.get("unpainted_routes", []) + level.get("hidden_routes", [])
+	for r in level.routes.size():
+		if skipped.has(r):
+			continue
+		var route: Array = level.routes[r]
+		var piece := [route[0]]
+		for i in range(1, route.size()):
+			if level.get("portals", []).any(func(p: Dictionary) -> bool: return route[i - 1] == p.a and route[i] == p.b):
+				draw_polyline(_mini_poly(piece, pr, sc), MINI_ROAD, 6.0)
+				piece = []
+			piece.append(route[i])
+		draw_polyline(_mini_poly(piece, pr, sc), MINI_ROAD, 6.0)
 	for sp in level.spots:
 		draw_circle(pr.position + sp * sc, 2.5, Color(0.6, 0.6, 0.65))
+
+
+## Obszar terenu na miniaturze, przycięty do mapy. Przycinanie wielokąta (a nie samych punktów)
+## nie skleja punktów spoza mapy w jeden - inaczej wielokąt mógłby się nie dać narysować.
+func _draw_mini_area(poly: Array, pr: Rect2, sc: float, color: Color) -> void:
+	var map := PackedVector2Array([Vector2.ZERO, Vector2(W, 0), Vector2(W, H), Vector2(0, H)])
+	for part in Geometry2D.intersect_polygons(PackedVector2Array(poly), map):
+		if Geometry2D.is_polygon_clockwise(part):
+			continue   # dziura
+		var pts := PackedVector2Array()
+		for q in part:
+			pts.append(pr.position + q * sc)
+		if not Geometry2D.triangulate_polygon(pts).is_empty():
+			draw_colored_polygon(pts, color)
 
 
 func _mini_poly(poly: Array, pr: Rect2, sc: float) -> PackedVector2Array:

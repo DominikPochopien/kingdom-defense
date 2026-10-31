@@ -4,13 +4,15 @@ extends Effect
 ## "zap" (błyskawica między dwoma punktami), "ring" (budowa/ulepszenie),
 ## "seal" (fioletowa aura Magicznego Rycerza wyłączająca wieże),
 ## "flame" (ogień smoka od punktu do celu; radius = grubość płomienia),
-## "spike" (kolce Jeżowca lecące do celu), "coconut" (kokos spadający łukiem z palmy na cel).
+## "spike" (kolce Jeżowca lecące do celu), "coconut" (kokos spadający łukiem z palmy na cel),
+## "arrow" (strzała Szkieleta łucznika lecąca do celu), "portal" (fioletowy błysk portalu / przywołania).
 ## Wybuch, śmierć, kolce i kokos to grafiki z assets/effects/ i assets/projectiles/, reszta - kod.
 
 const EXPLOSION := preload("res://assets/effects/explosion.png")
 const DEATH_PUFF := preload("res://assets/effects/death_puff.png")
 const SPIKE := preload("res://assets/projectiles/hedgehog_spike.png")
 const COCONUT := preload("res://assets/projectiles/coconut.png")
+const ARROW := preload("res://assets/projectiles/arrow.png")
 
 var kind := ""
 var radius := 0.0
@@ -71,6 +73,15 @@ func _draw() -> void:
 		"coconut":
 			var to := target_pos - position
 			_draw_sprite(COCONUT, to * k + Vector2(0, -40.0 * sin(PI * k)), 0.0)
+		"arrow":
+			var to := target_pos - position
+			var arc := Vector2(0, -24.0 * sin(PI * k))
+			var slope := Vector2(0, -24.0 * PI * cos(PI * k))
+			_draw_sprite(ARROW, to * k + arc, (to + slope).angle())
+		"portal":
+			draw_circle(Vector2.ZERO, radius * k, Color(0.55, 0.25, 0.85, 0.3 * (1.0 - k)))
+			draw_arc(Vector2.ZERO, radius * k, 0, TAU, 40, Color(0.8, 0.55, 1.0, 1.0 - k), 3.0)
+			draw_arc(Vector2.ZERO, radius * k * 0.6, 0, TAU, 32, Color(0.95, 0.8, 1.0, 1.0 - k), 2.0)
 		"ring":
 			draw_arc(Vector2.ZERO, radius * (0.3 + k), 0, TAU, 32, Color(0.4, 0.8, 1, 1.0 - k), 3.0)
 

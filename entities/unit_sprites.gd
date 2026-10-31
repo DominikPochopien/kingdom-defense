@@ -9,6 +9,8 @@ const FRAME_SIZE := {
 	"goblin": Vector2(16, 16), "wolf": Vector2(20, 14), "orc": Vector2(20, 24), "bat": Vector2(16, 12),
 	"shaman": Vector2(18, 24), "boss": Vector2(32, 32), "magic_knight": Vector2(20, 28),
 	"dragon": Vector2(48, 32), "hedgehog": Vector2(20, 16), "desert_bird": Vector2(16, 12),
+	"skeleton": Vector2(16, 20), "skeleton_archer": Vector2(16, 20), "skeleton_armored": Vector2(18, 22),
+	"mummy": Vector2(28, 32),
 	"soldier": Vector2(12, 16), "spear_knight": Vector2(14, 18), "hero": Vector2(16, 22),
 	"forest_ranger": Vector2(12, 16),
 }

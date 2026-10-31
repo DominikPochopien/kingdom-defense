@@ -5,4 +5,6 @@ const DATA := {
 	"name": "Zielone Wzgórza", "desc": "Klasyczna mapa na rozgrzewkę.",
 	"waves": 10, "gold": 300, "lives": 20, "hp": 1.0, "difficulty": "Łatwy",
 	"scene": "res://levels/level_01.tscn",
+	# droga malowana wzdłuż trasy: gładkie, kręte łuki
+	"road": "painted",
 }

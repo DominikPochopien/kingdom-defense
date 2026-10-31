@@ -138,6 +138,7 @@ func _move(dt: float) -> void:
 	if haste_time > 0:
 		haste_time -= dt
 		spd *= haste_mult
+	var old_distance := distance
 	distance += spd * dt
 	var bridges := world.bridges
 	if bridges.is_enabled() and not forked and distance >= bridges.fork_distance():
@@ -147,6 +148,9 @@ func _move(dt: float) -> void:
 	position = world.paths.position_at(distance, route)
 	if absf(position.x - old_x) > 0.01:
 		facing_left = position.x < old_x
+	var portal := world.paths.portal_between(old_distance, distance, route)
+	if not portal.is_empty():
+		world.on_portal_used(portal[0], portal[1])
 	in_tunnel = world.paths.is_hidden_at(distance, route)
 	visible = not in_tunnel
 	if distance >= world.paths.length_of(route):

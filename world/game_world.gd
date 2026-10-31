@@ -7,6 +7,11 @@ extends Node2D
 ## każdej jednostki w stałej kolejności, tylko gdy gra trwa i nie jest zapauzowana.
 
 signal won
+
+## co ile jednostek trasy wybucha kurz przy otwieraniu ukrytej drogi
+const REVEAL_FX_STEP := 36.0
+## kurz kończy się tak blisko punktu otwarcia (dalej nowa droga biegnie po istniejącej)
+const REVEAL_FX_STOP := 120.0
 signal lost
 
 @onready var map: LevelMap = $Map
@@ -42,6 +47,7 @@ var enemies: Array[Enemy] = []
 var soldiers: Array[Soldier] = []
 var forest_archers: Array[ForestArcher] = []
 var palms: Array[StunPalm] = []
+var war_towers: Array[WarTower] = []
 var birds: Array[SeaBird] = []
 var projectiles: Array[Projectile] = []
 var strikes: Array[FireStrike] = []
@@ -58,6 +64,12 @@ var _hp_mult := 1.0
 var _was_busy := false
 ## czas do przylotu kolejnego ptaka (poziomy z kluczem "birds")
 var _bird_timer := 0.0
+## ilu wrogów pojawiło się w tej fali (kolejka tras "alternate_routes")
+var _spawned_in_wave := 0
+## czy Mumia otworzyła już ukrytą drogę (klucz poziomu "hidden_route")
+var hidden_route_open := false
+## efekty z opóźnieniem (np. kurz wzdłuż otwieranej drogi): [ile jeszcze s, pozycja, rodzaj, promień]
+var _delayed_fx: Array = []
 
 
 # ================= START POZIOMU =================
@@ -66,7 +78,7 @@ func show_level(index: int) -> void:
 	_clear_units()
 	level_index = index
 	level = LevelData.get_level(index)
-	paths = PathNetwork.new(level.routes, level.get("tunnels", []))
+	paths = PathNetwork.new(level.routes, level.get("tunnels", []), level.get("portals", []))
 	bridges = BridgeSystem.new(level, paths)
 	archer_camp = ForestArcherCamp.new(level)
 	bridges.switched.connect(_on_bridge_switched)
@@ -77,9 +89,13 @@ func show_level(index: int) -> void:
 	_add_ship_spot()
 	_hp_mult = level.hp
 	spawner.reset(level.waves, level.get("shamans", false), level.get("magic_knights", false), level.get("dragons", false),
-		level.get("hedgehogs", false))
+		level.get("hedgehogs", false), level.get("undead", false))
+	spawner.special_wave = level.get("special_wave", {})
+	hidden_route_open = false
+	_delayed_fx.clear()
 	map.setup(level, paths, bridges, spots)
 	_place_palms()
+	_place_war_towers()
 
 
 ## Miejsce na Statek (klucz "ship") - zawsze ostatnie na liście, więc zapis gry działa po indeksie.
@@ -97,6 +113,13 @@ func _place_palms() -> void:
 		var palm := StunPalm.new()
 		palm.setup(def)
 		_add_unit(palm, _towers_layer, palms)
+
+
+func _place_war_towers() -> void:
+	for def in level.get("war_towers", []):
+		var tower := WarTower.new()
+		tower.setup(def)
+		_add_unit(tower, _towers_layer, war_towers)
 
 
 func start(index: int) -> void:
@@ -153,7 +176,7 @@ func _clear_units() -> void:
 			_strikes_layer, _effects_layer, _texts_layer]:
 		for child in layer.get_children():
 			child.queue_free()
-	for list in [enemies, soldiers, forest_archers, palms, birds, projectiles, strikes, effects, texts]:
+	for list in [enemies, soldiers, forest_archers, palms, war_towers, birds, projectiles, strikes, effects, texts]:
 		list.clear()
 	selected_spot = null
 	selected_enemy = null
@@ -175,6 +198,10 @@ func _tick(dt: float) -> void:
 	var spawn_type := spawner.update(dt)
 	if spawn_type != "":
 		_spawn_enemy(spawn_type)
+	_update_delayed_fx(dt)
+	var extra := spawner.update_timed(dt)
+	if not extra.is_empty():
+		_spawn_on_route(extra[0], extra[1], 0.0)
 	var archer_post := archer_camp.update(dt, forest_archers)
 	if archer_post >= 0:
 		_spawn_forest_archer(archer_post)
@@ -186,6 +213,8 @@ func _tick(dt: float) -> void:
 		a.tick(dt)
 	for palm in palms:
 		palm.tick(dt)
+	for wt in war_towers:
+		wt.tick(dt)
 	_update_birds(dt)
 	for b in birds:
 		b.tick(dt)
@@ -200,7 +229,7 @@ func _tick(dt: float) -> void:
 		f.tick(dt)
 	for t in texts:
 		t.tick(dt)
-	for list in [enemies, soldiers, forest_archers, palms, birds, projectiles, strikes, effects, texts]:
+	for list in [enemies, soldiers, forest_archers, palms, war_towers, birds, projectiles, strikes, effects, texts]:
 		_remove_finished(list)
 	if not Enemy.is_targetable(selected_enemy):
 		selected_enemy = null
@@ -249,6 +278,7 @@ func start_next_wave() -> void:
 		gold += Balance.EARLY_BONUS
 		add_float(Vector2(GameConfig.W - 110, GameConfig.H - 80), "+%d bonus" % Balance.EARLY_BONUS, Color(1, 0.85, 0.3))
 	spawner.start_next_wave()
+	_spawned_in_wave = 0
 	Audio.play("wave")
 
 
@@ -258,11 +288,79 @@ func _spawn_enemy(type: String) -> void:
 		route = bridges.active
 	elif level.has("spawn_routes"):
 		route = _pick_spawn_route(type)
+	elif level.has("alternate_routes"):
+		route = _pick_alternate_route()
 	elif level.has("random_routes_from") and spawner.wave >= level.random_routes_from:
 		route = randi() % paths.route_count()
+	_spawn_on_route(type, route, 0.0)
+
+
+func _spawn_on_route(type: String, route: int, at_distance: float) -> Enemy:
 	var enemy := EnemyFactory.create(type, _hp_mult, route)
-	enemy.position = paths.position_at(0.0, route)
+	enemy.distance = clampf(at_distance, 0.0, paths.length_of(route) - 1.0)
+	enemy.position = paths.position_at(enemy.distance, route)
 	_add_unit(enemy, _enemies_layer, enemies)
+	return enemy
+
+
+## Wróg przywołany na trasie (np. Szkielety Mumii) - pojawia się w podanym miejscu trasy.
+func spawn_minion(type: String, route: int, at_distance: float) -> void:
+	var enemy := _spawn_on_route(type, route, at_distance)
+	add_effect(enemy.position, "portal", 22.0, Vector2.ZERO, 0.5)
+
+
+func _update_delayed_fx(dt: float) -> void:
+	for i in range(_delayed_fx.size() - 1, -1, -1):
+		var fx: Array = _delayed_fx[i]
+		fx[0] -= dt
+		if fx[0] <= 0.0:
+			add_effect(fx[1], fx[2], fx[3], Vector2.ZERO, 0.6)
+			_delayed_fx.remove_at(i)
+
+
+## Wróg przeszedł przez portal: błysk przy wejściu i wyjściu.
+func on_portal_used(from: Vector2, to: Vector2) -> void:
+	add_effect(from, "portal", 30.0, Vector2.ZERO, 0.45)
+	add_effect(to, "portal", 30.0, Vector2.ZERO, 0.45)
+
+
+## Mumia doszła do punktu otwarcia: ukryta droga pojawia się na mapie i wychodzą z niej wrogowie
+## ("hidden_route": {"route", "gate", "enemies"} - grupy jak w WaveSpawner.add_timed, czas od otwarcia).
+func open_hidden_route() -> void:
+	if hidden_route_open or not level.has("hidden_route"):
+		return
+	hidden_route_open = true
+	var hidden: Dictionary = level.hidden_route
+	map.reveal_hidden_road(hidden.gate)
+	spawner.add_timed(hidden.enemies, hidden.route)
+	add_effect(hidden.gate, "portal", 120.0, Vector2.ZERO, 0.9)
+	add_effect(hidden.gate, "boom", 48.0)
+	Audio.play("boom")
+	# kurz i błyski wzdłuż nowej drogi (od jej początku, aż dojdzie w pobliże punktu otwarcia),
+	# w tempie, w jakim się odsłania
+	var speed := LevelScene.REVEAL_REACH * LevelScene.PIXEL / LevelScene.REVEAL_TIME
+	var d := 0.0
+	var route: int = hidden.route
+	while d < paths.length_of(route):
+		var p := paths.position_at(d, route)
+		if p.distance_to(hidden.gate) < REVEAL_FX_STOP:
+			break
+		var delay := p.distance_to(hidden.gate) / speed
+		_delayed_fx.append([delay, p, "death", 22.0])
+		if int(d / REVEAL_FX_STEP) % 3 == 0:
+			_delayed_fx.append([delay + 0.1, p, "portal", 40.0])
+		d += REVEAL_FX_STEP
+	add_float(hidden.gate + Vector2(-90, -50), "Droga umarłych otwarta!", Color(0.85, 0.6, 1.0))
+	Audio.play("wave")
+
+
+## Kolejny wróg fali bierze kolejną grupę tras "alternate_routes" (po ostatniej znów pierwszą),
+## a w grupie losuje trasę - np. na zmianę dolny i górny most, z losowego wejścia.
+func _pick_alternate_route() -> int:
+	var groups: Array = level.alternate_routes
+	var group: Array = groups[_spawned_in_wave % groups.size()]
+	_spawned_in_wave += 1
+	return group[randi() % group.size()]
 
 
 ## Losuje trasę z wagami "spawn_routes" spośród tras, na które wpuszczany jest ten typ wroga.
@@ -510,6 +608,13 @@ func palm_at(p: Vector2) -> StunPalm:
 	for palm in palms:
 		if palm.contains(p):
 			return palm
+	return null
+
+
+func war_tower_at(p: Vector2) -> WarTower:
+	for wt in war_towers:
+		if wt.contains(p):
+			return wt
 	return null
 
 

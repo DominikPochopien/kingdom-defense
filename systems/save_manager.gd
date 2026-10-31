@@ -23,13 +23,21 @@ func _init(level_count: int) -> void:
 func load_progress() -> void:
 	var cf := ConfigFile.new()
 	if cf.load(SAVE_PATH) == OK:
-		unlocked = int(cf.get_value("progress", "unlocked", 1))
-		completed = cf.get_value("progress", "completed", [])
+		# ręcznie zepsuty plik nie może wywalić gry - złe wartości zastępujemy domyślnymi
+		var saved_unlocked: Variant = cf.get_value("progress", "unlocked", 1)
+		unlocked = int(saved_unlocked) if saved_unlocked is int or saved_unlocked is float else 1
+		completed = []
+		var saved_completed: Variant = cf.get_value("progress", "completed", [])
+		if saved_completed is Array:
+			for c: Variant in saved_completed:
+				completed.append(c is bool and c)
 		run_waves.clear()
 		for i in _level_count:
 			var key := _run_key(i)
 			if cf.has_section_key("runs", key):
-				run_waves[i] = int(cf.get_value("runs", key).get("wave", 0))
+				var run: Variant = cf.get_value("runs", key)
+				if _is_valid_run(run):
+					run_waves[i] = int(run.wave)
 	while completed.size() < _level_count:
 		completed.append(false)
 	# naprawa starszych zapisów: ukończony poziom zawsze odblokowuje następny
@@ -50,8 +58,8 @@ func save_progress() -> void:
 	cf.save(SAVE_PATH)
 
 
-## TESTY: true = wszystkie poziomy odblokowane (przed wydaniem ustaw z powrotem false).
-const UNLOCK_ALL := true
+## TESTY: true = wszystkie poziomy odblokowane (przed wydaniem musi być false).
+const UNLOCK_ALL := false
 
 
 func is_unlocked(level: int) -> bool:
@@ -86,7 +94,48 @@ func load_run(level: int) -> Dictionary:
 	var cf := ConfigFile.new()
 	if cf.load(SAVE_PATH) != OK or not cf.has_section_key("runs", _run_key(level)):
 		return {}
-	return cf.get_value("runs", _run_key(level))
+	var run: Variant = cf.get_value("runs", _run_key(level))
+	return run if _is_valid_run(run) else {}
+
+
+## Czy checkpoint ma poprawny format (typy liczb, znane wieże i gałęzie). Zły checkpoint jest pomijany.
+static func _is_valid_run(run: Variant) -> bool:
+	if not run is Dictionary:
+		return false
+	for key in ["gold", "lives", "wave"]:
+		if not _is_number(run.get(key)):
+			return false
+	for key in ["fire_cd", "reinf_cd", "bridge", "bridge_timer"]:
+		if run.has(key) and not _is_number(run[key]):
+			return false
+	if int(run.get("bridge", 0)) not in [0, 1] or not run.get("towers") is Array:
+		return false
+	for td: Variant in run.towers:
+		if not td is Dictionary or not _is_valid_tower(td):
+			return false
+	return true
+
+
+static func _is_valid_tower(td: Dictionary) -> bool:
+	for key in ["spot", "level", "spent"]:
+		if not _is_number(td.get(key)):
+			return false
+	var type: Variant = td.get("type")
+	var branch: Variant = td.get("branch")
+	if not type is String or not TowerData.TOWERS.has(type) or not branch is String:
+		return false
+	if int(td.level) < 1 or int(td.level) > TowerStats.BRANCH_LEVEL:
+		return false
+	if branch == "":
+		return true
+	for b: Dictionary in TowerData.BRANCHES.get(type, []):
+		if b.id == branch:
+			return true
+	return false
+
+
+static func _is_number(v: Variant) -> bool:
+	return v is int or v is float
 
 
 func delete_run(level: int) -> void:

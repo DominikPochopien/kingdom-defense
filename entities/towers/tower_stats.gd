@@ -146,14 +146,10 @@ func soldier_hp() -> float:
 
 
 func respawn_time() -> float:
-	return _branch_value("respawn", info.respawn)
+	return _branch_value("respawn", info.respawn) * Balance.SOLDIER_RESPAWN_MULT
 
 
 # ---------------- ekonomia ----------------
-func build_cost() -> int:
-	return info.cost
-
-
 func can_upgrade() -> bool:
 	return level < MAX_LEVEL
 

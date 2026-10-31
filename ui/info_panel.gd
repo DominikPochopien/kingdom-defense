@@ -50,6 +50,10 @@ func _draw() -> void:
 	var palm := world.palm_at(mouse)
 	if palm != null:
 		UiDraw.panel(self, palm.position + Vector2(40, -80), "Palma", palm_lines(palm), COLOR_SOLDIER)
+		return
+	var war_tower := world.war_tower_at(mouse)
+	if war_tower != null:
+		UiDraw.panel(self, _beside_point(war_tower.position + Vector2(0, -60)), "Wieża wroga", war_tower_lines(war_tower), COLOR_ENEMY)
 
 
 ## Panel obok miejsca budowy (z prawej, a przy prawej krawędzi ekranu - z lewej).
@@ -57,6 +61,14 @@ func _beside_spot(spot: BuildSpot) -> Vector2:
 	var pos := spot.position + Vector2(150, -60)
 	if pos.x + UiDraw.PANEL_WIDTH > GameConfig.W:
 		pos.x = spot.position.x - 150 - UiDraw.PANEL_WIDTH
+	return pos
+
+
+## Panel obok punktu (z prawej, a przy prawej krawędzi ekranu - z lewej).
+func _beside_point(p: Vector2) -> Vector2:
+	var pos := p + Vector2(40, 0)
+	if pos.x + UiDraw.PANEL_WIDTH > GameConfig.W:
+		pos.x = p.x - 40 - UiDraw.PANEL_WIDTH
 	return pos
 
 
@@ -129,7 +141,7 @@ func enemy_lines(e: Enemy) -> Array:
 	lines.append(["Odporność na magię: " + UiDraw.percent(e.magic_resist), LIGHT])
 	var speed_line := "Prędkość: %d" % int(e.speed)
 	if e.haste_time > 0:
-		speed_line += " (przyspieszony x%d)" % int(e.haste_mult)
+		speed_line += " (przyspieszony +%d%%)" % roundi((e.haste_mult - 1.0) * 100.0)
 	if e.slow_time > 0:
 		speed_line += " (spowolniony)"
 	lines.append([speed_line, Color(0.6, 0.85, 1.0) if e.slow_time > 0 or e.haste_time > 0 else LIGHT])
@@ -156,6 +168,14 @@ func enemy_lines(e: Enemy) -> Array:
 			% [int(info.spike_interval), int(info.spike_damage), int(info.spike_range)], Color(0.85, 0.7, 0.5)])
 		lines.append(["Turlanie: co %d s turla się coraz szybciej, nie da się go zatrzymać i taranuje żołnierzy (%d obrażeń)"
 			% [int(info.roll_interval), int(info.roll_damage)], Color(1, 0.7, 0.4)])
+	elif info.get("ability", "") == "archer":
+		lines.append(["Łuk: co %.1f s strzela w żołnierza (%d obrażeń, zasięg %d)"
+			% [float(info.arrow_interval), int(info.arrow_damage), int(info.arrow_range)], Color(0.85, 0.75, 0.6)])
+	elif info.get("ability", "") == "mummy":
+		lines.append(["Przywołanie: co %d s wskrzesza %d Szkieletów, %d łucznika i %d pancernego"
+			% [int(info.summon_interval), int(info.summon_skeletons), int(info.summon_archers), int(info.summon_armored)],
+			Color(0.55, 1.0, 0.85)])
+		lines.append(["Droga umarłych: na środku mapy otwiera nową drogę dla wrogów", Color(0.85, 0.6, 1.0)])
 	if e.burn_time > 0:
 		lines.append(["Podpalony!", Color(1, 0.55, 0.2)])
 	if e.stun_time > 0:
@@ -170,6 +190,23 @@ func palm_lines(palm: StunPalm) -> Array:
 		["Co %d-%d s zrzuca kokosy na wszystkich wrogów w zielonym okręgu" % [int(Balance.PALM_MIN_TIME), int(Balance.PALM_MAX_TIME)], LIGHT],
 		["Obrażenia: %d, ogłuszenie: %d s" % [int(Balance.PALM_DAMAGE), int(Balance.PALM_STUN)], DMG_COLOR],
 		["Gotowa - czeka na wrogów!" if palm.is_ready() else "Kokosy za: %d s" % int(ceil(palm.cooldown())), Color(0.6, 1.0, 0.4)],
+	]
+
+
+func war_tower_lines(wt: WarTower) -> Array:
+	var state := ""
+	if wt.is_active():
+		state = "Płonie! Jeszcze %d s" % int(ceil(wt.active_left()))
+	elif wt.is_ready():
+		state = "Gotowa - czeka na wrogów!"
+	else:
+		state = "Ogień za: %d s" % int(ceil(wt.cooldown()))
+	return [
+		["Co %d-%d s rozpala ogień: przez %d s wrogowie w czerwonym okręgu biegną o %d%% szybciej"
+			% [int(Balance.WAR_TOWER_MIN_TIME), int(Balance.WAR_TOWER_MAX_TIME), int(Balance.WAR_TOWER_ACTIVE),
+			roundi((Balance.WAR_TOWER_HASTE - 1.0) * 100.0)], LIGHT],
+		["Nie da się jej zniszczyć", Color(0.7, 0.7, 0.7)],
+		[state, Color(1, 0.5, 0.4)],
 	]
 
 

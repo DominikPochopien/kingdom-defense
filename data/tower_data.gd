@@ -55,8 +55,8 @@ const BRANCHES := {
 	"barracks": [
 		{"id": "vets", "art": "barracks_4a_templar", "name": "Weterani", "desc": "Żołnierze mają +60% HP i +50% obrażeń.",
 			"hp_mult": 1.6, "dmg_mult": 1.5},
-		{"id": "extra", "art": "barracks_4b_barbarian", "name": "Oddział", "desc": "+2 żołnierzy (razem 5) i szybsze odradzanie (4 s).",
-			"extra_soldiers": 2, "respawn": 4.0},
+		{"id": "extra", "art": "barracks_4b_barbarian", "name": "Oddział", "desc": "+2 żołnierzy (razem 5) i szybsze odradzanie.",
+			"extra_soldiers": 2, "respawn": 6.0},
 	],
 	"artillery": [
 		{"id": "blast", "art": "artillery_4a_mortar", "name": "Wielki wybuch", "desc": "+40% promienia wybuchu oraz +20% obrażeń.",

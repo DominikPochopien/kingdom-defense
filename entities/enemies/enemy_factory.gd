@@ -3,13 +3,15 @@ class_name EnemyFactory
 ## Nowy typ wroga: dodaj dane w EnemyData i arkusze w assets/enemies/ (wielkość klatki w UnitSprites);
 ## jeśli ma własną umiejętność albo lata - plik z podklasą Enemy tutaj obok i wpis poniżej.
 
-## typy z własną podklasą; pozostałe (goblin, wilk, ork, boss) to zwykły Enemy
+## typy z własną podklasą; pozostałe (goblin, wilk, ork, boss, szkielet) to zwykły Enemy
 const SCRIPTS := {
 	"bat": preload("res://entities/enemies/bat.gd"),
 	"shaman": preload("res://entities/enemies/shaman.gd"),
 	"magic_knight": preload("res://entities/enemies/magic_knight.gd"),
 	"dragon": preload("res://entities/enemies/dragon.gd"),
 	"hedgehog": preload("res://entities/enemies/hedgehog.gd"),
+	"skeleton_archer": preload("res://entities/enemies/skeleton_archer.gd"),
+	"mummy": preload("res://entities/enemies/mummy.gd"),
 }
 
 

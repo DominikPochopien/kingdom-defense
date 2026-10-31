@@ -29,13 +29,14 @@ równo (1 piksel grafiki = 3 piksele ekranu).
 
 ## Zawartość
 
-- **7 poziomów:** łąka, kręta droga z kałużą, rzeka z mostami zwodzonymi, rozdroża, górska przełęcz
-  z tunelem, słoneczna zatoka, pirackie wybrzeże.
+- **9 poziomów:** łąka, kręta droga z kałużą, rzeka z mostami zwodzonymi, rozdroża, górska przełęcz
+  z tunelem, słoneczna zatoka, pirackie wybrzeże, wieża wojny, piramida umarłych.
 - **Wieże:** Łucznicy, Magowie, Koszary, Artyleria, Rycerze i Statek. Każda ma 3 poziomy
   i dwa ulepszenia do wyboru na 4. poziomie (każde z własnym wyglądem).
 - **Wrogowie:** goblin, wilk, ork, nietoperz, Szaman Wojenny (leczy), boss, Magiczny Rycerz
   (wyłącza wieże i przyspiesza innych), Smok (zieje ogniem w żołnierzy), Jeżowiec (turla się
-  i rzuca kolcami).
+  i rzuca kolcami), Szkielet, Szkielet pancerny, Szkielet łucznik (strzela w żołnierzy) i boss Mumia
+  (przywołuje Szkielety i otwiera ukrytą drogę).
 - **Sojusznicy i pomocnicy:** żołnierze z Koszar, rycerze z włóczniami, Bohater z Obrotem,
   Leśni Łucznicy z dmuchawkami, Palma z kokosami, ptak zrzucający jajka.
 - **Umiejętności:** Deszcz ognia i Posiłki.
@@ -48,6 +49,10 @@ równo (1 piksel grafiki = 3 piksele ekranu).
 - **Leśna Przełęcz:** w tunelu wrogowie są niewidzialni; z gniazd w górach wychodzą Leśni Łucznicy.
 - **Słoneczna Zatoka:** Bohater-Rycerz, Smoki i Magiczni Rycerze.
 - **Pirackie Wybrzeże:** Statek do kupienia na morzu, Palma ogłuszająca wrogów, wieża na wysepce.
+- **Wieża Wojny:** wrogowie wchodzą na zmianę górną i dolną drogą; Wieża wroga co jakiś czas
+  przyspiesza o 35% wrogów w swoim okręgu.
+- **Piramida Umarłych:** portale przenoszą wrogów na drugą stronę mapy; w ostatniej fali Mumia
+  otwiera drogę umarłych na środku mapy.
 
 ## Zapis gry
 

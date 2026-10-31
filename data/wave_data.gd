@@ -12,7 +12,7 @@ const SHAMAN_GAP := 1.6
 
 ## Skład fali nr n: lista par [typ, liczba].
 static func composition(n: int, total_waves: int, with_shamans: bool, with_magic_knights := false,
-		with_dragons := false, with_hedgehogs := false) -> Array:
+		with_dragons := false, with_hedgehogs := false, with_undead := false) -> Array:
 	var groups := []
 	groups.append(["goblin", 3 + n * 2])
 	if n >= 2:
@@ -32,6 +32,17 @@ static func composition(n: int, total_waves: int, with_shamans: bool, with_magic
 	# od 3. fali: 1 jeżowiec, co 3 fale o jednego więcej
 	if with_hedgehogs and n >= 3:
 		groups.append(["hedgehog", 1 + floori((n - 3) / 3.0)])
+	# nieumarli z piramidy: Szkielety od 1. fali (co falę o 2 więcej), łucznicy od 3., pancerni od 4.;
+	# w ostatniej fali Mumia zamiast Wodza
+	if with_undead:
+		groups.append(["skeleton", 4 + n * 2])
+		if n >= 3:
+			groups.append(["skeleton_archer", floori(n / 2.0)])
+		if n >= 4:
+			groups.append(["skeleton_armored", 1 + floori((n - 4) / 3.0)])
+		if n == total_waves:
+			groups.append(["mummy", 1])
+			return groups
 	if n % 5 == 0:
 		groups.append(["boss", floori(n / 5.0)])
 	elif n == total_waves:

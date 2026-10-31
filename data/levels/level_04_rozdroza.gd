@@ -1,14 +1,48 @@
 ## Poziom 4 - Rozdroża. Opis kluczy: data/level_data.gd
-## Mapa, trasy i miejsca na wieże są w scenie levels/level_04.tscn (edycja w Godocie).
+## Mapa, trasy, miejsca na wieże, mosty i Wieża Rycerska są w scenie levels/level_04.tscn (edycja w Godocie).
 
 const DATA := {
 	"name": "Rozdroża", "desc": "Dwa starty: drugi włącza się od 4. fali, a wrogowie wybierają losowy. Masz darmową Wieżę Rycerską (pomarańczowa), której rycerze biją też latające wrogi.",
 	"waves": 12, "gold": 400, "lives": 20, "hp": 1.4, "difficulty": "Bardzo trudny", "random_routes_from": 4,
 	"scene": "res://levels/level_04.tscn",
-	"river": [Vector2(-40, 350), Vector2(1320, 350), Vector2(1320, 450), Vector2(-40, 450)],
-	"fixed_bridges": [
-		{"a": Vector2(208, 340), "b": Vector2(208, 460), "vertical": true},
-		{"a": Vector2(496, 340), "b": Vector2(496, 460), "vertical": true},
-	],
-	"special_tower": 7,
+	"road": "painted",
+	# rzeka z łukami przez całą mapę; odnoga na północ (ponds) wpada do niej szerokim lejkiem
+	"river": [
+		Vector2(-52, 454), Vector2(-30, 451), Vector2(-7, 446), Vector2(14, 442), Vector2(35, 440),
+		Vector2(53, 438), Vector2(70, 436), Vector2(86, 435), Vector2(101, 435), Vector2(119, 437),
+		Vector2(137, 441), Vector2(158, 446), Vector2(179, 451), Vector2(197, 455), Vector2(215, 459),
+		Vector2(235, 464), Vector2(257, 469), Vector2(280, 472), Vector2(304, 473), Vector2(326, 472),
+		Vector2(349, 471), Vector2(371, 468), Vector2(394, 464), Vector2(417, 459), Vector2(440, 453),
+		Vector2(462, 447), Vector2(483, 439), Vector2(505, 432), Vector2(527, 422), Vector2(547, 413),
+		Vector2(564, 404), Vector2(578, 398), Vector2(591, 394), Vector2(605, 392), Vector2(620, 391),
+		Vector2(637, 391), Vector2(655, 392), Vector2(672, 394), Vector2(690, 398), Vector2(709, 405),
+		Vector2(730, 413), Vector2(753, 421), Vector2(777, 428), Vector2(799, 434), Vector2(822, 441),
+		Vector2(845, 448), Vector2(871, 454), Vector2(897, 457), Vector2(923, 457), Vector2(949, 454),
+		Vector2(973, 449), Vector2(997, 444), Vector2(1021, 439), Vector2(1044, 433), Vector2(1066, 426),
+		Vector2(1087, 419), Vector2(1107, 411), Vector2(1127, 404), Vector2(1148, 397), Vector2(1168, 389),
+		Vector2(1187, 382), Vector2(1205, 376), Vector2(1223, 370), Vector2(1240, 367), Vector2(1260, 363),
+		Vector2(1281, 360), Vector2(1303, 358), Vector2(1325, 355), Vector2(1347, 351), Vector2(1333, 249),
+		Vector2(1311, 252), Vector2(1289, 254), Vector2(1267, 257), Vector2(1244, 260), Vector2(1221, 264),
+		Vector2(1197, 270), Vector2(1173, 276), Vector2(1151, 284), Vector2(1131, 292), Vector2(1112, 299),
+		Vector2(1093, 306), Vector2(1074, 312), Vector2(1054, 318), Vector2(1035, 323), Vector2(1017, 327),
+		Vector2(999, 331), Vector2(980, 334), Vector2(960, 335), Vector2(940, 335), Vector2(921, 334),
+		Vector2(903, 333), Vector2(885, 332), Vector2(866, 331), Vector2(846, 329), Vector2(824, 326),
+		Vector2(803, 322), Vector2(783, 317), Vector2(762, 311), Vector2(738, 306), Vector2(713, 300),
+		Vector2(688, 296), Vector2(664, 293), Vector2(642, 291), Vector2(618, 291), Vector2(594, 292),
+		Vector2(569, 296), Vector2(544, 304), Vector2(521, 313), Vector2(502, 323), Vector2(485, 332),
+		Vector2(469, 338), Vector2(451, 345), Vector2(431, 351), Vector2(412, 357), Vector2(394, 362),
+		Vector2(376, 366), Vector2(359, 368), Vector2(341, 369), Vector2(323, 370), Vector2(306, 369),
+		Vector2(290, 368), Vector2(274, 366), Vector2(258, 363), Vector2(240, 358), Vector2(221, 354),
+		Vector2(201, 349), Vector2(179, 345), Vector2(157, 341), Vector2(133, 338), Vector2(109, 335),
+		Vector2(86, 334), Vector2(65, 334), Vector2(45, 335), Vector2(25, 336), Vector2(2, 338),
+		Vector2(-22, 340), Vector2(-45, 343), Vector2(-68, 346)],
+	"ponds": [[
+		Vector2(947, -27), Vector2(943, -7), Vector2(940, 14), Vector2(937, 31), Vector2(933, 46),
+		Vector2(926, 64), Vector2(915, 84), Vector2(904, 108), Vector2(896, 133), Vector2(889, 156),
+		Vector2(882, 179), Vector2(875, 203), Vector2(868, 227), Vector2(863, 252), Vector2(853, 277),
+		Vector2(840, 300), Vector2(832, 325), Vector2(824, 349), Vector2(812, 372), Vector2(805, 393),
+		Vector2(995, 397), Vector2(989, 375), Vector2(977, 355), Vector2(972, 335), Vector2(968, 313),
+		Vector2(960, 290), Vector2(957, 268), Vector2(960, 246), Vector2(963, 223), Vector2(968, 201),
+		Vector2(973, 180), Vector2(979, 160), Vector2(986, 142), Vector2(994, 123), Vector2(1006, 101),
+		Vector2(1017, 74), Vector2(1023, 50), Vector2(1027, 28), Vector2(1030, 7), Vector2(1033, -13)]],
 }

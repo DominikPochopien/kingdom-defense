@@ -41,6 +41,8 @@ const HERO_HP := 400.0
 const HERO_DAMAGE := 16.0               # obrażenia zwykłego ciosu (co 1 s)
 const HERO_RANGE := 110.0               # promień szukania wrogów wokół jego posterunku
 const HERO_RESPAWN := 15.0
+## mnożnik czasu odradzania żołnierzy wież (respawn z data/tower_data.gd); 3.0 = o 200% dłużej
+const SOLDIER_RESPAWN_MULT := 3.0
 const HERO_REGEN := 8.0                 # HP/s, gdy nie walczy
 const HERO_SPIN_COOLDOWN := 10.0        # Obrót: co ile sekund można go użyć
 const HERO_SPIN_TIME := 3.0             # jak długo się kręci
@@ -54,6 +56,13 @@ const PALM_MIN_TIME := 14.0             # potem co tyle sekund (losowo od-do)
 const PALM_MAX_TIME := 19.0
 const PALM_DAMAGE := 10.0               # małe obrażenia fizyczne
 const PALM_STUN := 3.0                  # ogłuszenie (s)
+
+# --- Wieża wroga (poziomy z kluczem "war_towers") ---
+const WAR_TOWER_FIRST := 10.0           # pierwszy okrzyk najwcześniej po tylu sekundach
+const WAR_TOWER_MIN_TIME := 14.0        # potem co tyle sekund (losowo od-do)
+const WAR_TOWER_MAX_TIME := 18.0
+const WAR_TOWER_ACTIVE := 6.0           # jak długo wrogowie w okręgu biegną szybciej
+const WAR_TOWER_HASTE := 1.35           # mnożnik prędkości (+35%)
 
 # --- Ptak z jajkami (poziomy z kluczem "birds") ---
 const BIRD_MIN_TIME := 12.0             # co ile sekund przylatuje ptak (losowo od-do)

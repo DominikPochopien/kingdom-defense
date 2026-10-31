@@ -1,841 +1,1894 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://c16bh041dbqri"]
 
-[ext_resource type="Script" path="res://world/level_scene.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/terrain/build_spot.png" id="2_spot"]
-[ext_resource type="Texture2D" path="res://assets/terrain/build_spot_desert.png" id="3_spot_desert"]
-[ext_resource type="Texture2D" path="res://assets/nature/bush_berry.png" id="4_bush_berry"]
-[ext_resource type="Texture2D" path="res://assets/nature/bush_round.png" id="5_bush_round"]
-[ext_resource type="Texture2D" path="res://assets/nature/cactus_round.png" id="6_cactus_round"]
-[ext_resource type="Texture2D" path="res://assets/nature/cactus_tall.png" id="7_cactus_tall"]
-[ext_resource type="Texture2D" path="res://assets/nature/dead_tree_a.png" id="8_dead_tree_a"]
-[ext_resource type="Texture2D" path="res://assets/nature/dead_tree_b.png" id="9_dead_tree_b"]
-[ext_resource type="Texture2D" path="res://assets/nature/desert_rock_medium.png" id="10_desert_rock_medium"]
-[ext_resource type="Texture2D" path="res://assets/nature/desert_rock_small.png" id="11_desert_rock_small"]
-[ext_resource type="Texture2D" path="res://assets/nature/desert_rock_tiny.png" id="12_desert_rock_tiny"]
-[ext_resource type="Texture2D" path="res://assets/nature/dry_bush.png" id="13_dry_bush"]
-[ext_resource type="Texture2D" path="res://assets/nature/flowers_pink.png" id="14_flowers_pink"]
-[ext_resource type="Texture2D" path="res://assets/nature/flowers_white.png" id="15_flowers_white"]
-[ext_resource type="Texture2D" path="res://assets/nature/flowers_yellow.png" id="16_flowers_yellow"]
-[ext_resource type="Texture2D" path="res://assets/nature/grass_tuft_a.png" id="17_grass_tuft_a"]
-[ext_resource type="Texture2D" path="res://assets/nature/grass_tuft_b.png" id="18_grass_tuft_b"]
-[ext_resource type="Texture2D" path="res://assets/nature/grass_tuft_c.png" id="19_grass_tuft_c"]
-[ext_resource type="Texture2D" path="res://assets/nature/pine_slim.png" id="20_pine_slim"]
-[ext_resource type="Texture2D" path="res://assets/nature/pine_tall.png" id="21_pine_tall"]
-[ext_resource type="Texture2D" path="res://assets/nature/ribs.png" id="22_ribs"]
-[ext_resource type="Texture2D" path="res://assets/nature/rock_medium.png" id="23_rock_medium"]
-[ext_resource type="Texture2D" path="res://assets/nature/rock_small.png" id="24_rock_small"]
-[ext_resource type="Texture2D" path="res://assets/nature/rock_tiny.png" id="25_rock_tiny"]
-[ext_resource type="Texture2D" path="res://assets/nature/skull.png" id="26_skull"]
-[ext_resource type="Texture2D" path="res://assets/nature/tree_oval.png" id="27_tree_oval"]
-[ext_resource type="Texture2D" path="res://assets/nature/tree_round.png" id="28_tree_round"]
-[ext_resource type="Texture2D" path="res://assets/nature/tree_wide.png" id="29_tree_wide"]
-[ext_resource type="Texture2D" path="res://assets/nature/shell_clam.png" id="deco_shell_clam"]
-[ext_resource type="Texture2D" path="res://assets/nature/shell_scallop.png" id="deco_shell_scallop"]
+[ext_resource type="Script" uid="uid://b6on65n214ako" path="res://world/level_scene.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://do8v2jfavdhh4" path="res://assets/terrain/grass.png" id="2_j4jic"]
+[ext_resource type="Texture2D" uid="uid://wlwicasa2kod" path="res://assets/terrain/build_spot.png" id="2_spot"]
+[ext_resource type="Texture2D" uid="uid://djd27gr2r0m" path="res://assets/terrain/road.png" id="3_41dwb"]
+[ext_resource type="Texture2D" uid="uid://bftm8mygam58a" path="res://assets/terrain/build_spot_desert.png" id="3_spot_desert"]
+[ext_resource type="Texture2D" uid="uid://dy38ylxle3luw" path="res://assets/terrain/sand_road.png" id="4_42f48"]
+[ext_resource type="Texture2D" uid="uid://b22rdlx7k7ybx" path="res://assets/nature/bush_berry.png" id="4_bush_berry"]
+[ext_resource type="Texture2D" uid="uid://bvdx1u3v82isj" path="res://assets/nature/bush_round.png" id="5_bush_round"]
+[ext_resource type="Texture2D" uid="uid://cth3v1apms6u2" path="res://assets/terrain/beach.png" id="5_w0n63"]
+[ext_resource type="Texture2D" uid="uid://b71iknjm1woj" path="res://assets/terrain/water.png" id="6_3v3bx"]
+[ext_resource type="Texture2D" uid="uid://bqi6ur6w27b4f" path="res://assets/nature/cactus_round.png" id="6_cactus_round"]
+[ext_resource type="Texture2D" uid="uid://dabtayiye2inh" path="res://assets/nature/cactus_tall.png" id="7_cactus_tall"]
+[ext_resource type="Texture2D" uid="uid://b1i8n8borlv8c" path="res://assets/terrain/sea.png" id="7_q51hi"]
+[ext_resource type="Texture2D" uid="uid://c0rc7mdr0oq3i" path="res://assets/terrain/sea_foam.png" id="8_5gxp1"]
+[ext_resource type="Texture2D" uid="uid://ualjyuqp43tg" path="res://assets/nature/dead_tree_a.png" id="8_dead_tree_a"]
+[ext_resource type="Texture2D" uid="uid://ck2vlsr3w3qb5" path="res://assets/nature/dead_tree_b.png" id="9_dead_tree_b"]
+[ext_resource type="Texture2D" uid="uid://cn1mblv6ya7v" path="res://assets/terrain/mountain.png" id="9_x1ymi"]
+[ext_resource type="Texture2D" uid="uid://uvlro4i08ufk" path="res://assets/nature/desert_rock_medium.png" id="10_desert_rock_medium"]
+[ext_resource type="Texture2D" uid="uid://bcmkbrbfjau53" path="res://assets/terrain/road_diagonal.png" id="10_x45ke"]
+[ext_resource type="Texture2D" uid="uid://b78ar8l7fn1tq" path="res://assets/terrain/sand_road_diagonal.png" id="11_d25qw"]
+[ext_resource type="Texture2D" uid="uid://8vxjfehkkc1x" path="res://assets/nature/desert_rock_small.png" id="11_desert_rock_small"]
+[ext_resource type="Texture2D" uid="uid://7cy35248ab6f" path="res://assets/nature/desert_rock_tiny.png" id="12_desert_rock_tiny"]
+[ext_resource type="Texture2D" uid="uid://c8rted50gvavw" path="res://assets/nature/dry_bush.png" id="13_dry_bush"]
+[ext_resource type="Texture2D" uid="uid://ohv7wgbaa683" path="res://assets/nature/flowers_pink.png" id="14_flowers_pink"]
+[ext_resource type="Texture2D" uid="uid://bb8vh5xj01w4b" path="res://assets/nature/flowers_white.png" id="15_flowers_white"]
+[ext_resource type="Texture2D" uid="uid://b3t66k73qno06" path="res://assets/nature/flowers_yellow.png" id="16_flowers_yellow"]
+[ext_resource type="Texture2D" uid="uid://d38keg0u6xomu" path="res://assets/nature/grass_tuft_a.png" id="17_grass_tuft_a"]
+[ext_resource type="Texture2D" uid="uid://bu1ve7uf7xhbj" path="res://assets/nature/grass_tuft_b.png" id="18_grass_tuft_b"]
+[ext_resource type="Texture2D" uid="uid://dotf46iml68ir" path="res://assets/nature/grass_tuft_c.png" id="19_grass_tuft_c"]
+[ext_resource type="Texture2D" uid="uid://c4mcbg7bx6a5g" path="res://assets/nature/pine_slim.png" id="20_pine_slim"]
+[ext_resource type="Texture2D" uid="uid://bmn870cmoji60" path="res://assets/nature/pine_tall.png" id="21_pine_tall"]
+[ext_resource type="Texture2D" uid="uid://c0tk6r2vpgn6q" path="res://assets/nature/rock_medium.png" id="23_rock_medium"]
+[ext_resource type="Texture2D" uid="uid://dgw8r1pmrr7j0" path="res://assets/nature/rock_small.png" id="24_rock_small"]
+[ext_resource type="Texture2D" uid="uid://bk4jptnsl2evm" path="res://assets/nature/rock_tiny.png" id="25_rock_tiny"]
+[ext_resource type="Texture2D" uid="uid://ctxu24rk2cq5k" path="res://assets/nature/skull.png" id="26_skull"]
+[ext_resource type="Texture2D" uid="uid://d3yslv6krikub" path="res://assets/nature/tree_oval.png" id="27_tree_oval"]
+[ext_resource type="Texture2D" uid="uid://cd1adb0fpgttu" path="res://assets/nature/tree_wide.png" id="29_tree_wide"]
+[ext_resource type="Texture2D" uid="uid://c7kkqfk6p2ajt" path="res://assets/nature/shell_clam.png" id="deco_shell_clam"]
+[ext_resource type="Texture2D" uid="uid://b6ypdn1b2dqnh" path="res://assets/nature/shell_scallop.png" id="deco_shell_scallop"]
+[ext_resource type="Script" uid="uid://l2tb1025kuqw" path="res://world/level_object.gd" id="obj_script"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_joyp0"]
+texture = ExtResource("2_j4jic")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dqmxr"]
+texture = ExtResource("3_41dwb")
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/top_left_corner = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/top_right_corner = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 0
+3:0/0/terrains_peering_bit/top_left_corner = 0
+3:0/0/terrains_peering_bit/top_right_corner = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/top_right_corner = 0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 0
+3:1/0/terrains_peering_bit/bottom_left_corner = 0
+3:1/0/terrains_peering_bit/top_left_corner = 0
+3:1/0/terrains_peering_bit/top_right_corner = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/bottom_right_corner = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/terrains_peering_bit/bottom_right_corner = 0
+1:2/0/terrains_peering_bit/top_left_corner = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/terrains_peering_bit/bottom_right_corner = 0
+2:2/0/terrains_peering_bit/top_right_corner = 0
+3:2/0 = 0
+3:2/0/terrain_set = 0
+3:2/0/terrain = 0
+3:2/0/terrains_peering_bit/bottom_right_corner = 0
+3:2/0/terrains_peering_bit/top_left_corner = 0
+3:2/0/terrains_peering_bit/top_right_corner = 0
+0:3/0 = 0
+0:3/0/terrain_set = 0
+0:3/0/terrain = 0
+0:3/0/terrains_peering_bit/bottom_right_corner = 0
+0:3/0/terrains_peering_bit/bottom_left_corner = 0
+1:3/0 = 0
+1:3/0/terrain_set = 0
+1:3/0/terrain = 0
+1:3/0/terrains_peering_bit/bottom_right_corner = 0
+1:3/0/terrains_peering_bit/bottom_left_corner = 0
+1:3/0/terrains_peering_bit/top_left_corner = 0
+2:3/0 = 0
+2:3/0/terrain_set = 0
+2:3/0/terrain = 0
+2:3/0/terrains_peering_bit/bottom_right_corner = 0
+2:3/0/terrains_peering_bit/bottom_left_corner = 0
+2:3/0/terrains_peering_bit/top_right_corner = 0
+3:3/0 = 0
+3:3/0/terrain_set = 0
+3:3/0/terrain = 0
+3:3/0/terrains_peering_bit/bottom_right_corner = 0
+3:3/0/terrains_peering_bit/bottom_left_corner = 0
+3:3/0/terrains_peering_bit/top_left_corner = 0
+3:3/0/terrains_peering_bit/top_right_corner = 0
+0:4/0 = 0
+0:4/0/terrain_set = 0
+0:4/0/terrain = 0
+0:4/0/probability = 0.25
+0:4/0/terrains_peering_bit/bottom_right_corner = 0
+0:4/0/terrains_peering_bit/bottom_left_corner = 0
+0:4/0/terrains_peering_bit/top_left_corner = 0
+0:4/0/terrains_peering_bit/top_right_corner = 0
+1:4/0 = 0
+1:4/0/terrain_set = 0
+1:4/0/terrain = 0
+1:4/0/probability = 0.25
+1:4/0/terrains_peering_bit/bottom_right_corner = 0
+1:4/0/terrains_peering_bit/bottom_left_corner = 0
+1:4/0/terrains_peering_bit/top_left_corner = 0
+1:4/0/terrains_peering_bit/top_right_corner = 0
+2:4/0 = 0
+2:4/0/terrain_set = 0
+2:4/0/terrain = 0
+2:4/0/probability = 0.25
+2:4/0/terrains_peering_bit/bottom_right_corner = 0
+2:4/0/terrains_peering_bit/bottom_left_corner = 0
+2:4/0/terrains_peering_bit/top_left_corner = 0
+2:4/0/terrains_peering_bit/top_right_corner = 0
+3:4/0 = 0
+3:4/0/terrain_set = 0
+3:4/0/terrain = 0
+3:4/0/probability = 0.25
+3:4/0/terrains_peering_bit/bottom_right_corner = 0
+3:4/0/terrains_peering_bit/bottom_left_corner = 0
+3:4/0/terrains_peering_bit/top_left_corner = 0
+3:4/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_symhl"]
+texture = ExtResource("4_42f48")
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 1
+1:0/0/terrains_peering_bit/top_left_corner = 1
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 1
+2:0/0/terrains_peering_bit/top_right_corner = 1
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 1
+3:0/0/terrains_peering_bit/top_left_corner = 1
+3:0/0/terrains_peering_bit/top_right_corner = 1
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 1
+0:1/0/terrains_peering_bit/bottom_left_corner = 1
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 1
+1:1/0/terrains_peering_bit/bottom_left_corner = 1
+1:1/0/terrains_peering_bit/top_left_corner = 1
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 1
+2:1/0/terrains_peering_bit/bottom_left_corner = 1
+2:1/0/terrains_peering_bit/top_right_corner = 1
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 1
+3:1/0/terrains_peering_bit/bottom_left_corner = 1
+3:1/0/terrains_peering_bit/top_left_corner = 1
+3:1/0/terrains_peering_bit/top_right_corner = 1
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 1
+0:2/0/terrains_peering_bit/bottom_right_corner = 1
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 1
+1:2/0/terrains_peering_bit/bottom_right_corner = 1
+1:2/0/terrains_peering_bit/top_left_corner = 1
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 1
+2:2/0/terrains_peering_bit/bottom_right_corner = 1
+2:2/0/terrains_peering_bit/top_right_corner = 1
+3:2/0 = 0
+3:2/0/terrain_set = 0
+3:2/0/terrain = 1
+3:2/0/terrains_peering_bit/bottom_right_corner = 1
+3:2/0/terrains_peering_bit/top_left_corner = 1
+3:2/0/terrains_peering_bit/top_right_corner = 1
+0:3/0 = 0
+0:3/0/terrain_set = 0
+0:3/0/terrain = 1
+0:3/0/terrains_peering_bit/bottom_right_corner = 1
+0:3/0/terrains_peering_bit/bottom_left_corner = 1
+1:3/0 = 0
+1:3/0/terrain_set = 0
+1:3/0/terrain = 1
+1:3/0/terrains_peering_bit/bottom_right_corner = 1
+1:3/0/terrains_peering_bit/bottom_left_corner = 1
+1:3/0/terrains_peering_bit/top_left_corner = 1
+2:3/0 = 0
+2:3/0/terrain_set = 0
+2:3/0/terrain = 1
+2:3/0/terrains_peering_bit/bottom_right_corner = 1
+2:3/0/terrains_peering_bit/bottom_left_corner = 1
+2:3/0/terrains_peering_bit/top_right_corner = 1
+3:3/0 = 0
+3:3/0/terrain_set = 0
+3:3/0/terrain = 1
+3:3/0/terrains_peering_bit/bottom_right_corner = 1
+3:3/0/terrains_peering_bit/bottom_left_corner = 1
+3:3/0/terrains_peering_bit/top_left_corner = 1
+3:3/0/terrains_peering_bit/top_right_corner = 1
+0:4/0 = 0
+0:4/0/terrain_set = 0
+0:4/0/terrain = 1
+0:4/0/probability = 0.25
+0:4/0/terrains_peering_bit/bottom_right_corner = 1
+0:4/0/terrains_peering_bit/bottom_left_corner = 1
+0:4/0/terrains_peering_bit/top_left_corner = 1
+0:4/0/terrains_peering_bit/top_right_corner = 1
+1:4/0 = 0
+1:4/0/terrain_set = 0
+1:4/0/terrain = 1
+1:4/0/probability = 0.25
+1:4/0/terrains_peering_bit/bottom_right_corner = 1
+1:4/0/terrains_peering_bit/bottom_left_corner = 1
+1:4/0/terrains_peering_bit/top_left_corner = 1
+1:4/0/terrains_peering_bit/top_right_corner = 1
+2:4/0 = 0
+2:4/0/terrain_set = 0
+2:4/0/terrain = 1
+2:4/0/probability = 0.25
+2:4/0/terrains_peering_bit/bottom_right_corner = 1
+2:4/0/terrains_peering_bit/bottom_left_corner = 1
+2:4/0/terrains_peering_bit/top_left_corner = 1
+2:4/0/terrains_peering_bit/top_right_corner = 1
+3:4/0 = 0
+3:4/0/terrain_set = 0
+3:4/0/terrain = 1
+3:4/0/probability = 0.25
+3:4/0/terrains_peering_bit/bottom_right_corner = 1
+3:4/0/terrains_peering_bit/bottom_left_corner = 1
+3:4/0/terrains_peering_bit/top_left_corner = 1
+3:4/0/terrains_peering_bit/top_right_corner = 1
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4keop"]
+texture = ExtResource("5_w0n63")
+1:0/0 = 0
+1:0/0/terrain_set = 1
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/top_left_corner = 0
+2:0/0 = 0
+2:0/0/terrain_set = 1
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/top_right_corner = 0
+3:0/0 = 0
+3:0/0/terrain_set = 1
+3:0/0/terrain = 0
+3:0/0/terrains_peering_bit/top_left_corner = 0
+3:0/0/terrains_peering_bit/top_right_corner = 0
+0:1/0 = 0
+0:1/0/terrain_set = 1
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 1
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 1
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/top_right_corner = 0
+3:1/0 = 0
+3:1/0/terrain_set = 1
+3:1/0/terrain = 0
+3:1/0/terrains_peering_bit/bottom_left_corner = 0
+3:1/0/terrains_peering_bit/top_left_corner = 0
+3:1/0/terrains_peering_bit/top_right_corner = 0
+0:2/0 = 0
+0:2/0/terrain_set = 1
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/bottom_right_corner = 0
+1:2/0 = 0
+1:2/0/terrain_set = 1
+1:2/0/terrain = 0
+1:2/0/terrains_peering_bit/bottom_right_corner = 0
+1:2/0/terrains_peering_bit/top_left_corner = 0
+2:2/0 = 0
+2:2/0/terrain_set = 1
+2:2/0/terrain = 0
+2:2/0/terrains_peering_bit/bottom_right_corner = 0
+2:2/0/terrains_peering_bit/top_right_corner = 0
+3:2/0 = 0
+3:2/0/terrain_set = 1
+3:2/0/terrain = 0
+3:2/0/terrains_peering_bit/bottom_right_corner = 0
+3:2/0/terrains_peering_bit/top_left_corner = 0
+3:2/0/terrains_peering_bit/top_right_corner = 0
+0:3/0 = 0
+0:3/0/terrain_set = 1
+0:3/0/terrain = 0
+0:3/0/terrains_peering_bit/bottom_right_corner = 0
+0:3/0/terrains_peering_bit/bottom_left_corner = 0
+1:3/0 = 0
+1:3/0/terrain_set = 1
+1:3/0/terrain = 0
+1:3/0/terrains_peering_bit/bottom_right_corner = 0
+1:3/0/terrains_peering_bit/bottom_left_corner = 0
+1:3/0/terrains_peering_bit/top_left_corner = 0
+2:3/0 = 0
+2:3/0/terrain_set = 1
+2:3/0/terrain = 0
+2:3/0/terrains_peering_bit/bottom_right_corner = 0
+2:3/0/terrains_peering_bit/bottom_left_corner = 0
+2:3/0/terrains_peering_bit/top_right_corner = 0
+3:3/0 = 0
+3:3/0/terrain_set = 1
+3:3/0/terrain = 0
+3:3/0/terrains_peering_bit/bottom_right_corner = 0
+3:3/0/terrains_peering_bit/bottom_left_corner = 0
+3:3/0/terrains_peering_bit/top_left_corner = 0
+3:3/0/terrains_peering_bit/top_right_corner = 0
+0:4/0 = 0
+0:4/0/terrain_set = 1
+0:4/0/terrain = 0
+0:4/0/probability = 0.25
+0:4/0/terrains_peering_bit/bottom_right_corner = 0
+0:4/0/terrains_peering_bit/bottom_left_corner = 0
+0:4/0/terrains_peering_bit/top_left_corner = 0
+0:4/0/terrains_peering_bit/top_right_corner = 0
+1:4/0 = 0
+1:4/0/terrain_set = 1
+1:4/0/terrain = 0
+1:4/0/probability = 0.25
+1:4/0/terrains_peering_bit/bottom_right_corner = 0
+1:4/0/terrains_peering_bit/bottom_left_corner = 0
+1:4/0/terrains_peering_bit/top_left_corner = 0
+1:4/0/terrains_peering_bit/top_right_corner = 0
+2:4/0 = 0
+2:4/0/terrain_set = 1
+2:4/0/terrain = 0
+2:4/0/probability = 0.25
+2:4/0/terrains_peering_bit/bottom_right_corner = 0
+2:4/0/terrains_peering_bit/bottom_left_corner = 0
+2:4/0/terrains_peering_bit/top_left_corner = 0
+2:4/0/terrains_peering_bit/top_right_corner = 0
+3:4/0 = 0
+3:4/0/terrain_set = 1
+3:4/0/terrain = 0
+3:4/0/probability = 0.25
+3:4/0/terrains_peering_bit/bottom_right_corner = 0
+3:4/0/terrains_peering_bit/bottom_left_corner = 0
+3:4/0/terrains_peering_bit/top_left_corner = 0
+3:4/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3yrdd"]
+texture = ExtResource("6_3v3bx")
+0:1/animation_speed = 4.0
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/animation_frame_2/duration = 1.0
+0:1/animation_frame_3/duration = 1.0
+0:1/0 = 0
+0:1/0/terrain_set = 2
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/top_left_corner = 0
+0:2/animation_speed = 4.0
+0:2/animation_frame_0/duration = 1.0
+0:2/animation_frame_1/duration = 1.0
+0:2/animation_frame_2/duration = 1.0
+0:2/animation_frame_3/duration = 1.0
+0:2/0 = 0
+0:2/0/terrain_set = 2
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/top_right_corner = 0
+0:3/animation_speed = 4.0
+0:3/animation_frame_0/duration = 1.0
+0:3/animation_frame_1/duration = 1.0
+0:3/animation_frame_2/duration = 1.0
+0:3/animation_frame_3/duration = 1.0
+0:3/0 = 0
+0:3/0/terrain_set = 2
+0:3/0/terrain = 0
+0:3/0/terrains_peering_bit/top_left_corner = 0
+0:3/0/terrains_peering_bit/top_right_corner = 0
+0:4/animation_speed = 4.0
+0:4/animation_frame_0/duration = 1.0
+0:4/animation_frame_1/duration = 1.0
+0:4/animation_frame_2/duration = 1.0
+0:4/animation_frame_3/duration = 1.0
+0:4/0 = 0
+0:4/0/terrain_set = 2
+0:4/0/terrain = 0
+0:4/0/terrains_peering_bit/bottom_left_corner = 0
+0:5/animation_speed = 4.0
+0:5/animation_frame_0/duration = 1.0
+0:5/animation_frame_1/duration = 1.0
+0:5/animation_frame_2/duration = 1.0
+0:5/animation_frame_3/duration = 1.0
+0:5/0 = 0
+0:5/0/terrain_set = 2
+0:5/0/terrain = 0
+0:5/0/terrains_peering_bit/bottom_left_corner = 0
+0:5/0/terrains_peering_bit/top_left_corner = 0
+0:6/animation_speed = 4.0
+0:6/animation_frame_0/duration = 1.0
+0:6/animation_frame_1/duration = 1.0
+0:6/animation_frame_2/duration = 1.0
+0:6/animation_frame_3/duration = 1.0
+0:6/0 = 0
+0:6/0/terrain_set = 2
+0:6/0/terrain = 0
+0:6/0/terrains_peering_bit/bottom_left_corner = 0
+0:6/0/terrains_peering_bit/top_right_corner = 0
+0:7/animation_speed = 4.0
+0:7/animation_frame_0/duration = 1.0
+0:7/animation_frame_1/duration = 1.0
+0:7/animation_frame_2/duration = 1.0
+0:7/animation_frame_3/duration = 1.0
+0:7/0 = 0
+0:7/0/terrain_set = 2
+0:7/0/terrain = 0
+0:7/0/terrains_peering_bit/bottom_left_corner = 0
+0:7/0/terrains_peering_bit/top_left_corner = 0
+0:7/0/terrains_peering_bit/top_right_corner = 0
+0:8/animation_speed = 4.0
+0:8/animation_frame_0/duration = 1.0
+0:8/animation_frame_1/duration = 1.0
+0:8/animation_frame_2/duration = 1.0
+0:8/animation_frame_3/duration = 1.0
+0:8/0 = 0
+0:8/0/terrain_set = 2
+0:8/0/terrain = 0
+0:8/0/terrains_peering_bit/bottom_right_corner = 0
+0:9/animation_speed = 4.0
+0:9/animation_frame_0/duration = 1.0
+0:9/animation_frame_1/duration = 1.0
+0:9/animation_frame_2/duration = 1.0
+0:9/animation_frame_3/duration = 1.0
+0:9/0 = 0
+0:9/0/terrain_set = 2
+0:9/0/terrain = 0
+0:9/0/terrains_peering_bit/bottom_right_corner = 0
+0:9/0/terrains_peering_bit/top_left_corner = 0
+0:10/animation_speed = 4.0
+0:10/animation_frame_0/duration = 1.0
+0:10/animation_frame_1/duration = 1.0
+0:10/animation_frame_2/duration = 1.0
+0:10/animation_frame_3/duration = 1.0
+0:10/0 = 0
+0:10/0/terrain_set = 2
+0:10/0/terrain = 0
+0:10/0/terrains_peering_bit/bottom_right_corner = 0
+0:10/0/terrains_peering_bit/top_right_corner = 0
+0:11/animation_speed = 4.0
+0:11/animation_frame_0/duration = 1.0
+0:11/animation_frame_1/duration = 1.0
+0:11/animation_frame_2/duration = 1.0
+0:11/animation_frame_3/duration = 1.0
+0:11/0 = 0
+0:11/0/terrain_set = 2
+0:11/0/terrain = 0
+0:11/0/terrains_peering_bit/bottom_right_corner = 0
+0:11/0/terrains_peering_bit/top_left_corner = 0
+0:11/0/terrains_peering_bit/top_right_corner = 0
+0:12/animation_speed = 4.0
+0:12/animation_frame_0/duration = 1.0
+0:12/animation_frame_1/duration = 1.0
+0:12/animation_frame_2/duration = 1.0
+0:12/animation_frame_3/duration = 1.0
+0:12/0 = 0
+0:12/0/terrain_set = 2
+0:12/0/terrain = 0
+0:12/0/terrains_peering_bit/bottom_right_corner = 0
+0:12/0/terrains_peering_bit/bottom_left_corner = 0
+0:13/animation_speed = 4.0
+0:13/animation_frame_0/duration = 1.0
+0:13/animation_frame_1/duration = 1.0
+0:13/animation_frame_2/duration = 1.0
+0:13/animation_frame_3/duration = 1.0
+0:13/0 = 0
+0:13/0/terrain_set = 2
+0:13/0/terrain = 0
+0:13/0/terrains_peering_bit/bottom_right_corner = 0
+0:13/0/terrains_peering_bit/bottom_left_corner = 0
+0:13/0/terrains_peering_bit/top_left_corner = 0
+0:14/animation_speed = 4.0
+0:14/animation_frame_0/duration = 1.0
+0:14/animation_frame_1/duration = 1.0
+0:14/animation_frame_2/duration = 1.0
+0:14/animation_frame_3/duration = 1.0
+0:14/0 = 0
+0:14/0/terrain_set = 2
+0:14/0/terrain = 0
+0:14/0/terrains_peering_bit/bottom_right_corner = 0
+0:14/0/terrains_peering_bit/bottom_left_corner = 0
+0:14/0/terrains_peering_bit/top_right_corner = 0
+0:15/animation_speed = 4.0
+0:15/animation_frame_0/duration = 1.0
+0:15/animation_frame_1/duration = 1.0
+0:15/animation_frame_2/duration = 1.0
+0:15/animation_frame_3/duration = 1.0
+0:15/0 = 0
+0:15/0/terrain_set = 2
+0:15/0/terrain = 0
+0:15/0/terrains_peering_bit/bottom_right_corner = 0
+0:15/0/terrains_peering_bit/bottom_left_corner = 0
+0:15/0/terrains_peering_bit/top_left_corner = 0
+0:15/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ccdmt"]
+texture = ExtResource("7_q51hi")
+0:1/animation_speed = 4.0
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/animation_frame_2/duration = 1.0
+0:1/animation_frame_3/duration = 1.0
+0:1/0 = 0
+0:1/0/terrain_set = 2
+0:1/0/terrain = 1
+0:1/0/terrains_peering_bit/top_left_corner = 1
+0:2/animation_speed = 4.0
+0:2/animation_frame_0/duration = 1.0
+0:2/animation_frame_1/duration = 1.0
+0:2/animation_frame_2/duration = 1.0
+0:2/animation_frame_3/duration = 1.0
+0:2/0 = 0
+0:2/0/terrain_set = 2
+0:2/0/terrain = 1
+0:2/0/terrains_peering_bit/top_right_corner = 1
+0:3/animation_speed = 4.0
+0:3/animation_frame_0/duration = 1.0
+0:3/animation_frame_1/duration = 1.0
+0:3/animation_frame_2/duration = 1.0
+0:3/animation_frame_3/duration = 1.0
+0:3/0 = 0
+0:3/0/terrain_set = 2
+0:3/0/terrain = 1
+0:3/0/terrains_peering_bit/top_left_corner = 1
+0:3/0/terrains_peering_bit/top_right_corner = 1
+0:4/animation_speed = 4.0
+0:4/animation_frame_0/duration = 1.0
+0:4/animation_frame_1/duration = 1.0
+0:4/animation_frame_2/duration = 1.0
+0:4/animation_frame_3/duration = 1.0
+0:4/0 = 0
+0:4/0/terrain_set = 2
+0:4/0/terrain = 1
+0:4/0/terrains_peering_bit/bottom_left_corner = 1
+0:5/animation_speed = 4.0
+0:5/animation_frame_0/duration = 1.0
+0:5/animation_frame_1/duration = 1.0
+0:5/animation_frame_2/duration = 1.0
+0:5/animation_frame_3/duration = 1.0
+0:5/0 = 0
+0:5/0/terrain_set = 2
+0:5/0/terrain = 1
+0:5/0/terrains_peering_bit/bottom_left_corner = 1
+0:5/0/terrains_peering_bit/top_left_corner = 1
+0:6/animation_speed = 4.0
+0:6/animation_frame_0/duration = 1.0
+0:6/animation_frame_1/duration = 1.0
+0:6/animation_frame_2/duration = 1.0
+0:6/animation_frame_3/duration = 1.0
+0:6/0 = 0
+0:6/0/terrain_set = 2
+0:6/0/terrain = 1
+0:6/0/terrains_peering_bit/bottom_left_corner = 1
+0:6/0/terrains_peering_bit/top_right_corner = 1
+0:7/animation_speed = 4.0
+0:7/animation_frame_0/duration = 1.0
+0:7/animation_frame_1/duration = 1.0
+0:7/animation_frame_2/duration = 1.0
+0:7/animation_frame_3/duration = 1.0
+0:7/0 = 0
+0:7/0/terrain_set = 2
+0:7/0/terrain = 1
+0:7/0/terrains_peering_bit/bottom_left_corner = 1
+0:7/0/terrains_peering_bit/top_left_corner = 1
+0:7/0/terrains_peering_bit/top_right_corner = 1
+0:8/animation_speed = 4.0
+0:8/animation_frame_0/duration = 1.0
+0:8/animation_frame_1/duration = 1.0
+0:8/animation_frame_2/duration = 1.0
+0:8/animation_frame_3/duration = 1.0
+0:8/0 = 0
+0:8/0/terrain_set = 2
+0:8/0/terrain = 1
+0:8/0/terrains_peering_bit/bottom_right_corner = 1
+0:9/animation_speed = 4.0
+0:9/animation_frame_0/duration = 1.0
+0:9/animation_frame_1/duration = 1.0
+0:9/animation_frame_2/duration = 1.0
+0:9/animation_frame_3/duration = 1.0
+0:9/0 = 0
+0:9/0/terrain_set = 2
+0:9/0/terrain = 1
+0:9/0/terrains_peering_bit/bottom_right_corner = 1
+0:9/0/terrains_peering_bit/top_left_corner = 1
+0:10/animation_speed = 4.0
+0:10/animation_frame_0/duration = 1.0
+0:10/animation_frame_1/duration = 1.0
+0:10/animation_frame_2/duration = 1.0
+0:10/animation_frame_3/duration = 1.0
+0:10/0 = 0
+0:10/0/terrain_set = 2
+0:10/0/terrain = 1
+0:10/0/terrains_peering_bit/bottom_right_corner = 1
+0:10/0/terrains_peering_bit/top_right_corner = 1
+0:11/animation_speed = 4.0
+0:11/animation_frame_0/duration = 1.0
+0:11/animation_frame_1/duration = 1.0
+0:11/animation_frame_2/duration = 1.0
+0:11/animation_frame_3/duration = 1.0
+0:11/0 = 0
+0:11/0/terrain_set = 2
+0:11/0/terrain = 1
+0:11/0/terrains_peering_bit/bottom_right_corner = 1
+0:11/0/terrains_peering_bit/top_left_corner = 1
+0:11/0/terrains_peering_bit/top_right_corner = 1
+0:12/animation_speed = 4.0
+0:12/animation_frame_0/duration = 1.0
+0:12/animation_frame_1/duration = 1.0
+0:12/animation_frame_2/duration = 1.0
+0:12/animation_frame_3/duration = 1.0
+0:12/0 = 0
+0:12/0/terrain_set = 2
+0:12/0/terrain = 1
+0:12/0/terrains_peering_bit/bottom_right_corner = 1
+0:12/0/terrains_peering_bit/bottom_left_corner = 1
+0:13/animation_speed = 4.0
+0:13/animation_frame_0/duration = 1.0
+0:13/animation_frame_1/duration = 1.0
+0:13/animation_frame_2/duration = 1.0
+0:13/animation_frame_3/duration = 1.0
+0:13/0 = 0
+0:13/0/terrain_set = 2
+0:13/0/terrain = 1
+0:13/0/terrains_peering_bit/bottom_right_corner = 1
+0:13/0/terrains_peering_bit/bottom_left_corner = 1
+0:13/0/terrains_peering_bit/top_left_corner = 1
+0:14/animation_speed = 4.0
+0:14/animation_frame_0/duration = 1.0
+0:14/animation_frame_1/duration = 1.0
+0:14/animation_frame_2/duration = 1.0
+0:14/animation_frame_3/duration = 1.0
+0:14/0 = 0
+0:14/0/terrain_set = 2
+0:14/0/terrain = 1
+0:14/0/terrains_peering_bit/bottom_right_corner = 1
+0:14/0/terrains_peering_bit/bottom_left_corner = 1
+0:14/0/terrains_peering_bit/top_right_corner = 1
+0:15/animation_speed = 4.0
+0:15/animation_frame_0/duration = 1.0
+0:15/animation_frame_1/duration = 1.0
+0:15/animation_frame_2/duration = 1.0
+0:15/animation_frame_3/duration = 1.0
+0:15/0 = 0
+0:15/0/terrain_set = 2
+0:15/0/terrain = 1
+0:15/0/terrains_peering_bit/bottom_right_corner = 1
+0:15/0/terrains_peering_bit/bottom_left_corner = 1
+0:15/0/terrains_peering_bit/top_left_corner = 1
+0:15/0/terrains_peering_bit/top_right_corner = 1
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_17uxu"]
+texture = ExtResource("8_5gxp1")
+0:1/animation_speed = 4.0
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/animation_frame_2/duration = 1.0
+0:1/animation_frame_3/duration = 1.0
+0:1/0 = 0
+0:1/0/terrain_set = 3
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/top_left_corner = 0
+0:2/animation_speed = 4.0
+0:2/animation_frame_0/duration = 1.0
+0:2/animation_frame_1/duration = 1.0
+0:2/animation_frame_2/duration = 1.0
+0:2/animation_frame_3/duration = 1.0
+0:2/0 = 0
+0:2/0/terrain_set = 3
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/top_right_corner = 0
+0:3/animation_speed = 4.0
+0:3/animation_frame_0/duration = 1.0
+0:3/animation_frame_1/duration = 1.0
+0:3/animation_frame_2/duration = 1.0
+0:3/animation_frame_3/duration = 1.0
+0:3/0 = 0
+0:3/0/terrain_set = 3
+0:3/0/terrain = 0
+0:3/0/terrains_peering_bit/top_left_corner = 0
+0:3/0/terrains_peering_bit/top_right_corner = 0
+0:4/animation_speed = 4.0
+0:4/animation_frame_0/duration = 1.0
+0:4/animation_frame_1/duration = 1.0
+0:4/animation_frame_2/duration = 1.0
+0:4/animation_frame_3/duration = 1.0
+0:4/0 = 0
+0:4/0/terrain_set = 3
+0:4/0/terrain = 0
+0:4/0/terrains_peering_bit/bottom_left_corner = 0
+0:5/animation_speed = 4.0
+0:5/animation_frame_0/duration = 1.0
+0:5/animation_frame_1/duration = 1.0
+0:5/animation_frame_2/duration = 1.0
+0:5/animation_frame_3/duration = 1.0
+0:5/0 = 0
+0:5/0/terrain_set = 3
+0:5/0/terrain = 0
+0:5/0/terrains_peering_bit/bottom_left_corner = 0
+0:5/0/terrains_peering_bit/top_left_corner = 0
+0:6/animation_speed = 4.0
+0:6/animation_frame_0/duration = 1.0
+0:6/animation_frame_1/duration = 1.0
+0:6/animation_frame_2/duration = 1.0
+0:6/animation_frame_3/duration = 1.0
+0:6/0 = 0
+0:6/0/terrain_set = 3
+0:6/0/terrain = 0
+0:6/0/terrains_peering_bit/bottom_left_corner = 0
+0:6/0/terrains_peering_bit/top_right_corner = 0
+0:7/animation_speed = 4.0
+0:7/animation_frame_0/duration = 1.0
+0:7/animation_frame_1/duration = 1.0
+0:7/animation_frame_2/duration = 1.0
+0:7/animation_frame_3/duration = 1.0
+0:7/0 = 0
+0:7/0/terrain_set = 3
+0:7/0/terrain = 0
+0:7/0/terrains_peering_bit/bottom_left_corner = 0
+0:7/0/terrains_peering_bit/top_left_corner = 0
+0:7/0/terrains_peering_bit/top_right_corner = 0
+0:8/animation_speed = 4.0
+0:8/animation_frame_0/duration = 1.0
+0:8/animation_frame_1/duration = 1.0
+0:8/animation_frame_2/duration = 1.0
+0:8/animation_frame_3/duration = 1.0
+0:8/0 = 0
+0:8/0/terrain_set = 3
+0:8/0/terrain = 0
+0:8/0/terrains_peering_bit/bottom_right_corner = 0
+0:9/animation_speed = 4.0
+0:9/animation_frame_0/duration = 1.0
+0:9/animation_frame_1/duration = 1.0
+0:9/animation_frame_2/duration = 1.0
+0:9/animation_frame_3/duration = 1.0
+0:9/0 = 0
+0:9/0/terrain_set = 3
+0:9/0/terrain = 0
+0:9/0/terrains_peering_bit/bottom_right_corner = 0
+0:9/0/terrains_peering_bit/top_left_corner = 0
+0:10/animation_speed = 4.0
+0:10/animation_frame_0/duration = 1.0
+0:10/animation_frame_1/duration = 1.0
+0:10/animation_frame_2/duration = 1.0
+0:10/animation_frame_3/duration = 1.0
+0:10/0 = 0
+0:10/0/terrain_set = 3
+0:10/0/terrain = 0
+0:10/0/terrains_peering_bit/bottom_right_corner = 0
+0:10/0/terrains_peering_bit/top_right_corner = 0
+0:11/animation_speed = 4.0
+0:11/animation_frame_0/duration = 1.0
+0:11/animation_frame_1/duration = 1.0
+0:11/animation_frame_2/duration = 1.0
+0:11/animation_frame_3/duration = 1.0
+0:11/0 = 0
+0:11/0/terrain_set = 3
+0:11/0/terrain = 0
+0:11/0/terrains_peering_bit/bottom_right_corner = 0
+0:11/0/terrains_peering_bit/top_left_corner = 0
+0:11/0/terrains_peering_bit/top_right_corner = 0
+0:12/animation_speed = 4.0
+0:12/animation_frame_0/duration = 1.0
+0:12/animation_frame_1/duration = 1.0
+0:12/animation_frame_2/duration = 1.0
+0:12/animation_frame_3/duration = 1.0
+0:12/0 = 0
+0:12/0/terrain_set = 3
+0:12/0/terrain = 0
+0:12/0/terrains_peering_bit/bottom_right_corner = 0
+0:12/0/terrains_peering_bit/bottom_left_corner = 0
+0:13/animation_speed = 4.0
+0:13/animation_frame_0/duration = 1.0
+0:13/animation_frame_1/duration = 1.0
+0:13/animation_frame_2/duration = 1.0
+0:13/animation_frame_3/duration = 1.0
+0:13/0 = 0
+0:13/0/terrain_set = 3
+0:13/0/terrain = 0
+0:13/0/terrains_peering_bit/bottom_right_corner = 0
+0:13/0/terrains_peering_bit/bottom_left_corner = 0
+0:13/0/terrains_peering_bit/top_left_corner = 0
+0:14/animation_speed = 4.0
+0:14/animation_frame_0/duration = 1.0
+0:14/animation_frame_1/duration = 1.0
+0:14/animation_frame_2/duration = 1.0
+0:14/animation_frame_3/duration = 1.0
+0:14/0 = 0
+0:14/0/terrain_set = 3
+0:14/0/terrain = 0
+0:14/0/terrains_peering_bit/bottom_right_corner = 0
+0:14/0/terrains_peering_bit/bottom_left_corner = 0
+0:14/0/terrains_peering_bit/top_right_corner = 0
+0:15/animation_speed = 4.0
+0:15/animation_frame_0/duration = 1.0
+0:15/animation_frame_1/duration = 1.0
+0:15/animation_frame_2/duration = 1.0
+0:15/animation_frame_3/duration = 1.0
+0:15/0 = 0
+0:15/0/terrain_set = 3
+0:15/0/terrain = 0
+0:15/0/terrains_peering_bit/bottom_right_corner = 0
+0:15/0/terrains_peering_bit/bottom_left_corner = 0
+0:15/0/terrains_peering_bit/top_left_corner = 0
+0:15/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jgin7"]
+texture = ExtResource("9_x1ymi")
+1:0/0 = 0
+1:0/0/terrain_set = 4
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/top_left_corner = 0
+2:0/0 = 0
+2:0/0/terrain_set = 4
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/top_right_corner = 0
+3:0/0 = 0
+3:0/0/terrain_set = 4
+3:0/0/terrain = 0
+3:0/0/terrains_peering_bit/top_left_corner = 0
+3:0/0/terrains_peering_bit/top_right_corner = 0
+0:1/0 = 0
+0:1/0/terrain_set = 4
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 4
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 4
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/top_right_corner = 0
+3:1/0 = 0
+3:1/0/terrain_set = 4
+3:1/0/terrain = 0
+3:1/0/terrains_peering_bit/bottom_left_corner = 0
+3:1/0/terrains_peering_bit/top_left_corner = 0
+3:1/0/terrains_peering_bit/top_right_corner = 0
+0:2/0 = 0
+0:2/0/terrain_set = 4
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/bottom_right_corner = 0
+1:2/0 = 0
+1:2/0/terrain_set = 4
+1:2/0/terrain = 0
+1:2/0/terrains_peering_bit/bottom_right_corner = 0
+1:2/0/terrains_peering_bit/top_left_corner = 0
+2:2/0 = 0
+2:2/0/terrain_set = 4
+2:2/0/terrain = 0
+2:2/0/terrains_peering_bit/bottom_right_corner = 0
+2:2/0/terrains_peering_bit/top_right_corner = 0
+3:2/0 = 0
+3:2/0/terrain_set = 4
+3:2/0/terrain = 0
+3:2/0/terrains_peering_bit/bottom_right_corner = 0
+3:2/0/terrains_peering_bit/top_left_corner = 0
+3:2/0/terrains_peering_bit/top_right_corner = 0
+0:3/0 = 0
+0:3/0/terrain_set = 4
+0:3/0/terrain = 0
+0:3/0/terrains_peering_bit/bottom_right_corner = 0
+0:3/0/terrains_peering_bit/bottom_left_corner = 0
+1:3/0 = 0
+1:3/0/terrain_set = 4
+1:3/0/terrain = 0
+1:3/0/terrains_peering_bit/bottom_right_corner = 0
+1:3/0/terrains_peering_bit/bottom_left_corner = 0
+1:3/0/terrains_peering_bit/top_left_corner = 0
+2:3/0 = 0
+2:3/0/terrain_set = 4
+2:3/0/terrain = 0
+2:3/0/terrains_peering_bit/bottom_right_corner = 0
+2:3/0/terrains_peering_bit/bottom_left_corner = 0
+2:3/0/terrains_peering_bit/top_right_corner = 0
+3:3/0 = 0
+3:3/0/terrain_set = 4
+3:3/0/terrain = 0
+3:3/0/terrains_peering_bit/bottom_right_corner = 0
+3:3/0/terrains_peering_bit/bottom_left_corner = 0
+3:3/0/terrains_peering_bit/top_left_corner = 0
+3:3/0/terrains_peering_bit/top_right_corner = 0
+0:4/0 = 0
+0:4/0/terrain_set = 4
+0:4/0/terrain = 0
+0:4/0/probability = 0.25
+0:4/0/terrains_peering_bit/bottom_right_corner = 0
+0:4/0/terrains_peering_bit/bottom_left_corner = 0
+0:4/0/terrains_peering_bit/top_left_corner = 0
+0:4/0/terrains_peering_bit/top_right_corner = 0
+1:4/0 = 0
+1:4/0/terrain_set = 4
+1:4/0/terrain = 0
+1:4/0/probability = 0.25
+1:4/0/terrains_peering_bit/bottom_right_corner = 0
+1:4/0/terrains_peering_bit/bottom_left_corner = 0
+1:4/0/terrains_peering_bit/top_left_corner = 0
+1:4/0/terrains_peering_bit/top_right_corner = 0
+2:4/0 = 0
+2:4/0/terrain_set = 4
+2:4/0/terrain = 0
+2:4/0/probability = 0.25
+2:4/0/terrains_peering_bit/bottom_right_corner = 0
+2:4/0/terrains_peering_bit/bottom_left_corner = 0
+2:4/0/terrains_peering_bit/top_left_corner = 0
+2:4/0/terrains_peering_bit/top_right_corner = 0
+3:4/0 = 0
+3:4/0/terrain_set = 4
+3:4/0/terrain = 0
+3:4/0/probability = 0.25
+3:4/0/terrains_peering_bit/bottom_right_corner = 0
+3:4/0/terrains_peering_bit/bottom_left_corner = 0
+3:4/0/terrains_peering_bit/top_left_corner = 0
+3:4/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2js5s"]
+texture = ExtResource("10_x45ke")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d0rjm"]
+texture = ExtResource("11_d25qw")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4oauf"]
+terrain_set_0/mode = 1
+terrain_set_0/terrain_0/name = "Droga"
+terrain_set_0/terrain_0/color = Color(0.65, 0.5, 0.35, 1)
+terrain_set_0/terrain_1/name = "Droga na piasku"
+terrain_set_0/terrain_1/color = Color(0.45499998, 0.35, 0.24499999, 1)
+terrain_set_1/mode = 1
+terrain_set_1/terrain_0/name = "Piasek"
+terrain_set_1/terrain_0/color = Color(0.95, 0.75, 0.35, 1)
+terrain_set_2/mode = 1
+terrain_set_2/terrain_0/name = "Woda"
+terrain_set_2/terrain_0/color = Color(0.3, 0.5, 0.95, 1)
+terrain_set_2/terrain_1/name = "Morze"
+terrain_set_2/terrain_1/color = Color(0.21000001, 0.35, 0.66499996, 1)
+terrain_set_3/mode = 1
+terrain_set_3/terrain_0/name = "Piana"
+terrain_set_3/terrain_0/color = Color(0.9, 0.95, 1, 1)
+terrain_set_4/mode = 1
+terrain_set_4/terrain_0/name = "Góry"
+terrain_set_4/terrain_0/color = Color(0.5, 0.45, 0.55, 1)
+sources/0 = SubResource("TileSetAtlasSource_joyp0")
+sources/1 = SubResource("TileSetAtlasSource_dqmxr")
+sources/2 = SubResource("TileSetAtlasSource_symhl")
+sources/3 = SubResource("TileSetAtlasSource_4keop")
+sources/4 = SubResource("TileSetAtlasSource_3yrdd")
+sources/5 = SubResource("TileSetAtlasSource_ccdmt")
+sources/6 = SubResource("TileSetAtlasSource_17uxu")
+sources/7 = SubResource("TileSetAtlasSource_jgin7")
+sources/8 = SubResource("TileSetAtlasSource_2js5s")
+sources/9 = SubResource("TileSetAtlasSource_d0rjm")
 
 [sub_resource type="Curve2D" id="Curve2D_trasa1"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -40, 80, 0, 0, 0, 0, 304, 80, 0, 0, 0, 0, 304, 400, 0, 0, 0, 0, 624, 400, 0, 0, 0, 0, 624, 592, 0, 0, 0, 0, 1072, 592, 0, 0, 0, 0, 1072, 80, 0, 0, 0, 0, 1320, 80)
+"points": PackedVector2Array(0, 0, 0, 0, -40, 100, 0, 0, 0, 0, 80, 100, 0, 0, 0, 0, 185, 104, 0, 0, 0, 0, 255, 125, 0, 0, 0, 0, 293, 180, 0, 0, 0, 0, 300, 260, 0, 0, 0, 0, 293, 340, 0, 0, 0, 0, 308, 410, 0, 0, 0, 0, 352, 450, 0, 0, 0, 0, 430, 460, 0, 0, 0, 0, 520, 450, 0, 0, 0, 0, 605, 465, 0, 0, 0, 0, 670, 510, 0, 0, 0, 0, 725, 562, 0, 0, 0, 0, 782, 598, 0, 0, 0, 0, 850, 622, 0, 0, 0, 0, 935, 618, 0, 0, 0, 0, 1003, 582, 0, 0, 0, 0, 1045, 510, 0, 0, 0, 0, 1052, 425, 0, 0, 0, 0, 1032, 345, 0, 0, 0, 0, 990, 282, 0, 0, 0, 0, 958, 215, 0, 0, 0, 0, 958, 152, 0, 0, 0, 0, 990, 112, 0, 0, 0, 0, 1045, 100, 0, 0, 0, 0, 1100, 100, 0, 0, 0, 0, 1290, 100, 0, 0, 0, 0, 1320, 100)
 }
-point_count = 8
+point_count = 29
 
 [sub_resource type="Curve2D" id="Curve2D_trasa2"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 720, -40, 0, 0, 0, 0, 720, 592, 0, 0, 0, 0, 1072, 592, 0, 0, 0, 0, 1072, 80, 0, 0, 0, 0, 1320, 80)
+"points": PackedVector2Array(0, 0, 0, 0, 723, -40, 0, 0, 0, 0, 723, 20, 0, 0, 0, 0, 702, 75, 0, 0, 0, 0, 652, 118, 0, 0, 0, 0, 608, 178, 0, 0, 0, 0, 600, 252, 0, 0, 0, 0, 626, 322, 0, 0, 0, 0, 680, 388, 0, 0, 0, 0, 733, 455, 0, 0, 0, 0, 765, 535, 0, 0, 0, 0, 782, 598, 0, 0, 0, 0, 850, 622, 0, 0, 0, 0, 935, 618, 0, 0, 0, 0, 1003, 582, 0, 0, 0, 0, 1045, 510, 0, 0, 0, 0, 1052, 425, 0, 0, 0, 0, 1032, 345, 0, 0, 0, 0, 990, 282, 0, 0, 0, 0, 958, 215, 0, 0, 0, 0, 958, 152, 0, 0, 0, 0, 990, 112, 0, 0, 0, 0, 1045, 100, 0, 0, 0, 0, 1100, 100, 0, 0, 0, 0, 1290, 100, 0, 0, 0, 0, 1320, 100)
 }
-point_count = 5
+point_count = 25
 
-[node name="Level06" type="Node2D"]
+[node name="Level06" type="Node2D" unique_id=1897757349]
 texture_filter = 1
 script = ExtResource("1_script")
 
-[node name="Trawa" type="TileMapLayer" parent="."]
+[node name="Trawa" type="TileMapLayer" parent="." unique_id=1483903696]
 scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAACAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAABAAAAAAAGAAAAAAACAAAAAAAHAAAAAAADAAAAAAAIAAAAAAADAAAAAAAJAAAAAAADAAAAAAAKAAAAAAABAAAAAAALAAAAAAADAAAAAAAMAAAAAAACAAAAAAANAAAAAAADAAAAAAAOAAAAAAABAAAAAAAPAAAAAAACAAAAAAAQAAAAAAACAAAAAAARAAAAAAABAAAAAAASAAAAAAADAAAAAAATAAAAAAAAAAAAAAAUAAAAAAACAAAAAAAVAAAAAAADAAAAAAAWAAAAAAACAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAACAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAABAAAAAAAdAAAAAAADAAAAAAAeAAAAAAACAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAADAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAABAAAAAAAlAAAAAAADAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAADAAAAAAAAAAEAAAADAAAAAAABAAEAAAACAAAAAAACAAEAAAADAAAAAAADAAEAAAADAAAAAAAEAAEAAAACAAAAAAAFAAEAAAADAAAAAAAGAAEAAAACAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAACAAAAAAAJAAEAAAACAAAAAAAKAAEAAAABAAAAAAALAAEAAAABAAAAAAAMAAEAAAACAAAAAAANAAEAAAADAAAAAAAOAAEAAAABAAAAAAAPAAEAAAACAAAAAAAQAAEAAAAAAAAAAAARAAEAAAABAAAAAAASAAEAAAABAAAAAAATAAEAAAADAAAAAAAUAAEAAAACAAAAAAAVAAEAAAABAAAAAAAWAAEAAAAAAAAAAAAXAAEAAAACAAAAAAAYAAEAAAACAAAAAAAZAAEAAAAAAAAAAAAaAAEAAAABAAAAAAAbAAEAAAACAAAAAAAcAAEAAAAAAAAAAAAdAAEAAAAAAAAAAAAeAAEAAAACAAAAAAAfAAEAAAADAAAAAAAgAAEAAAADAAAAAAAhAAEAAAAAAAAAAAAiAAEAAAABAAAAAAAjAAEAAAABAAAAAAAkAAEAAAADAAAAAAAlAAEAAAACAAAAAAAmAAEAAAACAAAAAAAnAAEAAAAAAAAAAAAAAAIAAAADAAAAAAABAAIAAAACAAAAAAACAAIAAAADAAAAAAADAAIAAAACAAAAAAAEAAIAAAADAAAAAAAFAAIAAAACAAAAAAAGAAIAAAACAAAAAAAHAAIAAAABAAAAAAAIAAIAAAAAAAAAAAAJAAIAAAADAAAAAAAKAAIAAAADAAAAAAALAAIAAAADAAAAAAAMAAIAAAADAAAAAAANAAIAAAACAAAAAAAOAAIAAAAAAAAAAAAPAAIAAAABAAAAAAAQAAIAAAACAAAAAAARAAIAAAADAAAAAAASAAIAAAADAAAAAAATAAIAAAACAAAAAAAUAAIAAAACAAAAAAAVAAIAAAABAAAAAAAWAAIAAAABAAAAAAAXAAIAAAADAAAAAAAYAAIAAAACAAAAAAAZAAIAAAABAAAAAAAaAAIAAAAAAAAAAAAbAAIAAAADAAAAAAAcAAIAAAABAAAAAAAdAAIAAAABAAAAAAAeAAIAAAADAAAAAAAfAAIAAAABAAAAAAAgAAIAAAACAAAAAAAhAAIAAAADAAAAAAAiAAIAAAAAAAAAAAAjAAIAAAAAAAAAAAAkAAIAAAACAAAAAAAlAAIAAAACAAAAAAAmAAIAAAADAAAAAAAnAAIAAAACAAAAAAAAAAMAAAABAAAAAAABAAMAAAACAAAAAAACAAMAAAADAAAAAAADAAMAAAAAAAAAAAAEAAMAAAACAAAAAAAFAAMAAAABAAAAAAAGAAMAAAADAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAABAAAAAAAJAAMAAAADAAAAAAAKAAMAAAABAAAAAAALAAMAAAACAAAAAAAMAAMAAAAAAAAAAAANAAMAAAADAAAAAAAOAAMAAAABAAAAAAAPAAMAAAACAAAAAAAQAAMAAAADAAAAAAARAAMAAAABAAAAAAASAAMAAAACAAAAAAATAAMAAAABAAAAAAAUAAMAAAACAAAAAAAVAAMAAAAAAAAAAAAWAAMAAAACAAAAAAAXAAMAAAAAAAAAAAAYAAMAAAAAAAAAAAAZAAMAAAACAAAAAAAaAAMAAAADAAAAAAAbAAMAAAACAAAAAAAcAAMAAAAAAAAAAAAdAAMAAAAAAAAAAAAeAAMAAAACAAAAAAAfAAMAAAACAAAAAAAgAAMAAAADAAAAAAAhAAMAAAACAAAAAAAiAAMAAAACAAAAAAAjAAMAAAAAAAAAAAAkAAMAAAADAAAAAAAlAAMAAAABAAAAAAAmAAMAAAABAAAAAAAnAAMAAAACAAAAAAAAAAQAAAACAAAAAAABAAQAAAABAAAAAAACAAQAAAADAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAABAAAAAAAGAAQAAAADAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAADAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAADAAAAAAALAAQAAAABAAAAAAAMAAQAAAAAAAAAAAANAAQAAAABAAAAAAAOAAQAAAABAAAAAAAPAAQAAAADAAAAAAAQAAQAAAABAAAAAAARAAQAAAAAAAAAAAASAAQAAAACAAAAAAATAAQAAAADAAAAAAAUAAQAAAADAAAAAAAVAAQAAAABAAAAAAAWAAQAAAADAAAAAAAXAAQAAAABAAAAAAAYAAQAAAAAAAAAAAAZAAQAAAAAAAAAAAAaAAQAAAADAAAAAAAbAAQAAAACAAAAAAAcAAQAAAABAAAAAAAdAAQAAAAAAAAAAAAeAAQAAAADAAAAAAAfAAQAAAACAAAAAAAgAAQAAAADAAAAAAAhAAQAAAADAAAAAAAiAAQAAAABAAAAAAAjAAQAAAABAAAAAAAkAAQAAAADAAAAAAAlAAQAAAADAAAAAAAmAAQAAAABAAAAAAAnAAQAAAACAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAABAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAABAAAAAAAGAAUAAAADAAAAAAAHAAUAAAACAAAAAAAIAAUAAAABAAAAAAAJAAUAAAACAAAAAAAKAAUAAAABAAAAAAALAAUAAAACAAAAAAAMAAUAAAABAAAAAAANAAUAAAACAAAAAAAOAAUAAAADAAAAAAAPAAUAAAADAAAAAAAQAAUAAAACAAAAAAARAAUAAAABAAAAAAASAAUAAAADAAAAAAATAAUAAAABAAAAAAAUAAUAAAABAAAAAAAVAAUAAAABAAAAAAAWAAUAAAADAAAAAAAXAAUAAAADAAAAAAAYAAUAAAACAAAAAAAZAAUAAAAAAAAAAAAaAAUAAAAAAAAAAAAbAAUAAAAAAAAAAAAcAAUAAAAAAAAAAAAdAAUAAAAAAAAAAAAeAAUAAAACAAAAAAAfAAUAAAABAAAAAAAgAAUAAAABAAAAAAAhAAUAAAABAAAAAAAiAAUAAAACAAAAAAAjAAUAAAAAAAAAAAAkAAUAAAABAAAAAAAlAAUAAAAAAAAAAAAmAAUAAAABAAAAAAAnAAUAAAACAAAAAAAAAAYAAAADAAAAAAABAAYAAAACAAAAAAACAAYAAAABAAAAAAADAAYAAAABAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAACAAAAAAAGAAYAAAABAAAAAAAHAAYAAAADAAAAAAAIAAYAAAACAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAABAAAAAAAMAAYAAAADAAAAAAANAAYAAAACAAAAAAAOAAYAAAACAAAAAAAPAAYAAAADAAAAAAAQAAYAAAACAAAAAAARAAYAAAAAAAAAAAASAAYAAAAAAAAAAAATAAYAAAACAAAAAAAUAAYAAAACAAAAAAAVAAYAAAAAAAAAAAAWAAYAAAAAAAAAAAAXAAYAAAADAAAAAAAYAAYAAAADAAAAAAAZAAYAAAAAAAAAAAAaAAYAAAACAAAAAAAbAAYAAAACAAAAAAAcAAYAAAAAAAAAAAAdAAYAAAAAAAAAAAAeAAYAAAAAAAAAAAAfAAYAAAAAAAAAAAAgAAYAAAACAAAAAAAhAAYAAAADAAAAAAAiAAYAAAACAAAAAAAjAAYAAAADAAAAAAAkAAYAAAADAAAAAAAlAAYAAAAAAAAAAAAmAAYAAAACAAAAAAAnAAYAAAADAAAAAAAAAAcAAAABAAAAAAABAAcAAAADAAAAAAACAAcAAAADAAAAAAADAAcAAAADAAAAAAAEAAcAAAACAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAADAAAAAAAHAAcAAAADAAAAAAAIAAcAAAADAAAAAAAJAAcAAAACAAAAAAAKAAcAAAACAAAAAAALAAcAAAAAAAAAAAAMAAcAAAADAAAAAAANAAcAAAABAAAAAAAOAAcAAAADAAAAAAAPAAcAAAADAAAAAAAQAAcAAAACAAAAAAARAAcAAAACAAAAAAASAAcAAAAAAAAAAAATAAcAAAACAAAAAAAUAAcAAAADAAAAAAAVAAcAAAADAAAAAAAWAAcAAAABAAAAAAAXAAcAAAACAAAAAAAYAAcAAAABAAAAAAAZAAcAAAABAAAAAAAaAAcAAAABAAAAAAAbAAcAAAACAAAAAAAcAAcAAAADAAAAAAAdAAcAAAACAAAAAAAeAAcAAAABAAAAAAAfAAcAAAACAAAAAAAgAAcAAAADAAAAAAAhAAcAAAACAAAAAAAiAAcAAAACAAAAAAAjAAcAAAABAAAAAAAkAAcAAAADAAAAAAAlAAcAAAACAAAAAAAmAAcAAAABAAAAAAAnAAcAAAADAAAAAAAAAAgAAAAAAAAAAAABAAgAAAABAAAAAAACAAgAAAADAAAAAAADAAgAAAADAAAAAAAEAAgAAAACAAAAAAAFAAgAAAADAAAAAAAGAAgAAAABAAAAAAAHAAgAAAADAAAAAAAIAAgAAAADAAAAAAAJAAgAAAABAAAAAAAKAAgAAAACAAAAAAALAAgAAAADAAAAAAAMAAgAAAADAAAAAAANAAgAAAADAAAAAAAOAAgAAAABAAAAAAAPAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAARAAgAAAAAAAAAAAASAAgAAAABAAAAAAATAAgAAAACAAAAAAAUAAgAAAADAAAAAAAVAAgAAAAAAAAAAAAWAAgAAAAAAAAAAAAXAAgAAAACAAAAAAAYAAgAAAAAAAAAAAAZAAgAAAACAAAAAAAaAAgAAAABAAAAAAAbAAgAAAAAAAAAAAAcAAgAAAACAAAAAAAdAAgAAAAAAAAAAAAeAAgAAAAAAAAAAAAfAAgAAAABAAAAAAAgAAgAAAADAAAAAAAhAAgAAAAAAAAAAAAiAAgAAAABAAAAAAAjAAgAAAADAAAAAAAkAAgAAAACAAAAAAAlAAgAAAAAAAAAAAAmAAgAAAACAAAAAAAnAAgAAAABAAAAAAAAAAkAAAACAAAAAAABAAkAAAABAAAAAAACAAkAAAAAAAAAAAADAAkAAAACAAAAAAAEAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAGAAkAAAACAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAJAAkAAAACAAAAAAAKAAkAAAACAAAAAAALAAkAAAADAAAAAAAMAAkAAAADAAAAAAANAAkAAAAAAAAAAAAOAAkAAAACAAAAAAAPAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAkAAAACAAAAAAASAAkAAAABAAAAAAATAAkAAAABAAAAAAAUAAkAAAACAAAAAAAVAAkAAAAAAAAAAAAWAAkAAAADAAAAAAAXAAkAAAADAAAAAAAYAAkAAAADAAAAAAAZAAkAAAADAAAAAAAaAAkAAAADAAAAAAAbAAkAAAAAAAAAAAAcAAkAAAABAAAAAAAdAAkAAAABAAAAAAAeAAkAAAABAAAAAAAfAAkAAAADAAAAAAAgAAkAAAAAAAAAAAAhAAkAAAAAAAAAAAAiAAkAAAACAAAAAAAjAAkAAAAAAAAAAAAkAAkAAAAAAAAAAAAlAAkAAAABAAAAAAAmAAkAAAABAAAAAAAnAAkAAAADAAAAAAAAAAoAAAACAAAAAAABAAoAAAAAAAAAAAACAAoAAAAAAAAAAAADAAoAAAADAAAAAAAEAAoAAAACAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAACAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAKAAoAAAACAAAAAAALAAoAAAACAAAAAAAMAAoAAAABAAAAAAANAAoAAAACAAAAAAAOAAoAAAABAAAAAAAPAAoAAAABAAAAAAAQAAoAAAABAAAAAAARAAoAAAABAAAAAAASAAoAAAADAAAAAAATAAoAAAACAAAAAAAUAAoAAAADAAAAAAAVAAoAAAABAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAYAAoAAAAAAAAAAAAZAAoAAAACAAAAAAAaAAoAAAACAAAAAAAbAAoAAAACAAAAAAAcAAoAAAADAAAAAAAdAAoAAAACAAAAAAAeAAoAAAABAAAAAAAfAAoAAAADAAAAAAAgAAoAAAABAAAAAAAhAAoAAAAAAAAAAAAiAAoAAAACAAAAAAAjAAoAAAADAAAAAAAkAAoAAAAAAAAAAAAlAAoAAAAAAAAAAAAmAAoAAAAAAAAAAAAnAAoAAAAAAAAAAAAAAAsAAAABAAAAAAABAAsAAAADAAAAAAACAAsAAAACAAAAAAADAAsAAAACAAAAAAAEAAsAAAADAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAACAAAAAAAIAAsAAAABAAAAAAAJAAsAAAADAAAAAAAKAAsAAAABAAAAAAALAAsAAAACAAAAAAAMAAsAAAABAAAAAAANAAsAAAACAAAAAAAOAAsAAAABAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAADAAAAAAATAAsAAAAAAAAAAAAUAAsAAAACAAAAAAAVAAsAAAADAAAAAAAWAAsAAAADAAAAAAAXAAsAAAADAAAAAAAYAAsAAAABAAAAAAAZAAsAAAAAAAAAAAAaAAsAAAACAAAAAAAbAAsAAAABAAAAAAAcAAsAAAAAAAAAAAAdAAsAAAADAAAAAAAeAAsAAAADAAAAAAAfAAsAAAADAAAAAAAgAAsAAAAAAAAAAAAhAAsAAAABAAAAAAAiAAsAAAACAAAAAAAjAAsAAAABAAAAAAAkAAsAAAAAAAAAAAAlAAsAAAAAAAAAAAAmAAsAAAABAAAAAAAnAAsAAAAAAAAAAAAAAAwAAAACAAAAAAABAAwAAAABAAAAAAACAAwAAAADAAAAAAADAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAwAAAABAAAAAAAGAAwAAAADAAAAAAAHAAwAAAAAAAAAAAAIAAwAAAADAAAAAAAJAAwAAAAAAAAAAAAKAAwAAAADAAAAAAALAAwAAAABAAAAAAAMAAwAAAABAAAAAAANAAwAAAAAAAAAAAAOAAwAAAACAAAAAAAPAAwAAAAAAAAAAAAQAAwAAAADAAAAAAARAAwAAAABAAAAAAASAAwAAAACAAAAAAATAAwAAAABAAAAAAAUAAwAAAABAAAAAAAVAAwAAAAAAAAAAAAWAAwAAAADAAAAAAAXAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAZAAwAAAADAAAAAAAaAAwAAAAAAAAAAAAbAAwAAAAAAAAAAAAcAAwAAAADAAAAAAAdAAwAAAADAAAAAAAeAAwAAAADAAAAAAAfAAwAAAAAAAAAAAAgAAwAAAADAAAAAAAhAAwAAAAAAAAAAAAiAAwAAAADAAAAAAAjAAwAAAAAAAAAAAAkAAwAAAADAAAAAAAlAAwAAAACAAAAAAAmAAwAAAAAAAAAAAAnAAwAAAADAAAAAAAAAA0AAAACAAAAAAABAA0AAAAAAAAAAAACAA0AAAADAAAAAAADAA0AAAAAAAAAAAAEAA0AAAACAAAAAAAFAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAA0AAAADAAAAAAAIAA0AAAABAAAAAAAJAA0AAAABAAAAAAAKAA0AAAADAAAAAAALAA0AAAAAAAAAAAAMAA0AAAACAAAAAAANAA0AAAACAAAAAAAOAA0AAAACAAAAAAAPAA0AAAAAAAAAAAAQAA0AAAACAAAAAAARAA0AAAADAAAAAAASAA0AAAACAAAAAAATAA0AAAAAAAAAAAAUAA0AAAACAAAAAAAVAA0AAAABAAAAAAAWAA0AAAAAAAAAAAAXAA0AAAACAAAAAAAYAA0AAAAAAAAAAAAZAA0AAAACAAAAAAAaAA0AAAACAAAAAAAbAA0AAAADAAAAAAAcAA0AAAAAAAAAAAAdAA0AAAACAAAAAAAeAA0AAAADAAAAAAAfAA0AAAAAAAAAAAAgAA0AAAACAAAAAAAhAA0AAAADAAAAAAAiAA0AAAADAAAAAAAjAA0AAAADAAAAAAAkAA0AAAAAAAAAAAAlAA0AAAABAAAAAAAmAA0AAAAAAAAAAAAnAA0AAAADAAAAAAAAAA4AAAABAAAAAAABAA4AAAABAAAAAAACAA4AAAACAAAAAAADAA4AAAACAAAAAAAEAA4AAAACAAAAAAAFAA4AAAADAAAAAAAGAA4AAAADAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAALAA4AAAAAAAAAAAAMAA4AAAADAAAAAAANAA4AAAABAAAAAAAOAA4AAAACAAAAAAAPAA4AAAADAAAAAAAQAA4AAAABAAAAAAARAA4AAAACAAAAAAASAA4AAAAAAAAAAAATAA4AAAABAAAAAAAUAA4AAAAAAAAAAAAVAA4AAAADAAAAAAAWAA4AAAABAAAAAAAXAA4AAAABAAAAAAAYAA4AAAACAAAAAAAZAA4AAAADAAAAAAAaAA4AAAADAAAAAAAbAA4AAAACAAAAAAAcAA4AAAACAAAAAAAdAA4AAAAAAAAAAAAeAA4AAAAAAAAAAAAfAA4AAAAAAAAAAAAgAA4AAAAAAAAAAAAhAA4AAAACAAAAAAAiAA4AAAACAAAAAAAjAA4AAAABAAAAAAAkAA4AAAAAAAAAAAAlAA4AAAACAAAAAAAmAA4AAAABAAAAAAAnAA4AAAACAAAAAAAAAA8AAAADAAAAAAABAA8AAAABAAAAAAACAA8AAAACAAAAAAADAA8AAAACAAAAAAAEAA8AAAABAAAAAAAFAA8AAAADAAAAAAAGAA8AAAADAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAACAAAAAAAJAA8AAAABAAAAAAAKAA8AAAABAAAAAAALAA8AAAAAAAAAAAAMAA8AAAABAAAAAAANAA8AAAACAAAAAAAOAA8AAAADAAAAAAAPAA8AAAABAAAAAAAQAA8AAAACAAAAAAARAA8AAAADAAAAAAASAA8AAAAAAAAAAAATAA8AAAAAAAAAAAAUAA8AAAACAAAAAAAVAA8AAAACAAAAAAAWAA8AAAACAAAAAAAXAA8AAAACAAAAAAAYAA8AAAADAAAAAAAZAA8AAAACAAAAAAAaAA8AAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAABAAAAAAAdAA8AAAAAAAAAAAAeAA8AAAAAAAAAAAAfAA8AAAADAAAAAAAgAA8AAAADAAAAAAAhAA8AAAACAAAAAAAiAA8AAAAAAAAAAAAjAA8AAAAAAAAAAAAkAA8AAAACAAAAAAAlAA8AAAADAAAAAAAmAA8AAAADAAAAAAAnAA8AAAACAAAAAAAAABAAAAACAAAAAAABABAAAAADAAAAAAACABAAAAAAAAAAAAADABAAAAADAAAAAAAEABAAAAACAAAAAAAFABAAAAADAAAAAAAGABAAAAACAAAAAAAHABAAAAABAAAAAAAIABAAAAABAAAAAAAJABAAAAADAAAAAAAKABAAAAACAAAAAAALABAAAAACAAAAAAAMABAAAAADAAAAAAANABAAAAAAAAAAAAAOABAAAAABAAAAAAAPABAAAAABAAAAAAAQABAAAAABAAAAAAARABAAAAAAAAAAAAASABAAAAADAAAAAAATABAAAAADAAAAAAAUABAAAAAAAAAAAAAVABAAAAABAAAAAAAWABAAAAABAAAAAAAXABAAAAADAAAAAAAYABAAAAADAAAAAAAZABAAAAADAAAAAAAaABAAAAABAAAAAAAbABAAAAABAAAAAAAcABAAAAAAAAAAAAAdABAAAAAAAAAAAAAeABAAAAACAAAAAAAfABAAAAAAAAAAAAAgABAAAAAAAAAAAAAhABAAAAABAAAAAAAiABAAAAAAAAAAAAAjABAAAAABAAAAAAAkABAAAAABAAAAAAAlABAAAAACAAAAAAAmABAAAAACAAAAAAAnABAAAAAAAAAAAAAAABEAAAACAAAAAAABABEAAAABAAAAAAACABEAAAADAAAAAAADABEAAAAAAAAAAAAEABEAAAABAAAAAAAFABEAAAABAAAAAAAGABEAAAADAAAAAAAHABEAAAAAAAAAAAAIABEAAAADAAAAAAAJABEAAAAAAAAAAAAKABEAAAADAAAAAAALABEAAAACAAAAAAAMABEAAAADAAAAAAANABEAAAABAAAAAAAOABEAAAADAAAAAAAPABEAAAABAAAAAAAQABEAAAADAAAAAAARABEAAAABAAAAAAASABEAAAADAAAAAAATABEAAAACAAAAAAAUABEAAAABAAAAAAAVABEAAAACAAAAAAAWABEAAAACAAAAAAAXABEAAAADAAAAAAAYABEAAAACAAAAAAAZABEAAAAAAAAAAAAaABEAAAABAAAAAAAbABEAAAAAAAAAAAAcABEAAAAAAAAAAAAdABEAAAAAAAAAAAAeABEAAAACAAAAAAAfABEAAAAAAAAAAAAgABEAAAACAAAAAAAhABEAAAAAAAAAAAAiABEAAAAAAAAAAAAjABEAAAADAAAAAAAkABEAAAAAAAAAAAAlABEAAAADAAAAAAAmABEAAAADAAAAAAAnABEAAAADAAAAAAAAABIAAAAAAAAAAAABABIAAAAAAAAAAAACABIAAAAAAAAAAAADABIAAAACAAAAAAAEABIAAAAAAAAAAAAFABIAAAACAAAAAAAGABIAAAACAAAAAAAHABIAAAADAAAAAAAIABIAAAAAAAAAAAAJABIAAAAAAAAAAAAKABIAAAABAAAAAAALABIAAAAAAAAAAAAMABIAAAACAAAAAAANABIAAAADAAAAAAAOABIAAAACAAAAAAAPABIAAAAAAAAAAAAQABIAAAACAAAAAAARABIAAAACAAAAAAASABIAAAADAAAAAAATABIAAAABAAAAAAAUABIAAAAAAAAAAAAVABIAAAACAAAAAAAWABIAAAACAAAAAAAXABIAAAAAAAAAAAAYABIAAAABAAAAAAAZABIAAAACAAAAAAAaABIAAAADAAAAAAAbABIAAAACAAAAAAAcABIAAAACAAAAAAAdABIAAAAAAAAAAAAeABIAAAACAAAAAAAfABIAAAAAAAAAAAAgABIAAAABAAAAAAAhABIAAAADAAAAAAAiABIAAAAAAAAAAAAjABIAAAADAAAAAAAkABIAAAABAAAAAAAlABIAAAAAAAAAAAAmABIAAAACAAAAAAAnABIAAAABAAAAAAAAABMAAAAAAAAAAAABABMAAAACAAAAAAACABMAAAADAAAAAAADABMAAAAAAAAAAAAEABMAAAADAAAAAAAFABMAAAACAAAAAAAGABMAAAADAAAAAAAHABMAAAAAAAAAAAAIABMAAAACAAAAAAAJABMAAAABAAAAAAAKABMAAAADAAAAAAALABMAAAAAAAAAAAAMABMAAAAAAAAAAAANABMAAAACAAAAAAAOABMAAAADAAAAAAAPABMAAAACAAAAAAAQABMAAAABAAAAAAARABMAAAABAAAAAAASABMAAAAAAAAAAAATABMAAAABAAAAAAAUABMAAAABAAAAAAAVABMAAAADAAAAAAAWABMAAAACAAAAAAAXABMAAAADAAAAAAAYABMAAAABAAAAAAAZABMAAAAAAAAAAAAaABMAAAABAAAAAAAbABMAAAABAAAAAAAcABMAAAADAAAAAAAdABMAAAAAAAAAAAAeABMAAAACAAAAAAAfABMAAAAAAAAAAAAgABMAAAABAAAAAAAhABMAAAAAAAAAAAAiABMAAAABAAAAAAAjABMAAAADAAAAAAAkABMAAAAAAAAAAAAlABMAAAAAAAAAAAAmABMAAAABAAAAAAAnABMAAAACAAAAAAAAABQAAAAAAAAAAAABABQAAAABAAAAAAACABQAAAADAAAAAAADABQAAAABAAAAAAAEABQAAAACAAAAAAAFABQAAAACAAAAAAAGABQAAAACAAAAAAAHABQAAAADAAAAAAAIABQAAAACAAAAAAAJABQAAAADAAAAAAAKABQAAAAAAAAAAAALABQAAAACAAAAAAAMABQAAAACAAAAAAANABQAAAABAAAAAAAOABQAAAAAAAAAAAAPABQAAAACAAAAAAAQABQAAAACAAAAAAARABQAAAABAAAAAAASABQAAAABAAAAAAATABQAAAAAAAAAAAAUABQAAAADAAAAAAAVABQAAAAAAAAAAAAWABQAAAABAAAAAAAXABQAAAAAAAAAAAAYABQAAAACAAAAAAAZABQAAAADAAAAAAAaABQAAAACAAAAAAAbABQAAAADAAAAAAAcABQAAAADAAAAAAAdABQAAAAAAAAAAAAeABQAAAADAAAAAAAfABQAAAADAAAAAAAgABQAAAACAAAAAAAhABQAAAAAAAAAAAAiABQAAAADAAAAAAAjABQAAAABAAAAAAAkABQAAAADAAAAAAAlABQAAAACAAAAAAAmABQAAAAAAAAAAAAnABQAAAADAAAAAAAAABUAAAAAAAAAAAABABUAAAABAAAAAAACABUAAAACAAAAAAADABUAAAABAAAAAAAEABUAAAABAAAAAAAFABUAAAADAAAAAAAGABUAAAAAAAAAAAAHABUAAAADAAAAAAAIABUAAAABAAAAAAAJABUAAAAAAAAAAAAKABUAAAABAAAAAAALABUAAAABAAAAAAAMABUAAAAAAAAAAAANABUAAAACAAAAAAAOABUAAAADAAAAAAAPABUAAAADAAAAAAAQABUAAAABAAAAAAARABUAAAAAAAAAAAASABUAAAABAAAAAAATABUAAAACAAAAAAAUABUAAAABAAAAAAAVABUAAAAAAAAAAAAWABUAAAABAAAAAAAXABUAAAABAAAAAAAYABUAAAABAAAAAAAZABUAAAADAAAAAAAaABUAAAACAAAAAAAbABUAAAABAAAAAAAcABUAAAADAAAAAAAdABUAAAABAAAAAAAeABUAAAACAAAAAAAfABUAAAABAAAAAAAgABUAAAABAAAAAAAhABUAAAAAAAAAAAAiABUAAAAAAAAAAAAjABUAAAAAAAAAAAAkABUAAAAAAAAAAAAlABUAAAABAAAAAAAmABUAAAABAAAAAAAnABUAAAACAAAAAAAAABYAAAABAAAAAAABABYAAAACAAAAAAACABYAAAABAAAAAAADABYAAAABAAAAAAAEABYAAAACAAAAAAAFABYAAAABAAAAAAAGABYAAAACAAAAAAAHABYAAAABAAAAAAAIABYAAAABAAAAAAAJABYAAAACAAAAAAAKABYAAAACAAAAAAALABYAAAACAAAAAAAMABYAAAAAAAAAAAANABYAAAACAAAAAAAOABYAAAADAAAAAAAPABYAAAAAAAAAAAAQABYAAAABAAAAAAARABYAAAADAAAAAAASABYAAAACAAAAAAATABYAAAACAAAAAAAUABYAAAAAAAAAAAAVABYAAAACAAAAAAAWABYAAAADAAAAAAAXABYAAAABAAAAAAAYABYAAAABAAAAAAAZABYAAAABAAAAAAAaABYAAAABAAAAAAAbABYAAAAAAAAAAAAcABYAAAAAAAAAAAAdABYAAAABAAAAAAAeABYAAAACAAAAAAAfABYAAAADAAAAAAAgABYAAAACAAAAAAAhABYAAAABAAAAAAAiABYAAAADAAAAAAAjABYAAAAAAAAAAAAkABYAAAADAAAAAAAlABYAAAAAAAAAAAAmABYAAAACAAAAAAAnABYAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_4oauf")
 
-[node name="Piasek" type="TileMapLayer" parent="."]
+[node name="Piasek" type="TileMapLayer" parent="." unique_id=1538878324]
 scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAQAAAAAwACAAAAAAARAAAAAwADAAIAAAASAAAAAwADAAMAAAATAAAAAwADAAMAAAAUAAAAAwACAAQAAAAVAAAAAwADAAQAAAAWAAAAAwADAAMAAAAXAAAAAwADAAMAAAAYAAAAAwACAAQAAAAZAAAAAwADAAMAAAAaAAAAAwADAAMAAAAbAAAAAwADAAMAAAAcAAAAAwADAAMAAAAdAAAAAwADAAMAAAAeAAAAAwADAAQAAAAfAAAAAwAAAAQAAAAgAAAAAwADAAMAAAAhAAAAAwADAAQAAAAiAAAAAwADAAMAAAAjAAAAAwADAAMAAAAkAAAAAwADAAMAAAAlAAAAAwADAAMAAAAmAAAAAwADAAMAAAAnAAAAAwABAAQAAAARAAEAAwACAAAAAAASAAEAAwADAAIAAAATAAEAAwADAAMAAAAUAAEAAwACAAQAAAAVAAEAAwADAAMAAAAWAAEAAwACAAQAAAAXAAEAAwACAAQAAAAYAAEAAwABAAQAAAAZAAEAAwADAAMAAAAaAAEAAwADAAQAAAAbAAEAAwADAAMAAAAcAAEAAwADAAQAAAAdAAEAAwADAAMAAAAeAAEAAwACAAQAAAAfAAEAAwADAAQAAAAgAAEAAwABAAQAAAAhAAEAAwADAAQAAAAiAAEAAwADAAMAAAAjAAEAAwADAAMAAAAkAAEAAwADAAMAAAAlAAEAAwADAAMAAAAmAAEAAwABAAQAAAAnAAEAAwADAAMAAAASAAIAAwACAAAAAAATAAIAAwADAAIAAAAUAAIAAwADAAMAAAAVAAIAAwABAAQAAAAWAAIAAwABAAQAAAAXAAIAAwADAAMAAAAYAAIAAwADAAMAAAAZAAIAAwADAAQAAAAaAAIAAwACAAQAAAAbAAIAAwACAAQAAAAcAAIAAwADAAMAAAAdAAIAAwADAAMAAAAeAAIAAwADAAMAAAAfAAIAAwADAAMAAAAgAAIAAwADAAMAAAAhAAIAAwADAAMAAAAiAAIAAwABAAQAAAAjAAIAAwADAAMAAAAkAAIAAwAAAAQAAAAlAAIAAwACAAQAAAAmAAIAAwADAAMAAAAnAAIAAwADAAQAAAATAAMAAwACAAIAAAAUAAMAAwADAAMAAAAVAAMAAwADAAMAAAAWAAMAAwADAAMAAAAXAAMAAwABAAQAAAAYAAMAAwAAAAQAAAAZAAMAAwAAAAQAAAAaAAMAAwADAAMAAAAbAAMAAwAAAAQAAAAcAAMAAwADAAQAAAAdAAMAAwADAAMAAAAeAAMAAwADAAMAAAAfAAMAAwADAAMAAAAgAAMAAwADAAMAAAAhAAMAAwADAAMAAAAiAAMAAwADAAMAAAAjAAMAAwADAAQAAAAkAAMAAwADAAQAAAAlAAMAAwADAAMAAAAmAAMAAwADAAMAAAAnAAMAAwADAAMAAAATAAQAAwACAAAAAAAUAAQAAwADAAIAAAAVAAQAAwAAAAQAAAAWAAQAAwABAAQAAAAXAAQAAwABAAQAAAAYAAQAAwADAAMAAAAZAAQAAwACAAQAAAAaAAQAAwACAAQAAAAbAAQAAwABAAQAAAAcAAQAAwADAAQAAAAdAAQAAwAAAAQAAAAeAAQAAwADAAMAAAAfAAQAAwACAAQAAAAgAAQAAwADAAMAAAAhAAQAAwADAAMAAAAiAAQAAwAAAAQAAAAjAAQAAwADAAQAAAAkAAQAAwABAAQAAAAlAAQAAwABAAQAAAAmAAQAAwADAAMAAAAnAAQAAwABAAQAAAAUAAUAAwACAAIAAAAVAAUAAwADAAMAAAAWAAUAAwACAAQAAAAXAAUAAwACAAQAAAAYAAUAAwADAAMAAAAZAAUAAwADAAMAAAAaAAUAAwACAAQAAAAbAAUAAwAAAAQAAAAcAAUAAwADAAMAAAAdAAUAAwADAAMAAAAeAAUAAwADAAMAAAAfAAUAAwADAAMAAAAgAAUAAwADAAMAAAAhAAUAAwADAAQAAAAiAAUAAwAAAAQAAAAjAAUAAwADAAQAAAAkAAUAAwAAAAQAAAAlAAUAAwADAAMAAAAmAAUAAwACAAQAAAAnAAUAAwACAAQAAAAUAAYAAwACAAIAAAAVAAYAAwADAAMAAAAWAAYAAwABAAQAAAAXAAYAAwACAAQAAAAYAAYAAwABAAQAAAAZAAYAAwACAAQAAAAaAAYAAwADAAQAAAAbAAYAAwADAAQAAAAcAAYAAwADAAQAAAAdAAYAAwADAAQAAAAeAAYAAwADAAMAAAAfAAYAAwACAAQAAAAgAAYAAwADAAQAAAAhAAYAAwAAAAQAAAAiAAYAAwACAAQAAAAjAAYAAwADAAMAAAAkAAYAAwAAAAQAAAAlAAYAAwADAAMAAAAmAAYAAwAAAAQAAAAnAAYAAwADAAQAAAAUAAcAAwACAAIAAAAVAAcAAwADAAMAAAAWAAcAAwADAAMAAAAXAAcAAwABAAQAAAAYAAcAAwAAAAQAAAAZAAcAAwADAAMAAAAaAAcAAwAAAAQAAAAbAAcAAwACAAQAAAAcAAcAAwADAAMAAAAdAAcAAwAAAAQAAAAeAAcAAwABAAQAAAAfAAcAAwADAAMAAAAgAAcAAwADAAMAAAAhAAcAAwADAAMAAAAiAAcAAwAAAAQAAAAjAAcAAwABAAQAAAAkAAcAAwAAAAQAAAAlAAcAAwAAAAQAAAAmAAcAAwADAAMAAAAnAAcAAwAAAAQAAAAUAAgAAwACAAIAAAAVAAgAAwADAAMAAAAWAAgAAwADAAMAAAAXAAgAAwAAAAQAAAAYAAgAAwADAAMAAAAZAAgAAwACAAQAAAAaAAgAAwABAAQAAAAbAAgAAwACAAQAAAAcAAgAAwAAAAQAAAAdAAgAAwADAAMAAAAeAAgAAwACAAQAAAAfAAgAAwABAAQAAAAgAAgAAwAAAAQAAAAhAAgAAwADAAMAAAAiAAgAAwAAAAQAAAAjAAgAAwADAAMAAAAkAAgAAwACAAQAAAAlAAgAAwAAAAQAAAAmAAgAAwADAAMAAAAnAAgAAwACAAQAAAAUAAkAAwACAAIAAAAVAAkAAwADAAMAAAAWAAkAAwAAAAQAAAAXAAkAAwADAAMAAAAYAAkAAwADAAMAAAAZAAkAAwADAAMAAAAaAAkAAwAAAAQAAAAbAAkAAwAAAAQAAAAcAAkAAwADAAQAAAAdAAkAAwACAAQAAAAeAAkAAwADAAMAAAAfAAkAAwADAAMAAAAgAAkAAwADAAMAAAAhAAkAAwAAAAQAAAAiAAkAAwADAAQAAAAjAAkAAwADAAMAAAAkAAkAAwABAAQAAAAlAAkAAwADAAMAAAAmAAkAAwADAAMAAAAnAAkAAwADAAMAAAAUAAoAAwACAAIAAAAVAAoAAwADAAMAAAAWAAoAAwADAAQAAAAXAAoAAwADAAMAAAAYAAoAAwAAAAQAAAAZAAoAAwADAAMAAAAaAAoAAwADAAQAAAAbAAoAAwADAAMAAAAcAAoAAwADAAMAAAAdAAoAAwADAAMAAAAeAAoAAwADAAMAAAAfAAoAAwADAAMAAAAgAAoAAwAAAAQAAAAhAAoAAwABAAQAAAAiAAoAAwADAAMAAAAjAAoAAwADAAMAAAAkAAoAAwADAAMAAAAlAAoAAwADAAQAAAAmAAoAAwADAAMAAAAnAAoAAwAAAAQAAAAUAAsAAwACAAIAAAAVAAsAAwADAAMAAAAWAAsAAwADAAQAAAAXAAsAAwADAAQAAAAYAAsAAwADAAMAAAAZAAsAAwADAAQAAAAaAAsAAwADAAMAAAAbAAsAAwADAAMAAAAcAAsAAwADAAMAAAAdAAsAAwADAAMAAAAeAAsAAwADAAMAAAAfAAsAAwAAAAQAAAAgAAsAAwADAAMAAAAhAAsAAwADAAMAAAAiAAsAAwADAAMAAAAjAAsAAwACAAQAAAAkAAsAAwADAAMAAAAlAAsAAwABAAQAAAAmAAsAAwADAAQAAAAnAAsAAwADAAMAAAATAAwAAwAAAAIAAAAUAAwAAwACAAMAAAAVAAwAAwADAAMAAAAWAAwAAwADAAMAAAAXAAwAAwADAAMAAAAYAAwAAwADAAMAAAAZAAwAAwADAAMAAAAaAAwAAwADAAMAAAAbAAwAAwADAAMAAAAcAAwAAwABAAQAAAAdAAwAAwADAAMAAAAeAAwAAwADAAMAAAAfAAwAAwAAAAQAAAAgAAwAAwADAAQAAAAhAAwAAwADAAMAAAAiAAwAAwADAAMAAAAjAAwAAwADAAMAAAAkAAwAAwACAAQAAAAlAAwAAwADAAMAAAAmAAwAAwADAAMAAAAnAAwAAwAAAAQAAAATAA0AAwACAAIAAAAUAA0AAwADAAMAAAAVAA0AAwADAAMAAAAWAA0AAwADAAQAAAAXAA0AAwACAAQAAAAYAA0AAwADAAQAAAAZAA0AAwADAAMAAAAaAA0AAwABAAQAAAAbAA0AAwADAAMAAAAcAA0AAwAAAAQAAAAdAA0AAwADAAMAAAAeAA0AAwADAAQAAAAfAA0AAwABAAQAAAAgAA0AAwADAAMAAAAhAA0AAwADAAMAAAAiAA0AAwAAAAQAAAAjAA0AAwADAAMAAAAkAA0AAwABAAQAAAAlAA0AAwADAAMAAAAmAA0AAwACAAQAAAAnAA0AAwABAAQAAAATAA4AAwACAAIAAAAUAA4AAwABAAQAAAAVAA4AAwAAAAQAAAAWAA4AAwADAAMAAAAXAA4AAwADAAQAAAAYAA4AAwADAAMAAAAZAA4AAwADAAMAAAAaAA4AAwADAAMAAAAbAA4AAwADAAMAAAAcAA4AAwADAAMAAAAdAA4AAwAAAAQAAAAeAA4AAwADAAMAAAAfAA4AAwACAAQAAAAgAA4AAwADAAMAAAAhAA4AAwADAAMAAAAiAA4AAwADAAQAAAAjAA4AAwAAAAQAAAAkAA4AAwACAAQAAAAlAA4AAwADAAMAAAAmAA4AAwAAAAQAAAAnAA4AAwAAAAQAAAAAAA8AAwAAAAIAAAABAA8AAwAAAAMAAAACAA8AAwAAAAEAAAATAA8AAwACAAIAAAAUAA8AAwACAAQAAAAVAA8AAwADAAMAAAAWAA8AAwADAAMAAAAXAA8AAwACAAQAAAAYAA8AAwABAAQAAAAZAA8AAwADAAMAAAAaAA8AAwAAAAQAAAAbAA8AAwADAAMAAAAcAA8AAwAAAAQAAAAdAA8AAwADAAMAAAAeAA8AAwABAAQAAAAfAA8AAwADAAQAAAAgAA8AAwADAAMAAAAhAA8AAwAAAAQAAAAiAA8AAwADAAQAAAAjAA8AAwACAAQAAAAkAA8AAwABAAQAAAAlAA8AAwADAAMAAAAmAA8AAwADAAQAAAAnAA8AAwABAAQAAAAAABAAAwACAAMAAAABABAAAwADAAMAAAACABAAAwABAAMAAAADABAAAwAAAAMAAAAEABAAAwAAAAMAAAAFABAAAwAAAAMAAAAGABAAAwAAAAMAAAAHABAAAwAAAAMAAAAIABAAAwAAAAMAAAAJABAAAwAAAAMAAAAKABAAAwAAAAMAAAALABAAAwAAAAMAAAAMABAAAwAAAAMAAAANABAAAwAAAAEAAAASABAAAwAAAAIAAAATABAAAwACAAMAAAAUABAAAwAAAAQAAAAVABAAAwADAAMAAAAWABAAAwADAAMAAAAXABAAAwADAAMAAAAYABAAAwADAAMAAAAZABAAAwADAAMAAAAaABAAAwADAAMAAAAbABAAAwACAAQAAAAcABAAAwADAAQAAAAdABAAAwADAAMAAAAeABAAAwADAAMAAAAfABAAAwAAAAQAAAAgABAAAwADAAMAAAAhABAAAwAAAAQAAAAiABAAAwABAAQAAAAjABAAAwADAAMAAAAkABAAAwADAAMAAAAlABAAAwADAAMAAAAmABAAAwADAAQAAAAnABAAAwADAAMAAAAAABEAAwADAAQAAAABABEAAwADAAQAAAACABEAAwACAAQAAAADABEAAwADAAQAAAAEABEAAwADAAMAAAAFABEAAwADAAMAAAAGABEAAwAAAAQAAAAHABEAAwADAAQAAAAIABEAAwABAAQAAAAJABEAAwADAAMAAAAKABEAAwADAAMAAAALABEAAwADAAMAAAAMABEAAwADAAMAAAANABEAAwABAAMAAAAOABEAAwAAAAMAAAAPABEAAwAAAAMAAAAQABEAAwAAAAMAAAARABEAAwAAAAMAAAASABEAAwACAAMAAAATABEAAwADAAMAAAAUABEAAwADAAMAAAAVABEAAwADAAMAAAAWABEAAwAAAAQAAAAXABEAAwABAAQAAAAYABEAAwADAAMAAAAZABEAAwADAAMAAAAaABEAAwABAAQAAAAbABEAAwABAAQAAAAcABEAAwADAAMAAAAdABEAAwADAAMAAAAeABEAAwADAAMAAAAfABEAAwADAAMAAAAgABEAAwACAAQAAAAhABEAAwADAAQAAAAiABEAAwABAAQAAAAjABEAAwAAAAQAAAAkABEAAwADAAMAAAAlABEAAwABAAQAAAAmABEAAwADAAQAAAAnABEAAwACAAQAAAAAABIAAwAAAAQAAAABABIAAwABAAQAAAACABIAAwADAAMAAAADABIAAwADAAMAAAAEABIAAwADAAMAAAAFABIAAwAAAAQAAAAGABIAAwAAAAQAAAAHABIAAwAAAAQAAAAIABIAAwADAAMAAAAJABIAAwADAAMAAAAKABIAAwABAAQAAAALABIAAwABAAQAAAAMABIAAwACAAQAAAANABIAAwADAAQAAAAOABIAAwADAAQAAAAPABIAAwABAAQAAAAQABIAAwADAAQAAAARABIAAwABAAQAAAASABIAAwADAAMAAAATABIAAwACAAQAAAAUABIAAwADAAMAAAAVABIAAwADAAMAAAAWABIAAwADAAQAAAAXABIAAwAAAAQAAAAYABIAAwAAAAQAAAAZABIAAwAAAAQAAAAaABIAAwADAAMAAAAbABIAAwAAAAQAAAAcABIAAwADAAQAAAAdABIAAwADAAMAAAAeABIAAwADAAMAAAAfABIAAwABAAQAAAAgABIAAwABAAQAAAAhABIAAwADAAQAAAAiABIAAwADAAMAAAAjABIAAwABAAQAAAAkABIAAwADAAMAAAAlABIAAwABAAQAAAAmABIAAwADAAQAAAAnABIAAwADAAMAAAAAABMAAwADAAMAAAABABMAAwADAAMAAAACABMAAwADAAMAAAADABMAAwACAAQAAAAEABMAAwABAAQAAAAFABMAAwADAAMAAAAGABMAAwADAAMAAAAHABMAAwADAAMAAAAIABMAAwABAAQAAAAJABMAAwADAAMAAAAKABMAAwADAAMAAAALABMAAwACAAQAAAAMABMAAwABAAQAAAANABMAAwADAAMAAAAOABMAAwADAAMAAAAPABMAAwAAAAQAAAAQABMAAwAAAAQAAAARABMAAwADAAMAAAASABMAAwACAAQAAAATABMAAwACAAQAAAAUABMAAwADAAMAAAAVABMAAwADAAMAAAAWABMAAwACAAQAAAAXABMAAwADAAMAAAAYABMAAwADAAMAAAAZABMAAwADAAMAAAAaABMAAwACAAQAAAAbABMAAwADAAMAAAAcABMAAwAAAAQAAAAdABMAAwADAAMAAAAeABMAAwADAAMAAAAfABMAAwABAAQAAAAgABMAAwACAAQAAAAhABMAAwADAAMAAAAiABMAAwADAAMAAAAjABMAAwADAAMAAAAkABMAAwABAAQAAAAlABMAAwAAAAQAAAAmABMAAwADAAMAAAAnABMAAwADAAMAAAAAABQAAwADAAMAAAABABQAAwADAAQAAAACABQAAwACAAQAAAADABQAAwADAAMAAAAEABQAAwACAAQAAAAFABQAAwADAAMAAAAGABQAAwABAAQAAAAHABQAAwADAAMAAAAIABQAAwADAAMAAAAJABQAAwADAAMAAAAKABQAAwADAAMAAAALABQAAwAAAAQAAAAMABQAAwADAAMAAAANABQAAwADAAMAAAAOABQAAwADAAMAAAAPABQAAwADAAQAAAAQABQAAwADAAMAAAARABQAAwABAAQAAAASABQAAwACAAQAAAATABQAAwADAAMAAAAUABQAAwADAAQAAAAVABQAAwADAAMAAAAWABQAAwADAAMAAAAXABQAAwADAAMAAAAYABQAAwABAAQAAAAZABQAAwADAAMAAAAaABQAAwACAAQAAAAbABQAAwAAAAQAAAAcABQAAwADAAQAAAAdABQAAwADAAMAAAAeABQAAwADAAMAAAAfABQAAwADAAQAAAAgABQAAwABAAQAAAAhABQAAwADAAMAAAAiABQAAwADAAQAAAAjABQAAwACAAQAAAAkABQAAwADAAQAAAAlABQAAwACAAQAAAAmABQAAwADAAMAAAAnABQAAwACAAQAAAAAABUAAwADAAMAAAABABUAAwABAAQAAAACABUAAwABAAQAAAADABUAAwACAAQAAAAEABUAAwAAAAQAAAAFABUAAwADAAMAAAAGABUAAwADAAMAAAAHABUAAwABAAQAAAAIABUAAwADAAQAAAAJABUAAwADAAMAAAAKABUAAwADAAQAAAALABUAAwADAAMAAAAMABUAAwABAAQAAAANABUAAwADAAMAAAAOABUAAwACAAQAAAAPABUAAwADAAMAAAAQABUAAwABAAQAAAARABUAAwADAAQAAAASABUAAwADAAMAAAATABUAAwADAAQAAAAUABUAAwADAAMAAAAVABUAAwACAAQAAAAWABUAAwADAAMAAAAXABUAAwADAAMAAAAYABUAAwADAAMAAAAZABUAAwADAAMAAAAaABUAAwADAAMAAAAbABUAAwAAAAQAAAAcABUAAwADAAMAAAAdABUAAwADAAMAAAAeABUAAwADAAMAAAAfABUAAwADAAMAAAAgABUAAwAAAAQAAAAhABUAAwABAAQAAAAiABUAAwACAAQAAAAjABUAAwABAAQAAAAkABUAAwACAAQAAAAlABUAAwADAAMAAAAmABUAAwADAAMAAAAnABUAAwABAAQAAAAAABYAAwADAAAAAAABABYAAwADAAAAAAACABYAAwADAAAAAAADABYAAwADAAAAAAAEABYAAwADAAAAAAAFABYAAwADAAAAAAAGABYAAwADAAAAAAAHABYAAwADAAAAAAAIABYAAwADAAAAAAAJABYAAwADAAAAAAAKABYAAwADAAAAAAALABYAAwADAAAAAAAMABYAAwADAAAAAAANABYAAwADAAAAAAAOABYAAwADAAAAAAAPABYAAwADAAAAAAAQABYAAwADAAAAAAARABYAAwADAAAAAAASABYAAwADAAAAAAATABYAAwADAAAAAAAUABYAAwADAAAAAAAVABYAAwADAAAAAAAWABYAAwADAAAAAAAXABYAAwADAAAAAAAYABYAAwADAAAAAAAZABYAAwADAAAAAAAaABYAAwADAAAAAAAbABYAAwADAAAAAAAcABYAAwADAAAAAAAdABYAAwADAAAAAAAeABYAAwADAAAAAAAfABYAAwADAAAAAAAgABYAAwADAAAAAAAhABYAAwADAAAAAAAiABYAAwADAAAAAAAjABYAAwADAAAAAAAkABYAAwADAAAAAAAlABYAAwADAAAAAAAmABYAAwADAAAAAAAnABYAAwADAAAAAAA=")
+tile_set = SubResource("TileSet_4oauf")
 
-[node name="Woda" type="TileMapLayer" parent="."]
+[node name="Woda" type="TileMapLayer" parent="." unique_id=2058595412]
 scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAgAAAABQAAAAIAAAAhAAAABQAAAAsAAAAiAAAABQAAAA8AAAAjAAAABQAAAA8AAAAkAAAABQAAAA8AAAAlAAAABQAAAA8AAAAmAAAABQAAAA8AAAAnAAAABQAAAA8AAAAhAAEABQAAAAIAAAAiAAEABQAAAAsAAAAjAAEABQAAAA8AAAAkAAEABQAAAA8AAAAlAAEABQAAAA8AAAAmAAEABQAAAA8AAAAnAAEABQAAAA8AAAAiAAIABQAAAAIAAAAjAAIABQAAAAsAAAAkAAIABQAAAA8AAAAlAAIABQAAAA8AAAAmAAIABQAAAA8AAAAnAAIABQAAAA8AAAAjAAMABQAAAAoAAAAkAAMABQAAAA8AAAAlAAMABQAAAA8AAAAmAAMABQAAAA8AAAAnAAMABQAAAA8AAAAjAAQABQAAAAoAAAAkAAQABQAAAA8AAAAlAAQABQAAAA8AAAAmAAQABQAAAA8AAAAnAAQABQAAAA8AAAAjAAUABQAAAAoAAAAkAAUABQAAAA8AAAAlAAUABQAAAA8AAAAmAAUABQAAAA8AAAAnAAUABQAAAA8AAAAjAAYABQAAAAIAAAAkAAYABQAAAAsAAAAlAAYABQAAAA8AAAAmAAYABQAAAA8AAAAnAAYABQAAAA8AAAAkAAcABQAAAAoAAAAlAAcABQAAAA8AAAAmAAcABQAAAA8AAAAnAAcABQAAAA8AAAAkAAgABQAAAAoAAAAlAAgABQAAAA8AAAAmAAgABQAAAA8AAAAnAAgABQAAAA8AAAAkAAkABQAAAAoAAAAlAAkABQAAAA8AAAAmAAkABQAAAA8AAAAnAAkABQAAAA8AAAAkAAoABQAAAAoAAAAlAAoABQAAAA8AAAAmAAoABQAAAA8AAAAnAAoABQAAAA8AAAAkAAsABQAAAAoAAAAlAAsABQAAAA8AAAAmAAsABQAAAA8AAAAnAAsABQAAAA8AAAAkAAwABQAAAAIAAAAlAAwABQAAAAsAAAAmAAwABQAAAA8AAAAnAAwABQAAAA8AAAAlAA0ABQAAAAoAAAAmAA0ABQAAAA8AAAAnAA0ABQAAAA8AAAAlAA4ABQAAAAoAAAAmAA4ABQAAAA8AAAAnAA4ABQAAAA8AAAAlAA8ABQAAAAoAAAAmAA8ABQAAAA8AAAAnAA8ABQAAAA8AAAAlABAABQAAAAIAAAAmABAABQAAAAsAAAAnABAABQAAAA8AAAAmABEABQAAAAoAAAAnABEABQAAAA8AAAAmABIABQAAAAoAAAAnABIABQAAAA8AAAAmABMABQAAAAoAAAAnABMABQAAAA8AAAAmABQABQAAAAIAAAAnABQABQAAAAsAAAAnABUABQAAAAoAAAAnABYABQAAAAIAAAA=")
+tile_set = SubResource("TileSet_4oauf")
 
-[node name="Piana" type="TileMapLayer" parent="."]
+[node name="Piana" type="TileMapLayer" parent="." unique_id=1395876130]
 scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAgAAAABgAAAAIAAAAhAAAABgAAAAsAAAAiAAAABgAAAA8AAAAjAAAABgAAAA8AAAAkAAAABgAAAA8AAAAlAAAABgAAAA8AAAAmAAAABgAAAA8AAAAnAAAABgAAAA8AAAAhAAEABgAAAAIAAAAiAAEABgAAAAsAAAAjAAEABgAAAA8AAAAkAAEABgAAAA8AAAAlAAEABgAAAA8AAAAmAAEABgAAAA8AAAAnAAEABgAAAA8AAAAiAAIABgAAAAIAAAAjAAIABgAAAAsAAAAkAAIABgAAAA8AAAAlAAIABgAAAA8AAAAmAAIABgAAAA8AAAAnAAIABgAAAA8AAAAjAAMABgAAAAoAAAAkAAMABgAAAA8AAAAlAAMABgAAAA8AAAAmAAMABgAAAA8AAAAnAAMABgAAAA8AAAAjAAQABgAAAAoAAAAkAAQABgAAAA8AAAAlAAQABgAAAA8AAAAmAAQABgAAAA8AAAAnAAQABgAAAA8AAAAjAAUABgAAAAoAAAAkAAUABgAAAA8AAAAlAAUABgAAAA8AAAAmAAUABgAAAA8AAAAnAAUABgAAAA8AAAAjAAYABgAAAAIAAAAkAAYABgAAAAsAAAAlAAYABgAAAA8AAAAmAAYABgAAAA8AAAAnAAYABgAAAA8AAAAkAAcABgAAAAoAAAAlAAcABgAAAA8AAAAmAAcABgAAAA8AAAAnAAcABgAAAA8AAAAkAAgABgAAAAoAAAAlAAgABgAAAA8AAAAmAAgABgAAAA8AAAAnAAgABgAAAA8AAAAkAAkABgAAAAoAAAAlAAkABgAAAA8AAAAmAAkABgAAAA8AAAAnAAkABgAAAA8AAAAkAAoABgAAAAoAAAAlAAoABgAAAA8AAAAmAAoABgAAAA8AAAAnAAoABgAAAA8AAAAkAAsABgAAAAoAAAAlAAsABgAAAA8AAAAmAAsABgAAAA8AAAAnAAsABgAAAA8AAAAkAAwABgAAAAIAAAAlAAwABgAAAAsAAAAmAAwABgAAAA8AAAAnAAwABgAAAA8AAAAlAA0ABgAAAAoAAAAmAA0ABgAAAA8AAAAnAA0ABgAAAA8AAAAlAA4ABgAAAAoAAAAmAA4ABgAAAA8AAAAnAA4ABgAAAA8AAAAlAA8ABgAAAAoAAAAmAA8ABgAAAA8AAAAnAA8ABgAAAA8AAAAlABAABgAAAAIAAAAmABAABgAAAAsAAAAnABAABgAAAA8AAAAmABEABgAAAAoAAAAnABEABgAAAA8AAAAmABIABgAAAAoAAAAnABIABgAAAA8AAAAmABMABgAAAAoAAAAnABMABgAAAA8AAAAmABQABgAAAAIAAAAnABQABgAAAAsAAAAnABUABgAAAAoAAAAnABYABgAAAAIAAAA=")
+tile_set = SubResource("TileSet_4oauf")
 
-[node name="Droga" type="TileMapLayer" parent="."]
+[node name="Droga" type="TileMapLayer" parent="." unique_id=1733095269]
 scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_4oauf")
 
-[node name="DrogaSkos" type="TileMapLayer" parent="."]
+[node name="DrogaSkos" type="TileMapLayer" parent="." unique_id=2111577061]
 scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_4oauf")
 
-[node name="Gory" type="TileMapLayer" parent="."]
+[node name="Gory" type="TileMapLayer" parent="." unique_id=898693744]
 scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_4oauf")
 
-[node name="MiejscaNaWieze" type="Node2D" parent="."]
+[node name="MiejscaNaWieze" type="Node2D" parent="." unique_id=258231612]
 
-[node name="Miejsce1" type="Sprite2D" parent="MiejscaNaWieze"]
-position = Vector2(381, 137)
+[node name="Miejsce1" type="Sprite2D" parent="MiejscaNaWieze" unique_id=343522189]
+position = Vector2(390, 357)
 scale = Vector2(2, 2)
 texture = ExtResource("2_spot")
 
-[node name="Miejsce2" type="Sprite2D" parent="MiejscaNaWieze"]
-position = Vector2(233, 294)
+[node name="Miejsce2" type="Sprite2D" parent="MiejscaNaWieze" unique_id=1504713379]
+position = Vector2(204, 206)
 scale = Vector2(2, 2)
 texture = ExtResource("2_spot")
 
-[node name="Miejsce3" type="Sprite2D" parent="MiejscaNaWieze"]
-position = Vector2(586, 344)
+[node name="Miejsce3" type="Sprite2D" parent="MiejscaNaWieze" unique_id=1453254418]
+position = Vector2(553, 373)
 scale = Vector2(2, 2)
 texture = ExtResource("2_spot")
 
-[node name="Miejsce4" type="Sprite2D" parent="MiejscaNaWieze"]
-position = Vector2(1012, 143)
+[node name="Miejsce4" type="Sprite2D" parent="MiejscaNaWieze" unique_id=1709836984]
+position = Vector2(946, 373)
 scale = Vector2(2, 2)
 texture = ExtResource("3_spot_desert")
 
-[node name="Miejsce5" type="Sprite2D" parent="MiejscaNaWieze"]
-position = Vector2(1174, 166)
+[node name="Miejsce5" type="Sprite2D" parent="MiejscaNaWieze" unique_id=1411159818]
+position = Vector2(886, 267)
 scale = Vector2(2, 2)
 texture = ExtResource("3_spot_desert")
 
-[node name="Miejsce6" type="Sprite2D" parent="MiejscaNaWieze"]
-position = Vector2(848, 359)
+[node name="Miejsce6" type="Sprite2D" parent="MiejscaNaWieze" unique_id=2021162152]
+position = Vector2(682, 230)
 scale = Vector2(2, 2)
 texture = ExtResource("3_spot_desert")
 
-[node name="Miejsce7" type="Sprite2D" parent="MiejscaNaWieze"]
-position = Vector2(856, 534)
+[node name="Miejsce7" type="Sprite2D" parent="MiejscaNaWieze" unique_id=212692037]
+position = Vector2(864, 545)
 scale = Vector2(2, 2)
 texture = ExtResource("3_spot_desert")
 
-[node name="Miejsce8" type="Sprite2D" parent="MiejscaNaWieze"]
-position = Vector2(1168, 611)
+[node name="Miejsce8" type="Sprite2D" parent="MiejscaNaWieze" unique_id=1211689620]
+position = Vector2(619, 571)
 scale = Vector2(2, 2)
 texture = ExtResource("3_spot_desert")
 
-[node name="Ozdoby" type="Node2D" parent="."]
+[node name="Ozdoby" type="Node2D" parent="." unique_id=916873336]
 y_sort_enabled = true
 
-[node name="cactus_round_1" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(988, 72)
+[node name="cactus_round_1" type="Sprite2D" parent="Ozdoby" unique_id=1472272137]
+position = Vector2(974, 68)
 scale = Vector2(2, 2)
 texture = ExtResource("6_cactus_round")
 offset = Vector2(0, -6)
 
-[node name="desert_rock_tiny_1" type="Sprite2D" parent="Ozdoby"]
+[node name="desert_rock_tiny_1" type="Sprite2D" parent="Ozdoby" unique_id=1464839217]
 position = Vector2(942, 72)
 scale = Vector2(2, 2)
 texture = ExtResource("12_desert_rock_tiny")
 offset = Vector2(0, -3)
 
-[node name="pine_slim_1" type="Sprite2D" parent="Ozdoby"]
+[node name="pine_slim_1" type="Sprite2D" parent="Ozdoby" unique_id=1049286520]
 position = Vector2(576, 78)
 scale = Vector2(2, 2)
 texture = ExtResource("20_pine_slim")
 offset = Vector2(0, -16)
 
-[node name="cactus_tall_1" type="Sprite2D" parent="Ozdoby"]
+[node name="cactus_tall_1" type="Sprite2D" parent="Ozdoby" unique_id=1709602892]
 position = Vector2(838, 106)
 scale = Vector2(2, 2)
 texture = ExtResource("7_cactus_tall")
 offset = Vector2(0, -12)
 
-[node name="pine_slim_2" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(598, 118)
+[node name="pine_slim_2" type="Sprite2D" parent="Ozdoby" unique_id=1342749022]
+position = Vector2(590, 118)
 scale = Vector2(2, 2)
 texture = ExtResource("20_pine_slim")
 offset = Vector2(0, -16)
 
-[node name="bush_berry_1" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(68, 126)
+[node name="bush_berry_1" type="Sprite2D" parent="Ozdoby" unique_id=470043795]
+position = Vector2(68, 146)
 scale = Vector2(2, 2)
 texture = ExtResource("4_bush_berry")
 offset = Vector2(0, -6)
 
-[node name="grass_tuft_b_1" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(10, 128)
+[node name="grass_tuft_b_1" type="Sprite2D" parent="Ozdoby" unique_id=2003397709]
+position = Vector2(15, 147)
 scale = Vector2(2, 2)
 texture = ExtResource("18_grass_tuft_b")
 offset = Vector2(0, -4)
 
-[node name="dry_bush_1" type="Sprite2D" parent="Ozdoby"]
+[node name="dry_bush_1" type="Sprite2D" parent="Ozdoby" unique_id=23400551]
 position = Vector2(784, 130)
 scale = Vector2(2, 2)
 texture = ExtResource("13_dry_bush")
 offset = Vector2(0, -5)
 
-[node name="cactus_tall_2" type="Sprite2D" parent="Ozdoby"]
+[node name="cactus_tall_2" type="Sprite2D" parent="Ozdoby" unique_id=206454024]
 position = Vector2(820, 140)
 scale = Vector2(2, 2)
 texture = ExtResource("7_cactus_tall")
 offset = Vector2(0, -12)
 
-[node name="tree_wide_1" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(620, 150)
+[node name="tree_wide_1" type="Sprite2D" parent="Ozdoby" unique_id=1788327066]
+position = Vector2(570, 150)
 scale = Vector2(2, 2)
 texture = ExtResource("29_tree_wide")
 offset = Vector2(0, -16)
 
-[node name="grass_tuft_c_1" type="Sprite2D" parent="Ozdoby"]
+[node name="grass_tuft_c_1" type="Sprite2D" parent="Ozdoby" unique_id=679667848]
 position = Vector2(120, 152)
 scale = Vector2(2, 2)
 texture = ExtResource("19_grass_tuft_c")
 offset = Vector2(0, -4)
 
-[node name="bush_berry_2" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(584, 158)
+[node name="bush_berry_2" type="Sprite2D" parent="Ozdoby" unique_id=846758232]
+position = Vector2(561, 171)
 scale = Vector2(2, 2)
 texture = ExtResource("4_bush_berry")
 offset = Vector2(0, -6)
 
-[node name="flowers_pink_1" type="Sprite2D" parent="Ozdoby"]
+[node name="flowers_pink_1" type="Sprite2D" parent="Ozdoby" unique_id=1181030008]
 position = Vector2(106, 162)
 scale = Vector2(2, 2)
 texture = ExtResource("14_flowers_pink")
 offset = Vector2(0, -4)
 
-[node name="dead_tree_b_1" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(874, 162)
+[node name="dead_tree_b_1" type="Sprite2D" parent="Ozdoby" unique_id=1770615459]
+position = Vector2(858, 134)
 scale = Vector2(2, 2)
 texture = ExtResource("9_dead_tree_b")
 offset = Vector2(0, -16)
 
-[node name="tree_oval_1" type="Sprite2D" parent="Ozdoby"]
+[node name="tree_oval_1" type="Sprite2D" parent="Ozdoby" unique_id=1360689564]
 position = Vector2(50, 166)
 scale = Vector2(2, 2)
 texture = ExtResource("27_tree_oval")
 offset = Vector2(0, -16)
 
-[node name="desert_rock_medium_1" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(926, 174)
+[node name="desert_rock_medium_1" type="Sprite2D" parent="Ozdoby" unique_id=1904469267]
+position = Vector2(901, 99)
 scale = Vector2(2, 2)
 texture = ExtResource("10_desert_rock_medium")
 offset = Vector2(0, -5)
 
-[node name="bush_berry_3" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(600, 176)
+[node name="bush_berry_3" type="Sprite2D" parent="Ozdoby" unique_id=2030232238]
+position = Vector2(552, 189)
 scale = Vector2(2, 2)
 texture = ExtResource("4_bush_berry")
 offset = Vector2(0, -6)
 
-[node name="tree_oval_2" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(568, 186)
+[node name="tree_oval_2" type="Sprite2D" parent="Ozdoby" unique_id=203225650]
+position = Vector2(545, 173)
 scale = Vector2(2, 2)
 texture = ExtResource("27_tree_oval")
 offset = Vector2(0, -16)
 
-[node name="tree_oval_3" type="Sprite2D" parent="Ozdoby"]
+[node name="tree_oval_3" type="Sprite2D" parent="Ozdoby" unique_id=397557817]
 position = Vector2(460, 196)
 scale = Vector2(2, 2)
 texture = ExtResource("27_tree_oval")
 offset = Vector2(0, -16)
 
-[node name="dead_tree_a_1" type="Sprite2D" parent="Ozdoby"]
+[node name="dead_tree_a_1" type="Sprite2D" parent="Ozdoby" unique_id=1621000601]
 position = Vector2(810, 200)
 scale = Vector2(2, 2)
 texture = ExtResource("8_dead_tree_a")
 offset = Vector2(0, -16)
 
-[node name="dead_tree_a_2" type="Sprite2D" parent="Ozdoby"]
+[node name="dead_tree_a_2" type="Sprite2D" parent="Ozdoby" unique_id=622738130]
 position = Vector2(1016, 200)
 scale = Vector2(2, 2)
 texture = ExtResource("8_dead_tree_a")
 offset = Vector2(0, -16)
 
-[node name="tree_round_1" type="Sprite2D" parent="Ozdoby"]
+[node name="dead_tree_b_z1" type="Sprite2D" parent="Ozdoby" unique_id=1903157263]
 position = Vector2(662, 206)
 scale = Vector2(2, 2)
-texture = ExtResource("28_tree_round")
+texture = ExtResource("9_dead_tree_b")
 offset = Vector2(0, -16)
 
-[node name="tree_wide_2" type="Sprite2D" parent="Ozdoby"]
+[node name="tree_wide_2" type="Sprite2D" parent="Ozdoby" unique_id=761367856]
 position = Vector2(146, 208)
 scale = Vector2(2, 2)
 texture = ExtResource("29_tree_wide")
 offset = Vector2(0, -16)
 
-[node name="bush_berry_4" type="Sprite2D" parent="Ozdoby"]
+[node name="bush_berry_4" type="Sprite2D" parent="Ozdoby" unique_id=988081956]
 position = Vector2(68, 210)
 scale = Vector2(2, 2)
 texture = ExtResource("4_bush_berry")
 offset = Vector2(0, -6)
 
-[node name="dead_tree_b_2" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(910, 212)
+[node name="dead_tree_b_2" type="Sprite2D" parent="Ozdoby" unique_id=548187692]
+position = Vector2(883, 196)
 scale = Vector2(2, 2)
 texture = ExtResource("9_dead_tree_b")
 offset = Vector2(0, -16)
 
-[node name="desert_rock_tiny_2" type="Sprite2D" parent="Ozdoby"]
+[node name="desert_rock_tiny_2" type="Sprite2D" parent="Ozdoby" unique_id=1133641006]
 position = Vector2(892, 222)
 scale = Vector2(2, 2)
 texture = ExtResource("12_desert_rock_tiny")
 offset = Vector2(0, -3)
 
-[node name="desert_rock_medium_2" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(852, 222)
+[node name="desert_rock_medium_2" type="Sprite2D" parent="Ozdoby" unique_id=1625157185]
+position = Vector2(883, 370)
 scale = Vector2(2, 2)
 texture = ExtResource("10_desert_rock_medium")
 offset = Vector2(0, -5)
 
-[node name="desert_rock_tiny_3" type="Sprite2D" parent="Ozdoby"]
+[node name="desert_rock_tiny_3" type="Sprite2D" parent="Ozdoby" unique_id=135242508]
 position = Vector2(766, 224)
 scale = Vector2(2, 2)
 texture = ExtResource("12_desert_rock_tiny")
 offset = Vector2(0, -3)
 
-[node name="grass_tuft_c_2" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(172, 228)
+[node name="grass_tuft_c_2" type="Sprite2D" parent="Ozdoby" unique_id=1962643861]
+position = Vector2(167, 209)
 scale = Vector2(2, 2)
 texture = ExtResource("19_grass_tuft_c")
 offset = Vector2(0, -4)
 
-[node name="rock_small_1" type="Sprite2D" parent="Ozdoby"]
+[node name="rock_small_1" type="Sprite2D" parent="Ozdoby" unique_id=1455326675]
 position = Vector2(378, 236)
 scale = Vector2(2, 2)
 texture = ExtResource("24_rock_small")
 offset = Vector2(0, -4)
 
-[node name="rock_small_2" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(564, 258)
+[node name="rock_small_2" type="Sprite2D" parent="Ozdoby" unique_id=1132208882]
+position = Vector2(554, 268)
 scale = Vector2(2, 2)
 texture = ExtResource("24_rock_small")
 offset = Vector2(0, -4)
 
-[node name="grass_tuft_a_1" type="Sprite2D" parent="Ozdoby"]
+[node name="grass_tuft_a_1" type="Sprite2D" parent="Ozdoby" unique_id=144227594]
 position = Vector2(44, 262)
 scale = Vector2(2, 2)
 texture = ExtResource("17_grass_tuft_a")
 offset = Vector2(0, -4)
 
-[node name="tree_oval_4" type="Sprite2D" parent="Ozdoby"]
+[node name="tree_oval_4" type="Sprite2D" parent="Ozdoby" unique_id=1159892907]
 position = Vector2(120, 272)
 scale = Vector2(2, 2)
 texture = ExtResource("27_tree_oval")
 offset = Vector2(0, -16)
 
-[node name="dead_tree_a_3" type="Sprite2D" parent="Ozdoby"]
+[node name="dead_tree_a_3" type="Sprite2D" parent="Ozdoby" unique_id=1547278200]
 position = Vector2(1148, 274)
 scale = Vector2(2, 2)
 texture = ExtResource("8_dead_tree_a")
 offset = Vector2(0, -16)
 
-[node name="grass_tuft_a_2" type="Sprite2D" parent="Ozdoby"]
+[node name="grass_tuft_a_2" type="Sprite2D" parent="Ozdoby" unique_id=769933657]
 position = Vector2(352, 276)
 scale = Vector2(2, 2)
 texture = ExtResource("17_grass_tuft_a")
 offset = Vector2(0, -4)
 
-[node name="grass_tuft_a_3" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(172, 280)
+[node name="grass_tuft_a_3" type="Sprite2D" parent="Ozdoby" unique_id=451718568]
+position = Vector2(178, 286)
 scale = Vector2(2, 2)
 texture = ExtResource("17_grass_tuft_a")
 offset = Vector2(0, -4)
 
-[node name="bush_berry_5" type="Sprite2D" parent="Ozdoby"]
+[node name="bush_berry_5" type="Sprite2D" parent="Ozdoby" unique_id=1006020355]
 position = Vector2(18, 284)
 scale = Vector2(2, 2)
 texture = ExtResource("4_bush_berry")
 offset = Vector2(0, -6)
 
-[node name="grass_tuft_a_4" type="Sprite2D" parent="Ozdoby"]
+[node name="grass_tuft_a_4" type="Sprite2D" parent="Ozdoby" unique_id=98596863]
 position = Vector2(138, 286)
 scale = Vector2(2, 2)
 texture = ExtResource("17_grass_tuft_a")
 offset = Vector2(0, -4)
 
-[node name="cactus_round_2" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(1020, 290)
+[node name="cactus_round_2" type="Sprite2D" parent="Ozdoby" unique_id=833229811]
+position = Vector2(1043, 277)
 scale = Vector2(2, 2)
 texture = ExtResource("6_cactus_round")
 offset = Vector2(0, -6)
 
-[node name="tree_wide_3" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(466, 292)
+[node name="tree_wide_3" type="Sprite2D" parent="Ozdoby" unique_id=374320096]
+position = Vector2(466, 260)
 scale = Vector2(2, 2)
 texture = ExtResource("29_tree_wide")
 offset = Vector2(0, -16)
 
-[node name="dry_bush_2" type="Sprite2D" parent="Ozdoby"]
+[node name="dry_bush_2" type="Sprite2D" parent="Ozdoby" unique_id=1591476616]
 position = Vector2(1116, 292)
 scale = Vector2(2, 2)
 texture = ExtResource("13_dry_bush")
 offset = Vector2(0, -5)
 
-[node name="pine_slim_3" type="Sprite2D" parent="Ozdoby"]
+[node name="pine_slim_3" type="Sprite2D" parent="Ozdoby" unique_id=557192240]
 position = Vector2(404, 296)
 scale = Vector2(2, 2)
 texture = ExtResource("20_pine_slim")
 offset = Vector2(0, -16)
 
-[node name="rock_tiny_1" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(452, 312)
+[node name="rock_tiny_1" type="Sprite2D" parent="Ozdoby" unique_id=1892768982]
+position = Vector2(459, 337)
 scale = Vector2(2, 2)
 texture = ExtResource("25_rock_tiny")
 offset = Vector2(0, -3)
 
-[node name="desert_rock_small_1" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(910, 318)
+[node name="desert_rock_small_1" type="Sprite2D" parent="Ozdoby" unique_id=586409773]
+position = Vector2(844, 392)
 scale = Vector2(2, 2)
 texture = ExtResource("11_desert_rock_small")
 offset = Vector2(0, -4)
 
-[node name="bush_berry_6" type="Sprite2D" parent="Ozdoby"]
+[node name="bush_berry_6" type="Sprite2D" parent="Ozdoby" unique_id=1781729139]
 position = Vector2(114, 326)
 scale = Vector2(2, 2)
 texture = ExtResource("4_bush_berry")
 offset = Vector2(0, -6)
 
-[node name="bush_round_1" type="Sprite2D" parent="Ozdoby"]
+[node name="bush_round_1" type="Sprite2D" parent="Ozdoby" unique_id=583308507]
 position = Vector2(350, 326)
 scale = Vector2(2, 2)
 texture = ExtResource("5_bush_round")
 offset = Vector2(0, -6)
 
-[node name="pine_tall_1" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(10, 334)
+[node name="pine_tall_1" type="Sprite2D" parent="Ozdoby" unique_id=1742942921]
+position = Vector2(18, 334)
 scale = Vector2(2, 2)
 texture = ExtResource("21_pine_tall")
 offset = Vector2(0, -16)
 
-[node name="desert_rock_medium_3" type="Sprite2D" parent="Ozdoby"]
+[node name="desert_rock_medium_3" type="Sprite2D" parent="Ozdoby" unique_id=653764706]
 position = Vector2(1160, 336)
 scale = Vector2(2, 2)
 texture = ExtResource("10_desert_rock_medium")
 offset = Vector2(0, -5)
 
-[node name="grass_tuft_a_5" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(264, 348)
+[node name="grass_tuft_a_5" type="Sprite2D" parent="Ozdoby" unique_id=206545170]
+position = Vector2(247, 358)
 scale = Vector2(2, 2)
 texture = ExtResource("17_grass_tuft_a")
 offset = Vector2(0, -4)
 
-[node name="rock_small_3" type="Sprite2D" parent="Ozdoby"]
+[node name="rock_small_3" type="Sprite2D" parent="Ozdoby" unique_id=1322489448]
 position = Vector2(124, 362)
 scale = Vector2(2, 2)
 texture = ExtResource("24_rock_small")
 offset = Vector2(0, -4)
 
-[node name="grass_tuft_b_2" type="Sprite2D" parent="Ozdoby"]
+[node name="grass_tuft_b_2" type="Sprite2D" parent="Ozdoby" unique_id=1370193537]
 position = Vector2(194, 376)
 scale = Vector2(2, 2)
 texture = ExtResource("18_grass_tuft_b")
 offset = Vector2(0, -4)
 
-[node name="grass_tuft_b_3" type="Sprite2D" parent="Ozdoby"]
+[node name="grass_tuft_b_3" type="Sprite2D" parent="Ozdoby" unique_id=670038297]
 position = Vector2(92, 384)
 scale = Vector2(2, 2)
 texture = ExtResource("18_grass_tuft_b")
 offset = Vector2(0, -4)
 
-[node name="pine_tall_2" type="Sprite2D" parent="Ozdoby"]
+[node name="pine_tall_2" type="Sprite2D" parent="Ozdoby" unique_id=1149611927]
 position = Vector2(190, 408)
 scale = Vector2(2, 2)
 texture = ExtResource("21_pine_tall")
 offset = Vector2(0, -16)
 
-[node name="tree_wide_4" type="Sprite2D" parent="Ozdoby"]
+[node name="tree_wide_4" type="Sprite2D" parent="Ozdoby" unique_id=734034668]
 position = Vector2(28, 420)
 scale = Vector2(2, 2)
 texture = ExtResource("29_tree_wide")
 offset = Vector2(0, -16)
 
-[node name="flowers_white_1" type="Sprite2D" parent="Ozdoby"]
+[node name="flowers_white_1" type="Sprite2D" parent="Ozdoby" unique_id=1599586216]
 position = Vector2(204, 420)
 scale = Vector2(2, 2)
 texture = ExtResource("15_flowers_white")
 offset = Vector2(0, -4)
 
-[node name="desert_rock_small_2" type="Sprite2D" parent="Ozdoby"]
+[node name="desert_rock_small_2" type="Sprite2D" parent="Ozdoby" unique_id=612299951]
 position = Vector2(1130, 426)
 scale = Vector2(2, 2)
 texture = ExtResource("11_desert_rock_small")
 offset = Vector2(0, -4)
 
-[node name="desert_rock_small_3" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(670, 426)
+[node name="desert_rock_small_3" type="Sprite2D" parent="Ozdoby" unique_id=1737040400]
+position = Vector2(653, 436)
 scale = Vector2(2, 2)
 texture = ExtResource("11_desert_rock_small")
 offset = Vector2(0, -4)
 
-[node name="flowers_white_2" type="Sprite2D" parent="Ozdoby"]
+[node name="flowers_white_2" type="Sprite2D" parent="Ozdoby" unique_id=347512813]
 position = Vector2(68, 432)
 scale = Vector2(2, 2)
 texture = ExtResource("15_flowers_white")
 offset = Vector2(0, -4)
 
-[node name="grass_tuft_a_6" type="Sprite2D" parent="Ozdoby"]
+[node name="grass_tuft_a_6" type="Sprite2D" parent="Ozdoby" unique_id=1412158820]
 position = Vector2(244, 436)
 scale = Vector2(2, 2)
 texture = ExtResource("17_grass_tuft_a")
 offset = Vector2(0, -4)
 
-[node name="cactus_tall_3" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(810, 448)
+[node name="cactus_tall_3" type="Sprite2D" parent="Ozdoby" unique_id=1427551902]
+position = Vector2(891, 463)
 scale = Vector2(2, 2)
 texture = ExtResource("7_cactus_tall")
 offset = Vector2(0, -12)
 
-[node name="desert_rock_medium_4" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(664, 448)
+[node name="desert_rock_medium_4" type="Sprite2D" parent="Ozdoby" unique_id=1509789810]
+position = Vector2(672, 450)
 scale = Vector2(2, 2)
 texture = ExtResource("10_desert_rock_medium")
 offset = Vector2(0, -5)
 
-[node name="rock_medium_1" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(342, 454)
+[node name="rock_medium_1" type="Sprite2D" parent="Ozdoby" unique_id=1868483313]
+position = Vector2(323, 487)
 scale = Vector2(2, 2)
 texture = ExtResource("23_rock_medium")
 offset = Vector2(0, -5)
 
-[node name="rock_medium_2" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(450, 454)
+[node name="rock_medium_2" type="Sprite2D" parent="Ozdoby" unique_id=160827263]
+position = Vector2(439, 411)
 scale = Vector2(2, 2)
 texture = ExtResource("23_rock_medium")
 offset = Vector2(0, -5)
 
-[node name="grass_tuft_a_7" type="Sprite2D" parent="Ozdoby"]
+[node name="grass_tuft_a_7" type="Sprite2D" parent="Ozdoby" unique_id=455695156]
 position = Vector2(154, 454)
 scale = Vector2(2, 2)
 texture = ExtResource("17_grass_tuft_a")
 offset = Vector2(0, -4)
 
-[node name="rock_tiny_2" type="Sprite2D" parent="Ozdoby"]
+[node name="rock_tiny_2" type="Sprite2D" parent="Ozdoby" unique_id=666155307]
 position = Vector2(172, 470)
 scale = Vector2(2, 2)
 texture = ExtResource("25_rock_tiny")
 offset = Vector2(0, -3)
 
-[node name="grass_tuft_c_3" type="Sprite2D" parent="Ozdoby"]
+[node name="grass_tuft_c_3" type="Sprite2D" parent="Ozdoby" unique_id=1855573888]
 position = Vector2(64, 470)
 scale = Vector2(2, 2)
 texture = ExtResource("19_grass_tuft_c")
 offset = Vector2(0, -4)
 
-[node name="flowers_white_3" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(486, 472)
+[node name="flowers_white_3" type="Sprite2D" parent="Ozdoby" unique_id=836713204]
+position = Vector2(502, 500)
 scale = Vector2(2, 2)
 texture = ExtResource("15_flowers_white")
 offset = Vector2(0, -4)
 
-[node name="skull_1" type="Sprite2D" parent="Ozdoby"]
+[node name="skull_1" type="Sprite2D" parent="Ozdoby" unique_id=1168082900]
 position = Vector2(1136, 474)
 scale = Vector2(2, 2)
 texture = ExtResource("26_skull")
 offset = Vector2(0, -5)
 
-[node name="pine_tall_3" type="Sprite2D" parent="Ozdoby"]
+[node name="pine_tall_3" type="Sprite2D" parent="Ozdoby" unique_id=1813564822]
 position = Vector2(108, 476)
 scale = Vector2(2, 2)
 texture = ExtResource("21_pine_tall")
 offset = Vector2(0, -16)
 
-[node name="tree_wide_5" type="Sprite2D" parent="Ozdoby"]
+[node name="tree_wide_5" type="Sprite2D" parent="Ozdoby" unique_id=1083695975]
 position = Vector2(28, 486)
 scale = Vector2(2, 2)
 texture = ExtResource("29_tree_wide")
 offset = Vector2(0, -16)
 
-[node name="bush_round_2" type="Sprite2D" parent="Ozdoby"]
+[node name="bush_round_2" type="Sprite2D" parent="Ozdoby" unique_id=1773329235]
 position = Vector2(130, 494)
 scale = Vector2(2, 2)
 texture = ExtResource("5_bush_round")
 offset = Vector2(0, -6)
 
-[node name="pine_slim_4" type="Sprite2D" parent="Ozdoby"]
+[node name="pine_slim_4" type="Sprite2D" parent="Ozdoby" unique_id=1035602437]
 position = Vector2(202, 500)
 scale = Vector2(2, 2)
 texture = ExtResource("20_pine_slim")
 offset = Vector2(0, -16)
 
-[node name="bush_round_3" type="Sprite2D" parent="Ozdoby"]
+[node name="bush_round_3" type="Sprite2D" parent="Ozdoby" unique_id=653001295]
 position = Vector2(558, 502)
 scale = Vector2(2, 2)
 texture = ExtResource("5_bush_round")
 offset = Vector2(0, -6)
 
-[node name="flowers_pink_2" type="Sprite2D" parent="Ozdoby"]
+[node name="flowers_pink_2" type="Sprite2D" parent="Ozdoby" unique_id=1273555640]
 position = Vector2(542, 502)
 scale = Vector2(2, 2)
 texture = ExtResource("14_flowers_pink")
 offset = Vector2(0, -4)
 
-[node name="flowers_yellow_1" type="Sprite2D" parent="Ozdoby"]
+[node name="flowers_yellow_1" type="Sprite2D" parent="Ozdoby" unique_id=978067392]
 position = Vector2(462, 504)
 scale = Vector2(2, 2)
 texture = ExtResource("16_flowers_yellow")
 offset = Vector2(0, -4)
 
-[node name="grass_tuft_c_4" type="Sprite2D" parent="Ozdoby"]
+[node name="grass_tuft_c_4" type="Sprite2D" parent="Ozdoby" unique_id=269013898]
 position = Vector2(238, 508)
 scale = Vector2(2, 2)
 texture = ExtResource("19_grass_tuft_c")
 offset = Vector2(0, -4)
 
-[node name="cactus_round_3" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(788, 510)
+[node name="cactus_round_3" type="Sprite2D" parent="Ozdoby" unique_id=1565931141]
+position = Vector2(808, 510)
 scale = Vector2(2, 2)
 texture = ExtResource("6_cactus_round")
 offset = Vector2(0, -6)
 
-[node name="tree_wide_6" type="Sprite2D" parent="Ozdoby"]
+[node name="tree_wide_6" type="Sprite2D" parent="Ozdoby" unique_id=890851939]
 position = Vector2(326, 512)
 scale = Vector2(2, 2)
 texture = ExtResource("29_tree_wide")
 offset = Vector2(0, -16)
 
-[node name="dry_bush_3" type="Sprite2D" parent="Ozdoby"]
+[node name="dry_bush_3" type="Sprite2D" parent="Ozdoby" unique_id=1070734677]
 position = Vector2(1156, 520)
 scale = Vector2(2, 2)
 texture = ExtResource("13_dry_bush")
 offset = Vector2(0, -5)
 
-[node name="ribs_1" type="Sprite2D" parent="Ozdoby"]
+[node name="grass_tuft_b_z1" type="Sprite2D" parent="Ozdoby" unique_id=2006760882]
 position = Vector2(584, 526)
 scale = Vector2(2, 2)
-texture = ExtResource("22_ribs")
-offset = Vector2(0, -6)
+texture = ExtResource("18_grass_tuft_b")
+offset = Vector2(0, -4)
 
-[node name="cactus_round_4" type="Sprite2D" parent="Ozdoby"]
+[node name="cactus_round_4" type="Sprite2D" parent="Ozdoby" unique_id=1412326513]
 position = Vector2(1172, 530)
 scale = Vector2(2, 2)
 texture = ExtResource("6_cactus_round")
 offset = Vector2(0, -6)
 
-[node name="rock_tiny_3" type="Sprite2D" parent="Ozdoby"]
+[node name="rock_tiny_3" type="Sprite2D" parent="Ozdoby" unique_id=1646742760]
 position = Vector2(316, 534)
 scale = Vector2(2, 2)
 texture = ExtResource("25_rock_tiny")
 offset = Vector2(0, -3)
 
-[node name="grass_tuft_a_8" type="Sprite2D" parent="Ozdoby"]
+[node name="shell_clam_z1" type="Sprite2D" parent="Ozdoby" unique_id=1145696938]
 position = Vector2(184, 536)
 scale = Vector2(2, 2)
-texture = ExtResource("17_grass_tuft_a")
-offset = Vector2(0, -4)
+texture = ExtResource("deco_shell_clam")
+offset = Vector2(0, -3)
 
-[node name="grass_tuft_c_5" type="Sprite2D" parent="Ozdoby"]
+[node name="grass_tuft_c_5" type="Sprite2D" parent="Ozdoby" unique_id=229680259]
 position = Vector2(568, 536)
 scale = Vector2(2, 2)
 texture = ExtResource("19_grass_tuft_c")
 offset = Vector2(0, -4)
 
-[node name="skull_2" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(1018, 544)
+[node name="skull_2" type="Sprite2D" parent="Ozdoby" unique_id=2025750594]
+position = Vector2(991, 517)
 scale = Vector2(2, 2)
 texture = ExtResource("26_skull")
 offset = Vector2(0, -5)
 
-[node name="bush_round_4" type="Sprite2D" parent="Ozdoby"]
+[node name="bush_round_4" type="Sprite2D" parent="Ozdoby" unique_id=855024816]
 position = Vector2(542, 550)
 scale = Vector2(2, 2)
 texture = ExtResource("5_bush_round")
 offset = Vector2(0, -6)
 
-[node name="grass_tuft_c_6" type="Sprite2D" parent="Ozdoby"]
+[node name="shell_clam_z2" type="Sprite2D" parent="Ozdoby" unique_id=878728756]
 position = Vector2(104, 552)
 scale = Vector2(2, 2)
-texture = ExtResource("19_grass_tuft_c")
-offset = Vector2(0, -4)
+texture = ExtResource("deco_shell_clam")
+offset = Vector2(0, -3)
 
-[node name="flowers_white_4" type="Sprite2D" parent="Ozdoby"]
+[node name="shell_clam_z3" type="Sprite2D" parent="Ozdoby" unique_id=1066978789]
 position = Vector2(286, 556)
 scale = Vector2(2, 2)
-texture = ExtResource("15_flowers_white")
-offset = Vector2(0, -4)
+texture = ExtResource("deco_shell_clam")
+offset = Vector2(0, -3)
 
-[node name="grass_tuft_a_9" type="Sprite2D" parent="Ozdoby"]
+[node name="shell_clam_z4" type="Sprite2D" parent="Ozdoby" unique_id=53022093]
 position = Vector2(30, 570)
 scale = Vector2(2, 2)
-texture = ExtResource("17_grass_tuft_a")
-offset = Vector2(0, -4)
+texture = ExtResource("deco_shell_clam")
+offset = Vector2(0, -3)
 
-[node name="flowers_yellow_2" type="Sprite2D" parent="Ozdoby"]
+[node name="shell_scallop_z1" type="Sprite2D" parent="Ozdoby" unique_id=1517977104]
 position = Vector2(82, 578)
 scale = Vector2(2, 2)
-texture = ExtResource("16_flowers_yellow")
-offset = Vector2(0, -4)
+texture = ExtResource("deco_shell_scallop")
+offset = Vector2(0, -3)
 
-[node name="flowers_yellow_3" type="Sprite2D" parent="Ozdoby"]
+[node name="shell_scallop_z2" type="Sprite2D" parent="Ozdoby" unique_id=542186289]
 position = Vector2(500, 588)
 scale = Vector2(2, 2)
-texture = ExtResource("16_flowers_yellow")
-offset = Vector2(0, -4)
+texture = ExtResource("deco_shell_scallop")
+offset = Vector2(0, -3)
 
-[node name="tree_oval_5" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(446, 598)
+[node name="tree_oval_5" type="Sprite2D" parent="Ozdoby" unique_id=2139283696]
+position = Vector2(498, 530)
 scale = Vector2(2, 2)
 texture = ExtResource("27_tree_oval")
 offset = Vector2(0, -16)
 
-[node name="pine_slim_5" type="Sprite2D" parent="Ozdoby"]
+[node name="cactus_round_z1" type="Sprite2D" parent="Ozdoby" unique_id=1200729665]
 position = Vector2(152, 600)
 scale = Vector2(2, 2)
-texture = ExtResource("20_pine_slim")
-offset = Vector2(0, -16)
+texture = ExtResource("6_cactus_round")
+offset = Vector2(0, -6)
 
-[node name="pine_tall_4" type="Sprite2D" parent="Ozdoby"]
+[node name="cactus_tall_z1" type="Sprite2D" parent="Ozdoby" unique_id=1589577600]
 position = Vector2(276, 608)
 scale = Vector2(2, 2)
-texture = ExtResource("21_pine_tall")
-offset = Vector2(0, -16)
+texture = ExtResource("7_cactus_tall")
+offset = Vector2(0, -12)
 
-[node name="flowers_white_5" type="Sprite2D" parent="Ozdoby"]
+[node name="shell_clam_z5" type="Sprite2D" parent="Ozdoby" unique_id=926674008]
 position = Vector2(360, 608)
 scale = Vector2(2, 2)
-texture = ExtResource("15_flowers_white")
-offset = Vector2(0, -4)
+texture = ExtResource("deco_shell_clam")
+offset = Vector2(0, -3)
 
-[node name="tree_wide_7" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(386, 614)
+[node name="dead_tree_a_z1" type="Sprite2D" parent="Ozdoby" unique_id=1693149768]
+position = Vector2(511, 638)
 scale = Vector2(2, 2)
-texture = ExtResource("29_tree_wide")
+texture = ExtResource("8_dead_tree_a")
 offset = Vector2(0, -16)
 
-[node name="tree_wide_8" type="Sprite2D" parent="Ozdoby"]
+[node name="dead_tree_a_z2" type="Sprite2D" parent="Ozdoby" unique_id=1840675577]
 position = Vector2(72, 628)
 scale = Vector2(2, 2)
-texture = ExtResource("29_tree_wide")
+texture = ExtResource("8_dead_tree_a")
 offset = Vector2(0, -16)
 
-[node name="flowers_yellow_4" type="Sprite2D" parent="Ozdoby"]
+[node name="shell_scallop_z3" type="Sprite2D" parent="Ozdoby" unique_id=229164682]
 position = Vector2(160, 638)
 scale = Vector2(2, 2)
-texture = ExtResource("16_flowers_yellow")
-offset = Vector2(0, -4)
+texture = ExtResource("deco_shell_scallop")
+offset = Vector2(0, -3)
 
-[node name="pine_tall_5" type="Sprite2D" parent="Ozdoby"]
+[node name="cactus_tall_z2" type="Sprite2D" parent="Ozdoby" unique_id=1357309651]
 position = Vector2(306, 648)
 scale = Vector2(2, 2)
-texture = ExtResource("21_pine_tall")
-offset = Vector2(0, -16)
+texture = ExtResource("7_cactus_tall")
+offset = Vector2(0, -12)
 
-[node name="tree_oval_6" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(412, 648)
+[node name="dead_tree_a_z3" type="Sprite2D" parent="Ozdoby" unique_id=773774409]
+position = Vector2(446, 602)
 scale = Vector2(2, 2)
-texture = ExtResource("27_tree_oval")
+texture = ExtResource("8_dead_tree_a")
 offset = Vector2(0, -16)
 
-[node name="desert_rock_medium_5" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(900, 658)
+[node name="desert_rock_medium_5" type="Sprite2D" parent="Ozdoby" unique_id=1973459909]
+position = Vector2(907, 670)
 scale = Vector2(2, 2)
 texture = ExtResource("10_desert_rock_medium")
 offset = Vector2(0, -5)
 
-[node name="dead_tree_b_3" type="Sprite2D" parent="Ozdoby"]
+[node name="dead_tree_b_3" type="Sprite2D" parent="Ozdoby" unique_id=1033034273]
 position = Vector2(782, 666)
 scale = Vector2(2, 2)
 texture = ExtResource("9_dead_tree_b")
 offset = Vector2(0, -16)
 
-[node name="cactus_tall_4" type="Sprite2D" parent="Ozdoby"]
+[node name="cactus_tall_4" type="Sprite2D" parent="Ozdoby" unique_id=165804153]
 position = Vector2(972, 670)
 scale = Vector2(2, 2)
 texture = ExtResource("7_cactus_tall")
 offset = Vector2(0, -12)
 
-[node name="flowers_white_6" type="Sprite2D" parent="Ozdoby"]
+[node name="shell_clam_z6" type="Sprite2D" parent="Ozdoby" unique_id=1035188328]
 position = Vector2(362, 686)
 scale = Vector2(2, 2)
-texture = ExtResource("15_flowers_white")
-offset = Vector2(0, -4)
+texture = ExtResource("deco_shell_clam")
+offset = Vector2(0, -3)
 
-[node name="dry_bush_4" type="Sprite2D" parent="Ozdoby"]
+[node name="dry_bush_4" type="Sprite2D" parent="Ozdoby" unique_id=870287993]
 position = Vector2(958, 688)
 scale = Vector2(2, 2)
 texture = ExtResource("13_dry_bush")
 offset = Vector2(0, -5)
 
-[node name="tree_round_2" type="Sprite2D" parent="Ozdoby"]
+[node name="dead_tree_b_z2" type="Sprite2D" parent="Ozdoby" unique_id=379056604]
 position = Vector2(342, 692)
 scale = Vector2(2, 2)
-texture = ExtResource("28_tree_round")
+texture = ExtResource("9_dead_tree_b")
 offset = Vector2(0, -16)
 
-[node name="dead_tree_a_4" type="Sprite2D" parent="Ozdoby"]
+[node name="dead_tree_a_4" type="Sprite2D" parent="Ozdoby" unique_id=1484530988]
 position = Vector2(638, 696)
 scale = Vector2(2, 2)
 texture = ExtResource("8_dead_tree_a")
 offset = Vector2(0, -16)
 
-[node name="dead_tree_b_4" type="Sprite2D" parent="Ozdoby"]
+[node name="dead_tree_b_4" type="Sprite2D" parent="Ozdoby" unique_id=157734520]
 position = Vector2(888, 702)
 scale = Vector2(2, 2)
 texture = ExtResource("9_dead_tree_b")
 offset = Vector2(0, -16)
 
-[node name="shell_scallop_1" type="Sprite2D" parent="Ozdoby"]
+[node name="shell_scallop_1" type="Sprite2D" parent="Ozdoby" unique_id=1795961715]
 position = Vector2(1146, 698)
 scale = Vector2(2, 2)
 texture = ExtResource("deco_shell_scallop")
 offset = Vector2(0, -3)
 
-[node name="shell_clam_1" type="Sprite2D" parent="Ozdoby"]
+[node name="shell_clam_1" type="Sprite2D" parent="Ozdoby" unique_id=1053507978]
 position = Vector2(1148, 660)
 scale = Vector2(2, 2)
 texture = ExtResource("deco_shell_clam")
 offset = Vector2(0, -3)
 
-[node name="shell_scallop_2" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(1254, 708)
+[node name="shell_scallop_2" type="Sprite2D" parent="Ozdoby" unique_id=432925525]
+position = Vector2(1246, 710)
 scale = Vector2(2, 2)
 texture = ExtResource("deco_shell_scallop")
 offset = Vector2(0, -3)
 
-[node name="shell_scallop_3" type="Sprite2D" parent="Ozdoby"]
+[node name="shell_scallop_3" type="Sprite2D" parent="Ozdoby" unique_id=1659001696]
 position = Vector2(960, 476)
 scale = Vector2(2, 2)
 texture = ExtResource("deco_shell_scallop")
 offset = Vector2(0, -3)
 
-[node name="shell_clam_2" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(946, 278)
+[node name="shell_clam_2" type="Sprite2D" parent="Ozdoby" unique_id=1155043425]
+position = Vector2(942, 292)
 scale = Vector2(2, 2)
 texture = ExtResource("deco_shell_clam")
 offset = Vector2(0, -3)
 
-[node name="shell_clam_3" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(988, 250)
+[node name="shell_clam_3" type="Sprite2D" parent="Ozdoby" unique_id=1757070648]
+position = Vector2(1016, 234)
 scale = Vector2(2, 2)
 texture = ExtResource("deco_shell_clam")
 offset = Vector2(0, -3)
 
-[node name="shell_clam_4" type="Sprite2D" parent="Ozdoby"]
+[node name="shell_clam_4" type="Sprite2D" parent="Ozdoby" unique_id=1172382434]
 position = Vector2(1156, 554)
 scale = Vector2(2, 2)
 texture = ExtResource("deco_shell_clam")
 offset = Vector2(0, -3)
 
-[node name="shell_scallop_4" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(1194, 478)
+[node name="shell_scallop_4" type="Sprite2D" parent="Ozdoby" unique_id=372699080]
+position = Vector2(1194, 486)
 scale = Vector2(2, 2)
 texture = ExtResource("deco_shell_scallop")
 offset = Vector2(0, -3)
 
-[node name="shell_scallop_5" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(990, 206)
+[node name="shell_scallop_5" type="Sprite2D" parent="Ozdoby" unique_id=1022734738]
+position = Vector2(1007, 216)
 scale = Vector2(2, 2)
 texture = ExtResource("deco_shell_scallop")
 offset = Vector2(0, -3)
 
-[node name="shell_clam_5" type="Sprite2D" parent="Ozdoby"]
+[node name="shell_clam_5" type="Sprite2D" parent="Ozdoby" unique_id=2041355592]
 position = Vector2(920, 474)
 scale = Vector2(2, 2)
 texture = ExtResource("deco_shell_clam")
 offset = Vector2(0, -3)
 
-[node name="shell_clam_6" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(986, 538)
+[node name="shell_clam_6" type="Sprite2D" parent="Ozdoby" unique_id=1393800078]
+position = Vector2(978, 540)
 scale = Vector2(2, 2)
 texture = ExtResource("deco_shell_clam")
 offset = Vector2(0, -3)
 
-[node name="shell_clam_7" type="Sprite2D" parent="Ozdoby"]
-position = Vector2(650, 364)
+[node name="flowers_white_z1" type="Sprite2D" parent="Ozdoby" unique_id=473691171]
+position = Vector2(628, 402)
 scale = Vector2(2, 2)
-texture = ExtResource("deco_shell_clam")
-offset = Vector2(0, -3)
+texture = ExtResource("15_flowers_white")
+offset = Vector2(0, -4)
 
-[node name="Trasa1" type="Path2D" parent="."]
+[node name="Trasa1" type="Path2D" parent="." unique_id=441072170]
 curve = SubResource("Curve2D_trasa1")
 
-[node name="Trasa2" type="Path2D" parent="."]
+[node name="Trasa2" type="Path2D" parent="." unique_id=1272828748]
 curve = SubResource("Curve2D_trasa2")
+
+[node name="Obiekty" type="Node2D" parent="." unique_id=1710397666]
+
+[node name="Most" type="Node2D" parent="Obiekty" unique_id=1751268159]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(1100, 100)
+script = ExtResource("obj_script")
+length = 190.0
+
+[node name="Rycerz" type="Node2D" parent="Obiekty" unique_id=391406898]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(690, 600)
+script = ExtResource("obj_script")
+kind = 5

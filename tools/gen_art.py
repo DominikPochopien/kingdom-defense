@@ -1780,6 +1780,22 @@ def main():
     import gen_fx
     gen_fx.run(out)
 
+    # --- droga malowana wzdluz trasy (tools/gen_road_paint.py)
+    import gen_road_paint
+    gen_road_paint.run(out)
+
+    # --- mosty stale 48-112 px i most zwodzony (tools/gen_bridges.py)
+    import gen_bridges
+    gen_bridges.run(out)
+
+    # --- Wieza wroga (tools/gen_war_tower.py)
+    import gen_war_tower
+    gen_war_tower.run(out)
+
+    # --- poziom 9: szkielety, mumia, piramida, portal (tools/gen_undead.py)
+    import gen_undead
+    gen_undead.run(out)
+
 
 if __name__ == "__main__":
     main()
