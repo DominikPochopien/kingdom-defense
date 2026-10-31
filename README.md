@@ -17,7 +17,14 @@ Każda z wież ma 3 poziomy i dwa ulepszenia do wyboru na 4. poziomie.
 | **7. Pirackie Wybrzeże**<br>![Pirackie Wybrzeże](screenshots/level_07.png) | **8. Wieża Wojny**<br>![Wieża Wojny](screenshots/level_08.png) |
 | **9. Piramida Umarłych**<br>![Piramida Umarłych](screenshots/level_09.png) |  |
 
-## Uruchomienie
+## Pobierz grę (Windows)
+
+Gotowa gra jest w zakładce **[Releases](https://github.com/DominikPochopien/kingdom-defense/releases/latest)**:
+pobierz `Kingdom-Defense-Windows.zip`, rozpakuj i uruchom `Kingdom Defense.exe`. Nie trzeba niczego
+instalować. Gra nie ma podpisu cyfrowego, więc Windows może pokazać ostrzeżenie SmartScreen. Wtedy
+kliknij „Więcej informacji” → „Uruchom mimo to”.
+
+## Uruchomienie w Godocie
 
 1. Zainstaluj **Godot 4.7** (wymagany co najmniej 4.4).
 2. W Godocie: **Import** → wskaż plik `project.godot`.
