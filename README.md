@@ -3,6 +3,16 @@
 Gra typu tower defense w pixel arcie, napisana w Godocie 4 (GDScript). Stawiasz wieże na kamiennych
 miejscach budowy, ulepszasz je i bronisz królestwa przed falami wrogów idących po drogach.
 
+## Zrzuty ekranu
+
+| | |
+|---|---|
+| **1. Zielone Wzgórza**<br>![Zielone Wzgórza](screenshots/level_01.png) | **2. Kręta Droga**<br>![Kręta Droga](screenshots/level_02.png) |
+| **3. Rzeka Mostów**<br>![Rzeka Mostów](screenshots/level_03.png) | **4. Rozdroża**<br>![Rozdroża](screenshots/level_04.png) |
+| **5. Leśna Przełęcz**<br>![Leśna Przełęcz](screenshots/level_05.png) | **6. Słoneczna Zatoka**<br>![Słoneczna Zatoka](screenshots/level_06.png) |
+| **7. Pirackie Wybrzeże**<br>![Pirackie Wybrzeże](screenshots/level_07.png) | **8. Wieża Wojny**<br>![Wieża Wojny](screenshots/level_08.png) |
+| **9. Piramida Umarłych**<br>![Piramida Umarłych](screenshots/level_09.png) |  |
+
 ## Uruchomienie
 
 1. Zainstaluj **Godot 4.7** (wymagany co najmniej 4.4).
